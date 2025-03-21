@@ -1,0 +1,33 @@
+extends ../layouts/master.pug
+
+block variables
+    - var PageID = 'profile'
+
+block title
+    title Jobbox Profile - Job Portal HTML Template 
+
+block header
+    include ../components/header.pug
+
+block content
+    .box-heading
+        .box-title 
+            h3.mb-35 My Profile
+        .box-breadcrumb 
+            .breadcrumbs
+                ul 
+                    li 
+                        a.icon-home(href='index.html') Admin
+                    li
+                        span My Profile
+    .row 
+        .col-xxl-9.col-xl-8.col-lg-8
+            include ../sections/profile_sec1.pug 
+        .col-xxl-3.col-xl-4.col-lg-4
+            include ../sections/profile_sec2.pug
+            include ../sections/profile_sec3.pug 
+
+    .mt-10 
+        include ../sections/dashboard_sec7.pug
+
+block scripts-custom

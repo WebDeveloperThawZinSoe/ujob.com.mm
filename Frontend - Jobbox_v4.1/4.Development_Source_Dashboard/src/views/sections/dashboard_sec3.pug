@@ -1,0 +1,21 @@
+.section-box
+    .container 
+        .panel-white
+            .panel-head 
+                h5 Latest Jobs
+                a.menudrop#dropdownMenu3(type='button', data-bs-toggle='dropdown', aria-expanded='false', data-bs-display='static')
+                ul.dropdown-menu.dropdown-menu-light.dropdown-menu-end(aria-labelledby='dropdownMenu3')
+                    li
+                        a.dropdown-item.active(href='#') Add new
+                    li
+                        a.dropdown-item(href='#') Settings
+                    li
+                        a.dropdown-item(href='#') Actions
+            .panel-body
+                +cardstyle2('assets/imgs/page/dashboard/img1.png', 'Senior Full Stack Engineer, Creator Success', '3', '$300', 'New York, US')
+                    a.btn.btn-tag Figma
+                    a.btn.btn-tag Adobe XD
+                +cardstyle2('assets/imgs/page/dashboard/img2.png', 'Senior Full Stack Engineer, Creator Success', '3', '$650', 'Chicago, US')
+                +cardstyle2('assets/imgs/page/dashboard/img3.png', 'Lead Product/UX/UI Designer Role', '3', '$1200', 'Paris, France')
+                +cardstyle2('assets/imgs/page/dashboard/img4.png', 'Marketing Graphic Designer', '3', '$580', 'Tokyto, Japan')
+                +cardstyle2('assets/imgs/page/dashboard/img5.png', 'Director, Product Design - Creator', '3', '$1500', 'Ha Noi, Vietnam')

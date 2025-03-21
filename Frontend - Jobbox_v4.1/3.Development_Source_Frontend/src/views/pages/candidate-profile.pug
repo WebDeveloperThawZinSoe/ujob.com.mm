@@ -1,0 +1,184 @@
+extends ../layouts/master.pug
+
+block title
+    title Candidate Profile - Job Portal HTML Template 
+
+block header
+    include ../components/header.pug
+
+block content
+    section.section-box-2
+        .container
+            .banner-hero.banner-image-single
+                img(src='assets/imgs/page/candidates/img.png', alt='jobbox')
+                a.btn-editor(href="#")
+            .box-company-profile
+                .image-compay
+                    img(src='assets/imgs/page/candidates/candidate-profile.png', alt='jobbox')
+                .row.mt-10
+                    .col-lg-8.col-md-12
+                        h5.f-18
+                            | Steven Jobs 
+                            span.card-location.font-regular.ml-20 New York, US
+                        p.mt-0.font-md.color-text-paragraph-2.mb-15
+                            | UI/UX Designer. Front end Developer
+                    .col-lg-4.col-md-12.text-lg-end
+                        a.btn.btn-preview-icon.btn-apply.btn-apply-big(href='page-contact.html') Preview
+
+            .border-bottom.pt-10.pb-10
+    section.section-box.mt-50
+        .container
+            .row
+                .col-lg-3.col-md-4.col-sm-12
+                    .box-nav-tabs.nav-tavs-profile.mb-5
+                        ul.nav(role='tablist')
+                            li
+                                a.btn.btn-border.aboutus-icon.mb-20.active(href='#tab-my-profile', data-bs-toggle='tab', role='tab', aria-controls='tab-my-profile', aria-selected='true') My Profile
+                            li
+                                a.btn.btn-border.recruitment-icon.mb-20(href='#tab-my-jobs', data-bs-toggle='tab', role='tab', aria-controls='tab-my-jobs', aria-selected='false') My Jobs
+                            li
+                                a.btn.btn-border.people-icon.mb-20(href='#tab-saved-jobs', data-bs-toggle='tab', role='tab', aria-controls='tab-saved-jobs', aria-selected='false') Saved Jobs
+                        .border-bottom.pt-10.pb-10
+                        .mt-20.mb-20
+                            a.link-red(href='#') Delete Account
+                .col-lg-9.col-md-8.col-sm-12.col-12.mb-50
+                    .content-single
+                        .tab-content
+                            #tab-my-profile.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='tab-my-profile')
+                                h3.mt-0.mb-15.color-brand-1 My Account
+                                a.font-md.color-text-paragraph-2(href="#") Update your profile
+                                .mt-35.mb-40.box-info-profie
+                                    .image-profile
+                                        img(src='assets/imgs/page/candidates/candidate-profile.png', alt='jobbox')
+                                    a.btn.btn-apply Upload Avatar
+                                    a.btn.btn-link Delete
+                                .row.form-contact
+                                    .col-lg-6.col-md-12
+                                        .form-group
+                                            label.font-sm.color-text-mutted.mb-10 Full Name *
+                                            input.form-control(type="text", value="Steven Job")
+                                        .form-group
+                                            label.font-sm.color-text-mutted.mb-10 Email *
+                                            input.form-control(type="text", value="stevenjob@gmail.com")
+                                        .form-group
+                                            label.font-sm.color-text-mutted.mb-10 Contact number
+                                            input.form-control(type="text", value="01 - 234 567 89")
+                                        .form-group
+                                            label.font-sm.color-text-mutted.mb-10 Bio
+                                            textarea.form-control(rows="4") We are AliThemes , a creative and dedicated group of individuals who love web development almost as much as we love our customers. We are passionate team with the mission for achieving the perfection in web design.
+                                        .form-group
+                                            label.font-sm.color-text-mutted.mb-10 Personal website
+                                            input.form-control(type="url", value="https://alithemes.com")
+                                        .row
+                                            .col-lg-6
+                                                .form-group
+                                                    label.font-sm.color-text-mutted.mb-10 Country
+                                                    input.form-control(type="text", value="United States")
+                                            .col-lg-6
+                                                .form-group
+                                                    label.font-sm.color-text-mutted.mb-10 State
+                                                    input.form-control(type="text", value="New York")
+                                            .col-lg-6
+                                                .form-group
+                                                    label.font-sm.color-text-mutted.mb-10 City
+                                                    input.form-control(type="text", value="Mcallen")
+                                            .col-lg-6
+                                                .form-group
+                                                    label.font-sm.color-text-mutted.mb-10 Zip code
+                                                    input.form-control(type="text", value="82356")
+                                        .border-bottom.pt-10.pb-10.mb-30
+                                        h6.color-orange.mb-20 Change your password
+                                        .row
+                                            .col-lg-6
+                                                .form-group
+                                                    label.font-sm.color-text-mutted.mb-10 Password
+                                                    input.form-control(type="password", value="123456789")
+                                            .col-lg-6
+                                                .form-group
+                                                    label.font-sm.color-text-mutted.mb-10 Re-Password *
+                                                    input.form-control(type="password", value="123456789")
+                                        .border-bottom.pt-10.pb-10
+                                        .box-agree.mt-30
+                                            label.lbl-agree.font-xs.color-text-paragraph-2
+                                                input.lbl-checkbox(type="checkbox",value="1")
+                                                | Available for freelancers
+                                        .box-button.mt-15
+                                            button.btn.btn-apply-big.font-md.font-bold Save All Changes
+                                    .col-lg-6.col-md-12
+                                        .box-skills
+                                            h5.mt-0.color-brand-1 Skills
+                                            .form-contact
+                                                .form-group
+                                                    input.form-control.search-icon(type="text", value="", placeholder="E.g. Angular, Laravel...")
+                                            .box-tags.mt-30
+                                                a.btn.btn-grey-small.mr-10 Figma
+                                                    span.close-icon
+                                                a.btn.btn-grey-small.mr-10 Adobe XD
+                                                    span.close-icon
+                                                a.btn.btn-grey-small.mr-10 NextJS
+                                                    span.close-icon
+                                                a.btn.btn-grey-small.mr-10 React
+                                                    span.close-icon
+                                                a.btn.btn-grey-small.mr-10 App
+                                                    span.close-icon
+                                                a.btn.btn-grey-small.mr-10 Digital
+                                                    span.close-icon
+                                                a.btn.btn-grey-small.mr-10 NodeJS
+                                                    span.close-icon
+                                            .mt-40 
+                                                span.card-info.font-sm.color-text-paragraph-2 You can add up to 15 skills
+
+                            #tab-my-jobs.tab-pane.fade(role='tabpanel', aria-labelledby='tab-my-jobs')
+                                h3.mt-0.color-brand-1.mb-50 My Jobs
+                                .row.display-list
+                                    +jobCard-List('assets/imgs/brands/brand-5.png','Linkedin','New York, US','React Native Web Developer','Fulltime','4','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur','$500')
+                                        a.btn.btn-grey-small.mr-5(href='jobs-grid.html') Angular
+                                    +jobCard-List('assets/imgs/brands/brand-6.png','Quora JSC','New York, US','Senior System Engineer','Part time','5','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.','$800')
+                                        a.btn.btn-grey-small.mr-5(href='job-details.html') PHP
+                                        a.btn.btn-grey-small.mr-5(href='job-details.html') Android
+                                    +jobCard-List('assets/imgs/brands/brand-7.png', 'Nintendo','New York, US','Products Manager','Full time','6','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.','$250')
+                                        a.btn.btn-grey-small.mr-5(href='job-details.html') ASP .Net
+                                        a.btn.btn-grey-small.mr-5(href='job-details.html') Figma
+                                    +jobCard-List('assets/imgs/brands/brand-8.png', 'Periscope','New York, US','Lead Quality Control QA','Full time','6','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.','$250')
+                                        a.btn.btn-grey-small.mr-5(href='job-details.html') iOS
+                                        a.btn.btn-grey-small.mr-5(href='job-details.html') Laravel
+                                        a.btn.btn-grey-small.mr-5(href='job-details.html') Golang
+                                include ../elements/pagination.pug
+                                
+                            #tab-saved-jobs.tab-pane.fade(role='tabpanel', aria-labelledby='tab-saved-jobs')
+                                h3.mt-0.color-brand-1.mb-50 Saved Jobs
+                                .row 
+                                    +jobCard-2('assets/imgs/brands/brand-1.png','LinkedIn','New York, US','UI / UX Designer fulltime','Fulltime','4','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur','$500')
+                                        a.btn.btn-grey-small.mr-5(href='jobs-grid.html') Adobe XD
+                                        a.btn.btn-grey-small.mr-5(href='jobs-grid.html') Figma
+                                        a.btn.btn-grey-small.mr-5(href='jobs-grid.html') Photoshop
+                                    +jobCard-2('assets/imgs/brands/brand-2.png','Adobe Ilustrator','New York, US','Full Stack Engineer','Part time','5','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.','$800')
+                                        a.btn.btn-grey-small.mr-5(href='jobs-grid.html') React
+                                        a.btn.btn-grey-small.mr-5(href='jobs-grid.html') NodeJS
+                                    +jobCard-2('assets/imgs/brands/brand-3.png', 'Bing Search','New York, US','Java Software Engineer','Full time','6','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.','$250')
+                                        a.btn.btn-grey-small.mr-5(href='jobs-grid.html') Python
+                                        a.btn.btn-grey-small.mr-5(href='jobs-grid.html') AWS
+                                        a.btn.btn-grey-small.mr-5(href='jobs-grid.html') Photoshop
+                                    +jobCard-2('assets/imgs/brands/brand-4.png', 'Dailymotion','New York, US','Frontend Developer','Full time','6','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.','$250')
+                                        a.btn.btn-grey-small.mr-5(href='jobs-grid.html') Typescript
+                                        a.btn.btn-grey-small.mr-5(href='jobs-grid.html') Java
+                                    +jobCard-2('assets/imgs/brands/brand-5.png','Linkedin','New York, US','React Native Web Developer','Fulltime','4','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur','$500')
+                                        a.btn.btn-grey-small.mr-5(href='jobs-grid.html') Angular
+                                    +jobCard-2('assets/imgs/brands/brand-6.png','Quora JSC','New York, US','Senior System Engineer','Part time','5','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.','$800')
+                                        a.btn.btn-grey-small.mr-5(href='job-details.html') PHP
+                                        a.btn.btn-grey-small.mr-5(href='job-details.html') Android
+                                    +jobCard-2('assets/imgs/brands/brand-7.png', 'Nintendo','New York, US','Products Manager','Full time','6','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.','$250')
+                                        a.btn.btn-grey-small.mr-5(href='job-details.html') ASP .Net
+                                        a.btn.btn-grey-small.mr-5(href='job-details.html') Figma
+                                    +jobCard-2('assets/imgs/brands/brand-8.png', 'Periscope','New York, US','Lead Quality Control QA','Full time','6','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.','$250')
+                                        a.btn.btn-grey-small.mr-5(href='job-details.html') iOS
+                                        a.btn.btn-grey-small.mr-5(href='job-details.html') Laravel
+                                        a.btn.btn-grey-small.mr-5(href='job-details.html') Golang
+                                    +jobCard-2('assets/imgs/brands/brand-8.png', 'Periscope','New York, US','Lead Quality Control QA','Full time','6','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.','$250')
+                                        a.btn.btn-grey-small.mr-5(href='job-details.html') iOS
+                                        a.btn.btn-grey-small.mr-5(href='job-details.html') Laravel
+                                        a.btn.btn-grey-small.mr-5(href='job-details.html') Golang
+
+                                include ../elements/pagination.pug
+
+    include ../sections/newsletter.pug

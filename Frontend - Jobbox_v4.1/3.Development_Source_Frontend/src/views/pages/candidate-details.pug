@@ -1,0 +1,184 @@
+extends ../layouts/master.pug
+
+block title
+    title Candidate Details - Job Portal HTML Template 
+
+block header
+    include ../components/header.pug
+
+block content
+    section.section-box-2
+        .container
+            .banner-hero.banner-image-single
+                img(src='assets/imgs/page/candidates/img.png', alt='jobbox')
+            .box-company-profile
+                .image-compay
+                    img(src='assets/imgs/page/candidates/candidate-profile.png', alt='jobbox')
+                .row.mt-10
+                    .col-lg-8.col-md-12
+                        h5.f-18
+                            | Steven Jobs 
+                            span.card-location.font-regular.ml-20 New York, US
+                        p.mt-0.font-md.color-text-paragraph-2.mb-15
+                            | UI/UX Designer. Front end Developer
+                        .mt-10.mb-15
+                            img(src='assets/imgs/template/icons/star.svg', alt='jobbox')
+                            img(src='assets/imgs/template/icons/star.svg', alt='jobbox')
+                            img(src='assets/imgs/template/icons/star.svg', alt='jobbox')
+                            img(src='assets/imgs/template/icons/star.svg', alt='jobbox')
+                            img(src='assets/imgs/template/icons/star.svg', alt='jobbox')
+                            span.font-xs.color-text-mutted.ml-10 (66)
+                            img.ml-30(src='assets/imgs/page/candidates/verified.png', alt='jobbox')
+                    .col-lg-4.col-md-12.text-lg-end
+                        a.btn.btn-download-icon.btn-apply.btn-apply-big(href='page-contact.html') Download CV
+            .box-nav-tabs.mt-40.mb-5
+                ul.nav(role='tablist')
+                    li
+                        a.btn.btn-border.aboutus-icon.mr-15.mb-5.active(href='#tab-short-bio', data-bs-toggle='tab', role='tab', aria-controls='tab-short-bio', aria-selected='true') Short Bio
+                    li
+                        a.btn.btn-border.recruitment-icon.mr-15.mb-5(href='#tab-skills', data-bs-toggle='tab', role='tab', aria-controls='tab-skills', aria-selected='false') Skills
+                    li
+                        a.btn.btn-border.people-icon.mb-5(href='#tab-work-experience', data-bs-toggle='tab', role='tab', aria-controls='tab-work-experience', aria-selected='false') Working Experience
+
+            .border-bottom.pt-10.pb-10
+    section.section-box.mt-50
+        .container
+            .row
+                .col-lg-8.col-md-12.col-sm-12.col-12
+                    .content-single
+                        .tab-content
+                            #tab-short-bio.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='tab-short-bio')
+                                h4 About Me
+                                p Hello there! My name is Alan Walker. I am a graphic designer, and I&rsquo;m very passionate and dedicated to my work. With 20 years experience as a professional a graphic designer, I have acquired the skills and knowledge necessary to make your project a success.
+                                p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis illum fuga eveniet. Deleniti asperiores, commodi quae ipsum quas est itaque, ipsa, dolore beatae voluptates nemo blanditiis iste eius officia minus. Id nisi, consequuntur sunt impedit quidem, vitae mollitia!
+                                h4 Professional Skills
+                                .row.mb-40
+                                    .col-lg-6.col-md-6.col-sm-12.mb-30
+                                        h6.color-text-paragraph-2 Programming
+                                        .box-progress-bar.mt-20
+                                            p.font-xs.color-text-paragraph-2.mb-10 HTML &amp; CSS
+                                            .progress
+                                                .progress-bar.bg-paragraph-2(role='progressbar', style='width: 78%', aria-valuenow='25', aria-valuemin='0', aria-valuemax='100')
+                                                    span 78%
+                                            p.font-xs.color-text-paragraph-2.mb-10.mt-30 Javascript
+                                            .progress
+                                                .progress-bar.bg-brand-2(role='progressbar', style='width: 88%', aria-valuenow='50', aria-valuemin='0', aria-valuemax='100')
+                                                    span 88%
+                                            p.font-xs.color-text-paragraph-2.mb-10.mt-30 Database
+                                            .progress
+                                                .progress-bar.bg-paragraph-2(role='progressbar', style='width: 62%', aria-valuenow='75', aria-valuemin='0', aria-valuemax='100')
+                                                    span 62%
+                                            p.font-xs.color-text-paragraph-2.mb-10.mt-30 React JS
+                                            .progress
+                                                .progress-bar.bg-paragraph-2(role='progressbar', style='width: 92%', aria-valuenow='100', aria-valuemin='0', aria-valuemax='100')
+                                                    span 92%
+                                    .col-lg-6.col-md-6.col-sm-12.mb-30
+                                        h6.color-text-paragraph-2 Design
+                                        .box-progress-bar.mt-20
+                                            p.font-xs.color-text-paragraph-2.mb-10 Photoshop
+                                            .progress
+                                                .progress-bar.bg-paragraph-2(role='progressbar', style='width: 29%', aria-valuenow='25', aria-valuemin='0', aria-valuemax='100')
+                                                    span 29%
+                                            p.font-xs.color-text-paragraph-2.mb-10.mt-30 Figma
+                                            .progress
+                                                .progress-bar.bg-paragraph-2(role='progressbar', style='width: 20%', aria-valuenow='50', aria-valuemin='0', aria-valuemax='100')
+                                                    span 20%
+                                            p.font-xs.color-text-paragraph-2.mb-10.mt-30 Illustrator
+                                            .progress
+                                                .progress-bar.bg-paragraph-2(role='progressbar', style='width: 65%', aria-valuenow='75', aria-valuemin='0', aria-valuemax='100')
+                                                    span 65%
+                                            p.font-xs.color-text-paragraph-2.mb-10.mt-30 Sketch
+                                            .progress
+                                                .progress-bar.bg-paragraph-2(role='progressbar', style='width: 82%', aria-valuenow='100', aria-valuemin='0', aria-valuemax='100')
+                                                    span 82%
+                                p
+                                h4 Work Experience
+                                ul
+                                    li A portfolio demonstrating well thought through and polished end to end customer journeys
+                                    li 5+ years of industry experience in interactive design and / or visual design
+                                    li Excellent interpersonal skills
+                                    li Aware of trends in&#x202F;mobile, communications, and collaboration
+                                    li Ability to create highly polished design prototypes, mockups, and other communication artifacts
+                                    li The ability to scope and estimate efforts accurately and prioritize tasks and goals independently
+                                    li History of impacting shipping products with your work
+                                    li A Bachelor&rsquo;s Degree in Design (or related field) or equivalent professional experience
+                                    li Proficiency in a variety of design tools such as Figma, Photoshop, Illustrator, and Sketch
+                                h4 Education
+                                ul
+                                    li Necessitatibus quibusdam facilis
+                                    li Velit unde aliquam et voluptas reiciendis non sapiente labore
+                                    li Commodi quae ipsum quas est itaque
+                                    li Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                                    li Deleniti asperiores blanditiis nihil quia officiis dolor
+                            #tab-skills.tab-pane.fade(role='tabpanel', aria-labelledby='tab-skills')
+                                h4 Skills
+                                p
+                                | Hello there! My name is Alan Walker. I am a graphic designer, and I&rsquo;m very passionate and dedicated to my work. With 20 years experience as a professional a graphic designer, I have acquired the skills and knowledge necessary to make your project a success.
+                                p
+                                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis illum fuga eveniet. Deleniti asperiores, commodi quae ipsum quas est itaque, ipsa, dolore beatae voluptates nemo blanditiis iste eius officia minus. Id nisi, consequuntur sunt impedit quidem, vitae mollitia!
+                            #tab-work-experience.tab-pane.fade(role='tabpanel', aria-labelledby='tab-work-experience')
+                                h4 Work Experiences
+                                p
+                                | Hello there! My name is Alan Walker. I am a graphic designer, and I&rsquo;m very passionate and dedicated to my work. With 20 years experience as a professional a graphic designer, I have acquired the skills and knowledge necessary to make your project a success.
+                                p
+                                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis illum fuga eveniet. Deleniti asperiores, commodi quae ipsum quas est itaque, ipsa, dolore beatae voluptates nemo blanditiis iste eius officia minus. Id nisi, consequuntur sunt impedit quidem, vitae mollitia!
+
+                    .box-related-job.content-page
+                        h3.mb-30 Work History
+                        .box-list-jobs.display-list
+                            +jobCard-List-2('assets/imgs/brands/brand-6.png','Quora JSC','New York, US','Senior System Engineer','Part time','5','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.','$800')
+                                a.btn.btn-grey-small.mr-5(href='job-details.html') PHP
+                                a.btn.btn-grey-small.mr-5(href='job-details.html') Android
+                            +jobCard-List-2('assets/imgs/brands/brand-7.png', 'Nintendo','New York, US','Products Manager','Full time','6','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.','$250')
+                                a.btn.btn-grey-small.mr-5(href='job-details.html') ASP .Net
+                                a.btn.btn-grey-small.mr-5(href='job-details.html') Figma
+                            +jobCard-List-2('assets/imgs/brands/brand-8.png', 'Periscope','New York, US','Lead Quality Control QA','Full time','6','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.','$250')
+                                a.btn.btn-grey-small.mr-5(href='job-details.html') iOS
+                                a.btn.btn-grey-small.mr-5(href='job-details.html') Laravel
+                                a.btn.btn-grey-small.mr-5(href='job-details.html') Golang
+                        include ../elements/pagination.pug
+
+                .col-lg-4.col-md-12.col-sm-12.col-12.pl-40.pl-lg-15.mt-lg-30
+                    .sidebar-border
+                        h5.f-18 Overview
+                        .sidebar-list-job
+                            ul
+                                li
+                                    .sidebar-icon-item
+                                        i.fi-rr-briefcase
+                                    .sidebar-text-info
+                                        span.text-description Experience
+                                        strong.small-heading 12 years
+                                li
+                                    .sidebar-icon-item
+                                        i.fi-rr-dollar
+                                    .sidebar-text-info
+                                        span.text-description Expected Salary
+                                        strong.small-heading $26k - $30k
+                                li
+                                    .sidebar-icon-item
+                                        i.fi-rr-marker
+                                    .sidebar-text-info
+                                        span.text-description Language
+                                        strong.small-heading English, German
+                                li
+                                    .sidebar-icon-item
+                                        i.fi-rr-time-fast
+                                    .sidebar-text-info
+                                        span.text-description Education Level
+                                        strong.small-heading Master Degree
+                        .sidebar-list-job
+                            ul.ul-disc
+                                li 205 North Michigan Avenue, Suite 810 Chicago, 60601, USA
+                                li Phone: (123) 456-7890
+                                li Email: contact@Evara.com
+                            .mt-30
+                                a.btn.btn-send-message(href='page-contact.html') Send Message
+                    .sidebar-border-bg.bg-right
+                        span.text-grey WE ARE
+                        span.text-hiring HIRING
+                        p.font-xxs.color-text-paragraph.mt-5 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto
+                        .mt-15
+                            a.btn.btn-paragraph-2(href='#') Know More
+
+    include ../sections/newsletter.pug

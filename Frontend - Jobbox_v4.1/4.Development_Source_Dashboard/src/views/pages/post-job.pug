@@ -1,0 +1,27 @@
+extends ../layouts/master.pug
+
+block title
+    title Jobbox Post Job - Job Portal HTML Template 
+
+block header
+    include ../components/header.pug
+
+block content
+    .box-heading
+        .box-title 
+            h3.mb-35 Post a Job
+        .box-breadcrumb 
+            .breadcrumbs
+                ul 
+                    li 
+                        a.icon-home(href='index.html') Admin
+                    li
+                        span Post New Job
+    .row 
+        .col-lg-12
+            include ../sections/postjob_sec1.pug 
+
+    .mt-10 
+        include ../sections/dashboard_sec7.pug
+
+block scripts-custom

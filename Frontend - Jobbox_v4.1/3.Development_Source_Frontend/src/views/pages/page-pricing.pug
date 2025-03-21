@@ -1,0 +1,103 @@
+extends ../layouts/master.pug
+
+block title
+    title Jobbox - Job Portal HTML Template 
+
+block header
+    include ../components/header.pug
+
+block content
+    section.section-box
+        .breacrumb-cover
+            .container
+                .row
+                    .col-lg-6
+                        h2.mb-10 Pricing
+                        p.font-lg.color-text-paragraph-2 Pricing built to suits teams of all sizes.
+                    .col-lg-6.text-lg-end
+                        ul.breadcrumbs.mt-40
+                            li
+                                a.home-icon(href='#') Home
+                            li Pricing
+    section.section-box.mt-90
+        .container
+            h2.text-center.mb-15.wow.animate__animated.animate__fadeInUp Pricing Table
+            .font-lg.color-text-paragraph-2.text-center.wow.animate__animated.animate__fadeInUp
+                | Choose The Best Plan That&rsquo;s For You
+            .max-width-price
+                .block-pricing.mt-70
+                    .row
+                        .col-xl-4.col-lg-6.col-md-6.wow.animate__animated.animate__fadeInUp(data-wow-delay='.1s')
+                            .box-pricing-item
+                                h3 Basic
+                                .box-info-price
+                                    span.text-price.color-brand-2 $19
+                                    span.text-month /month
+                                .border-bottom.mb-30
+                                    p.text-desc-package.font-sm.color-text-paragraph.mb-30
+                                        | For most businesses that want to optimize web queries
+                                ul.list-package-feature
+                                    li Unlimited updates
+                                    li Custom designs &amp; features
+                                    li Custom permissions
+                                    li Custom instructors
+                                    li Free support ticket
+                                div
+                                    a.btn.btn-border(href='#') Choose plan
+                        .col-xl-4.col-lg-6.col-md-6.wow.animate__animated.animate__fadeInUp(data-wow-delay='.2s')
+                            .box-pricing-item
+                                h3 Standard
+                                .box-info-price
+                                    span.text-price.for-month.display-month $29
+                                    span.text-month /month
+                                .border-bottom.mb-30
+                                    p.text-desc-package.mb-30
+                                        | For most businesses that want to otpimize web queries
+                                ul.list-package-feature
+                                    li Unlimited updates
+                                    li Custom designs &amp; features
+                                    li Custom permissions
+                                    li Custom instructors
+                                    li Free support ticket
+                                div
+                                    a.btn.btn-border(href='#') Choose plan
+                        .col-xl-4.col-lg-6.col-md-6.wow.animate__animated.animate__fadeInUp(data-wow-delay='.4s')
+                            .box-pricing-item
+                                h3 Enterpr&imath;se
+                                .box-info-price
+                                    span.text-price.for-month.display-month $49
+                                    span.text-month /month
+                                .border-bottom.mb-30
+                                    p.text-desc-package.mb-30
+                                        | For most businesses that want to otpimize web queries
+                                ul.list-package-feature
+                                    li Unlimited updates
+                                    li Custom designs &amp; features
+                                    li Custom permissions
+                                    li Custom instructors
+                                    li Free support ticket
+                                div
+                                    a.btn.btn-border(href='#') Choose plan
+    section.section-box.mt-90.mb-50
+        .container
+            h2.text-center.mb-15.wow.animate__animated.animate__fadeInUp Frequently Asked Questions
+            .font-lg.color-text-paragraph-2.text-center.wow.animate__animated.animate__fadeInUp
+                | Aliquam a augue suscipit, luctus neque purus ipsum neque dolor
+                br.d-none.d-lg-block
+                |  primis a libero tempus, blandit and cursus varius and magnis sapien
+            .row.mt-50
+                .col-lg-6.col-md-12.col-sm-12
+                    +faqCard('I have promotional or discount code?', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id nibh vitae quam blandit venenatis. Duis vehicula magna ut neque tempus tristique. Nam venenatis turpis euismod arcu aliquet finibus. Vivamus nec vulputate ex, vitae condimentum ante. Suspendisse metus metus, laoreet nec arcu vel, venenatis cursus libero.')                    
+                .col-lg-6.col-md-12.col-sm-12
+                       +faqCard('Where is my order? Quisque molestie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id nibh vitae quam blandit venenatis. Duis vehicula magna ut neque tempus tristique. Nam venenatis turpis euismod arcu aliquet finibus. Vivamus nec vulputate ex, vitae condimentum ante. Suspendisse metus metus, laoreet nec arcu vel, venenatis cursus libero.')
+                .col-lg-6.col-md-12.col-sm-12
+                       +faqCard('How can I return an item purchased online?', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id nibh vitae quam blandit venenatis. Duis vehicula magna ut neque tempus tristique. Nam venenatis turpis euismod arcu aliquet finibus. Vivamus nec vulputate ex, vitae condimentum ante. Suspendisse metus metus, laoreet nec arcu vel, venenatis cursus libero.')
+                .col-lg-6.col-md-12.col-sm-12
+                    +faqCard('What are the delivery types you use?', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id nibh vitae quam blandit venenatis. Duis vehicula magna ut neque tempus tristique. Nam venenatis turpis euismod arcu aliquet finibus. Vivamus nec vulputate ex, vitae condimentum ante. Suspendisse metus metus, laoreet nec arcu vel, venenatis cursus libero.')
+                .col-lg-6.col-md-12.col-sm-12
+                   +faqCard('How can I pay for my purchases?', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id nibh vitae quam blandit venenatis. Duis vehicula magna ut neque tempus tristique. Nam venenatis turpis euismod arcu aliquet finibus. Vivamus nec vulputate ex, vitae condimentum ante. Suspendisse metus metus, laoreet nec arcu vel, venenatis cursus libero.')
+                .col-lg-6.col-md-12.col-sm-12
+                    +faqCard('What are the delivery types you use?', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id nibh vitae quam blandit venenatis. Duis vehicula magna ut neque tempus tristique. Nam venenatis turpis euismod arcu aliquet finibus. Vivamus nec vulputate ex, vitae condimentum ante. Suspendisse metus metus, laoreet nec arcu vel, venenatis cursus libero.')
+
+    include ../sections/testimonials-slider.pug
+    include ../sections/newsletter.pug

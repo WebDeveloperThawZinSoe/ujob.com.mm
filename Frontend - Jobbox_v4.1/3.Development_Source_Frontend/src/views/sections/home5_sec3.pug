@@ -1,0 +1,313 @@
+section.section-box.mt-50
+    .section-box.wow.animate__animated.animate__fadeIn
+        .container
+            .text-start
+                h2.section-title.mb-10.wow.animate__animated.animate__fadeInUp Latest Jobs Post
+                p.font-lg.color-text-paragraph-2.wow.animate__animated.animate__fadeInUp Explore the different types of available jobs to apply
+                    br.d-none.d-lg-block
+                    | discover which is right for you.
+                .list-tabs.list-tabs-2.mt-30
+                    ul.nav.nav-tabs(role='tablist')
+                        li
+                            a#nav-tab-job-1.active(href='#tab-job-1', data-bs-toggle='tab', role='tab', aria-controls='tab-job-1', aria-selected='true')
+                                img(src='assets/imgs/page/homepage1/management.svg', alt='jobBox')
+                                |  Management
+                        li
+                            a#nav-tab-job-2(href='#tab-job-2', data-bs-toggle='tab', role='tab', aria-controls='tab-job-2', aria-selected='false')
+                                img(src='assets/imgs/page/homepage1/marketing.svg', alt='jobBox')
+                                |  Marketing &amp; Sale
+                        li
+                            a#nav-tab-job-3(href='#tab-job-3', data-bs-toggle='tab', role='tab', aria-controls='tab-job-3', aria-selected='false')
+                                img(src='assets/imgs/page/homepage1/finance.svg', alt='jobBox')
+                                |  Finance
+                        li
+                            a#nav-tab-job-4(href='#tab-job-4', data-bs-toggle='tab', role='tab', aria-controls='tab-job-4', aria-selected='false')
+                                img(src='assets/imgs/page/homepage1/human.svg', alt='jobBox')
+                                |  Human Resource
+                        li
+                            a#nav-tab-job-5(href='#tab-job-5', data-bs-toggle='tab', role='tab', aria-controls='tab-job-5', aria-selected='false')
+                                img(src='assets/imgs/page/homepage1/retail.svg', alt='jobBox')
+                                |  Retail &amp; Products
+                        li
+                            a#nav-tab-job-6(href='#tab-job-6', data-bs-toggle='tab', role='tab', aria-controls='tab-job-6', aria-selected='false')
+                                img(src='assets/imgs/page/homepage1/content.svg', alt='jobBox')
+                                |  Content Writer
+                        li
+                            a#nav-tab-job-7(href='#tab-job-7', data-bs-toggle='tab', role='tab', aria-controls='tab-job-7', aria-selected='false')
+                                img(src='assets/imgs/page/homepage1/content.svg', alt='jobBox')
+                                |  Funiture Design
+                        li
+                            a#nav-tab-job-8(href='#tab-job-8', data-bs-toggle='tab', role='tab', aria-controls='tab-job-8', aria-selected='false')
+                                img(src='assets/imgs/page/homepage1/content.svg', alt='jobBox')
+                                |  Other
+            .mt-50
+                #myTabContent-1.tab-content
+                    #tab-job-1.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='tab-job-1')
+                        .row
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot bg-green', 'Freelancer', 'assets/imgs/page/homepage2/img1.png', 'New York, US', 'React Native Web Developer','3 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$90 - $120')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Figma
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Adobe XD
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img2.png', 'Chicago, US', 'Digital Marketing Manager','6 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') SEO
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Word
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img3.png', 'Chicago, US', 'Web Designer/Developer','9 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$120 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') HTML
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') CSS
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') JS
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img4.png', 'Chicago, US', 'Full Stack Engineer','13 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') NodeJS
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') MongoDB
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img5.png', 'Chicago, US', 'Frontend Developer Full time','16 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Bootstrap
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img6.png', 'Chicago, US', 'React Native Mobile Developer','30 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') React
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') NextJS
+                        .text-center.mt-10
+                            a.btn.btn-brand-1.btn-icon-more.hover-up See more              
+
+
+                    #tab-job-2.tab-pane.fade(role='tabpanel', aria-labelledby='tab-job-2')
+                        .row
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot bg-green', 'Freelancer', 'assets/imgs/page/homepage2/img1.png', 'New York, US', 'React Native Web Developer','3 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$90 - $120')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Figma
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Adobe XD
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img2.png', 'Chicago, US', 'Digital Marketing Manager','6 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') SEO
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Word
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img3.png', 'Chicago, US', 'Web Designer/Developer','9 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$120 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') HTML
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') CSS
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') JS
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img4.png', 'Chicago, US', 'Full Stack Engineer','13 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') NodeJS
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') MongoDB
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img5.png', 'Chicago, US', 'Frontend Developer Full time','16 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Bootstrap
+                                    
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img6.png', 'Chicago, US', 'React Native Mobile Developer','30 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') React
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') NextJS                        
+                        .text-center.mt-10
+                            a.btn.btn-brand-1.btn-icon-more.hover-up See more 
+
+                    #tab-job-3.tab-pane.fade(role='tabpanel', aria-labelledby='tab-job-3')
+                        .row
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img3.png', 'Chicago, US', 'Web Designer/Developer','9 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$120 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') HTML
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') CSS
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') JS
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img4.png', 'Chicago, US', 'Full Stack Engineer','13 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') NodeJS
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') MongoDB
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img5.png', 'Chicago, US', 'Frontend Developer Full time','16 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Bootstrap
+                                    
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img6.png', 'Chicago, US', 'React Native Mobile Developer','30 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') React
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') NextJS  
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot bg-green', 'Freelancer', 'assets/imgs/page/homepage2/img1.png', 'New York, US', 'React Native Web Developer','3 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$90 - $120')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Figma
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Adobe XD
+                                    
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img2.png', 'Chicago, US', 'Digital Marketing Manager','6 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') SEO
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Word                  
+                        .text-center.mt-10
+                            a.btn.btn-brand-1.btn-icon-more.hover-up See more 
+
+                    #tab-job-4.tab-pane.fade(role='tabpanel', aria-labelledby='tab-job-4')
+                        .row
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img3.png', 'Chicago, US', 'Web Designer/Developer','9 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$120 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') HTML
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') CSS
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') JS
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img4.png', 'Chicago, US', 'Full Stack Engineer','13 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') NodeJS
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') MongoDB
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot bg-green', 'Freelancer', 'assets/imgs/page/homepage2/img1.png', 'New York, US', 'React Native Web Developer','3 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$90 - $120')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Figma
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Adobe XD
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img2.png', 'Chicago, US', 'Digital Marketing Manager','6 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') SEO
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Word
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img5.png', 'Chicago, US', 'Frontend Developer Full time','16 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Bootstrap
+                                    
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img6.png', 'Chicago, US', 'React Native Mobile Developer','30 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') React
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') NextJS   
+                        .text-center.mt-10
+                            a.btn.btn-brand-1.btn-icon-more.hover-up See more                      
+
+                    #tab-job-5.tab-pane.fade(role='tabpanel', aria-labelledby='tab-job-5')
+                        .row
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img3.png', 'Chicago, US', 'Web Designer/Developer','9 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$120 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') HTML
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') CSS
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') JS
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot bg-green', 'Freelancer', 'assets/imgs/page/homepage2/img1.png', 'New York, US', 'React Native Web Developer','3 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$90 - $120')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Figma
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Adobe XD
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img2.png', 'Chicago, US', 'Digital Marketing Manager','6 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') SEO
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Word
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img4.png', 'Chicago, US', 'Full Stack Engineer','13 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') NodeJS
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') MongoDB
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img5.png', 'Chicago, US', 'Frontend Developer Full time','16 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Bootstrap
+                                    
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img6.png', 'Chicago, US', 'React Native Mobile Developer','30 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') React
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') NextJS      
+                        .text-center.mt-10
+                            a.btn.btn-brand-1.btn-icon-more.hover-up See more                   
+
+                    #tab-job-6.tab-pane.fade(role='tabpanel', aria-labelledby='tab-job-6')
+                        .row
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img4.png', 'Chicago, US', 'Full Stack Engineer','13 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') NodeJS
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') MongoDB
+                                    
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot bg-green', 'Freelancer', 'assets/imgs/page/homepage2/img1.png', 'New York, US', 'React Native Web Developer','3 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$90 - $120')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Figma
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Adobe XD
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img2.png', 'Chicago, US', 'Digital Marketing Manager','6 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') SEO
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Word
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img3.png', 'Chicago, US', 'Web Designer/Developer','9 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$120 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') HTML
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') CSS
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') JS
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img5.png', 'Chicago, US', 'Frontend Developer Full time','16 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Bootstrap
+                                    
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img6.png', 'Chicago, US', 'React Native Mobile Developer','30 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') React
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') NextJS
+                        .text-center.mt-10
+                            a.btn.btn-brand-1.btn-icon-more.hover-up See more 
+
+                    #tab-job-7.tab-pane.fade(role='tabpanel', aria-labelledby='tab-job-7')
+                        .row
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img4.png', 'Chicago, US', 'Full Stack Engineer','13 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') NodeJS
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') MongoDB
+                                    
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot bg-green', 'Freelancer', 'assets/imgs/page/homepage2/img1.png', 'New York, US', 'React Native Web Developer','3 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$90 - $120')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Figma
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Adobe XD
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img2.png', 'Chicago, US', 'Digital Marketing Manager','6 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') SEO
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Word
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img3.png', 'Chicago, US', 'Web Designer/Developer','9 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$120 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') HTML
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') CSS
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') JS
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img5.png', 'Chicago, US', 'Frontend Developer Full time','16 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Bootstrap
+                                    
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img6.png', 'Chicago, US', 'React Native Mobile Developer','30 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') React
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') NextJS
+                        .text-center.mt-10
+                            a.btn.btn-brand-1.btn-icon-more.hover-up See more 
+
+                    #tab-job-8.tab-pane.fade(role='tabpanel', aria-labelledby='tab-job-8')
+                        .row
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img4.png', 'Chicago, US', 'Full Stack Engineer','13 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') NodeJS
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') MongoDB
+                                    
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot bg-green', 'Freelancer', 'assets/imgs/page/homepage2/img1.png', 'New York, US', 'React Native Web Developer','3 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$90 - $120')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Figma
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Adobe XD
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img2.png', 'Chicago, US', 'Digital Marketing Manager','6 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') SEO
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Word
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img3.png', 'Chicago, US', 'Web Designer/Developer','9 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$120 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') HTML
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') CSS
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') JS
+
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img5.png', 'Chicago, US', 'Frontend Developer Full time','16 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') Bootstrap
+                                    
+                            .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-12
+                                +jobCard-3('lbl-hot', 'Full time', 'assets/imgs/page/homepage2/img6.png', 'Chicago, US', 'React Native Mobile Developer','30 mins ago', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur', '$80 - $150')
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') React
+                                    a.btn.btn-tags-sm.mr-5(href='jobs-grid.html') NextJS     
+                        .text-center.mt-10
+                            a.btn.btn-brand-1.btn-icon-more.hover-up See more                    

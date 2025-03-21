@@ -1,0 +1,45 @@
+extends ../layouts/master.pug
+
+block title
+    title Jobbox - Job Portal HTML Template 
+
+block header
+    include ../components/header.pug
+
+block content
+    section.pt-100.login-register
+        .container 
+            .row.login-register-cover
+                .col-lg-4.col-md-6.col-sm-12.mx-auto
+                    .text-center
+                        p.font-sm.text-brand-2 Register 
+                        h2.mt-10.mb-5.text-brand-1 Start for free Today
+                        p.font-sm.text-muted.mb-30 Access to all features. No credit card required.
+                        button.btn.social-login.hover-up.mb-20
+                            img(src="assets/imgs/template/icons/icon-google.svg", alt="jobbox")
+                            strong Sign up with Google
+                        .divider-text-center
+                            span Or continue with
+                    form.login-register.text-start.mt-20(action="#")
+                        +inputWithLabel('input-1', 'Full Name *', 'text', 'fullname', 'Steven Job')
+                        +inputWithLabel('input-2', 'Email *', 'email', 'emailaddress', 'stevenjob@gmail.com')
+                        +inputWithLabel('input-3', 'Username *', 'text', 'username', 'stevenjob')
+                        +inputWithLabel('input-4', 'Password *', 'password', 'password', '************')
+                        +inputWithLabel('input-5', 'Re-Password *', 'password', 're-password', '************')
+                        .login_footer.form-group.d-flex.justify-content-between
+                            label.cb-container
+                                input(type='checkbox')
+                                span.text-small Agree our terms and policy
+                                span.checkmark
+                            a.text-muted(href='page-contact.html') Lean more
+                        .form-group
+                            button.btn.btn-brand-1.hover-up.w-100(type='submit', name='login') Submit &amp; Register
+                        .text-muted.text-center Already have an account? 
+                            a(href='page-signin.html') Sign in
+                .img-1.d-none.d-lg-block
+                    img.shape-1(src="assets/imgs/page/login-register/img-1.svg", alt="JobBox")
+                .img-2
+                    img(src="assets/imgs/page/login-register/img-2.svg", alt="JobBox")
+
+
+

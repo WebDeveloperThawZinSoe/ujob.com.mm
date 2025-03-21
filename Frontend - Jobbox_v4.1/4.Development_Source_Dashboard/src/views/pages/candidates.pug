@@ -1,0 +1,32 @@
+extends ../layouts/master.pug
+
+block variables
+    - var PageID = 'candidates'
+
+block title
+    title Candidates - Job Portal HTML Template 
+
+block header
+    include ../components/header.pug
+
+block content
+    .box-heading
+        .box-title 
+            h3.mb-35 Candidates
+        .box-breadcrumb 
+            .breadcrumbs
+                ul 
+                    li 
+                        a.icon-home(href='index.html') Admin
+                    li
+                        span Candidates
+    .row 
+        .col-lg-12 
+            include ../sections/candidates_sec1.pug
+
+    .mt-10 
+        include ../sections/dashboard_sec7.pug
+
+    include ../components/apply-job-modal.pug
+
+block scripts-custom

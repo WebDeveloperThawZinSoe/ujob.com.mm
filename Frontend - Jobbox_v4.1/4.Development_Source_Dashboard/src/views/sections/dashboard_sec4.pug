@@ -1,0 +1,19 @@
+.section-box
+    .container 
+        .panel-white
+            .panel-head 
+                h5 Top Candidates
+                a.menudrop#dropdownMenu4(type='button', data-bs-toggle='dropdown', aria-expanded='false', data-bs-display='static')
+                ul.dropdown-menu.dropdown-menu-light.dropdown-menu-end(aria-labelledby='dropdownMenu4')
+                    li
+                        a.dropdown-item.active(href='#') Add new
+                    li
+                        a.dropdown-item(href='#') Settings
+                    li
+                        a.dropdown-item(href='#') Actions
+            .panel-body
+                +cardstyle3('assets/imgs/page/dashboard/avata1.png', 'Robert Fox', 'UI/UX Designer', 'Chicago, US')
+                +cardstyle3('assets/imgs/page/dashboard/avata2.png', 'Cody Fisher', 'Network Engineer', 'New York, US')
+                +cardstyle3('assets/imgs/page/dashboard/avata3.png', 'Jane Cooper', 'Content Manager', 'Chicago, US')
+                +cardstyle3('assets/imgs/page/dashboard/avata4.png', 'Jerome Bell', 'Frontend Developer', 'Chicago, US')
+                +cardstyle3('assets/imgs/page/dashboard/avata5.png', 'Floyd Miles', 'NodeJS Dev', 'Chicago, US')

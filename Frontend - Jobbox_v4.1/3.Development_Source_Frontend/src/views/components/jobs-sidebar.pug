@@ -1,0 +1,102 @@
+.sidebar-shadow.none-shadow.mb-30
+    .sidebar-filters
+        .filter-block.head-border.mb-30
+            h5
+                | Advance Filter 
+                a.link-reset(href='#') Reset
+        .filter-block.mb-30
+            .form-group.select-style.select-style-icon
+                select.form-control.form-icons.select-active
+                    option New York, US
+                    option London
+                    option Paris
+                    option Berlin
+                i.fi-rr-marker
+        .filter-block.mb-20
+            h5.medium-heading.mb-15 Industry
+            .form-group
+                ul.list-checkbox
+                    +listCheckBox-Checked('All','180')
+                    +listCheckBox('Software','12')
+                    +listCheckBox('Finance','23')
+                    +listCheckBox('Recruting','43')
+                    +listCheckBox('Management','65')
+                    +listCheckBox('Advertising','76')
+                    
+        .filter-block.mb-20
+            h5.medium-heading.mb-25 Salary Range
+            .list-checkbox.pb-20
+                .row.position-relative.mt-10.mb-20
+                    .col-sm-12.box-slider-range
+                        #slider-range
+                    .box-input-money
+                        input.input-disabled.form-control.min-value-money(type='text', name='min-value-money', disabled='disabled', value='')
+                        input.form-control.min-value(type='hidden', name='min-value', value='')
+                .box-number-money
+                    .row.mt-30
+                        .col-sm-6.col-6
+                            span.font-sm.color-brand-1 $0
+                        .col-sm-6.col-6.text-end
+                            span.font-sm.color-brand-1 $500
+            .form-group.mb-20
+                ul.list-checkbox
+                    +listCheckBox-Checked('All','145')
+                    +listCheckBox('$0k - $20k','56')
+                    +listCheckBox('$20k - $40k','37')
+                    +listCheckBox('$40k - $60k','75')
+                    +listCheckBox('$60k - $80k','98')
+                    +listCheckBox('$80k - $100k','14')
+                    +listCheckBox('$100k - $200k','25')
+                    
+        .filter-block.mb-30
+            h5.medium-heading.mb-10 Popular Keyword
+            .form-group
+                ul.list-checkbox
+                    +listCheckBox-Checked('Software','24')
+                    +listCheckBox('Developer','45')
+                    +listCheckBox('Web','57')
+                    
+        .filter-block.mb-30
+            h5.medium-heading.mb-10 Position
+            .form-group
+                ul.list-checkbox
+                    +listCheckBox('Senior','12')
+                    +listCheckBox-Checked('Junior','35')
+                    +listCheckBox('Fresher','56')
+                    
+        .filter-block.mb-30
+            h5.medium-heading.mb-10 Experience Level
+            .form-group
+                ul.list-checkbox
+                    +listCheckBox('Internship','56')
+                    +listCheckBox('Entry Level','87')
+                    +listCheckBox-Checked('Associate','24')
+                    +listCheckBox('Mid Level','45')
+                    +listCheckBox('Director','76')
+                    +listCheckBox('Executive','89')
+                    
+        .filter-block.mb-30
+            h5.medium-heading.mb-10 Onsite/Remote
+            .form-group
+                ul.list-checkbox
+                    +listCheckBox('On-site','12')
+                    +listCheckBox-Checked('Remote','65')
+                    +listCheckBox('Hybrid','58')
+                    
+
+        .filter-block.mb-30
+            h5.medium-heading.mb-10 Job Posted
+            .form-group
+                ul.list-checkbox
+                    +listCheckBox-Checked('All','78')
+                    +listCheckBox('1 day','65')
+                    +listCheckBox('7 days','24')
+                    +listCheckBox('30 days','56')
+        .filter-block.mb-20
+            h5.medium-heading.mb-15 Job type
+            .form-group
+                ul.list-checkbox
+                    +listCheckBox('Full Time','25')
+                    +listCheckBox-Checked('Part Time','64')
+                    +listCheckBox('Remote Jobs','78')
+                    +listCheckBox('Freelancer','97')

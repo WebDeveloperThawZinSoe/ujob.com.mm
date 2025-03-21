@@ -1,0 +1,210 @@
+extends ../layouts/master.pug
+
+block title
+    title Jobbox - Job Portal HTML Template 
+
+block header
+    include ../components/header.pug
+
+block content
+    section.section-box-2
+        .container
+            .banner-hero.banner-image-single
+                img(src='assets/imgs/page/job-single/thumb.png', alt='jobBox')
+            .row.mt-10
+                .col-lg-8.col-md-12
+                    h3 Senior Full Stack Engineer, Creator Success Full Time
+                    .mt-0.mb-15
+                        span.card-briefcase Fulltime
+                        span.card-time 3 mins ago
+                .col-lg-4.col-md-12.text-lg-end
+                    .btn.btn-apply-icon.btn-apply.btn-apply-big.hover-up(data-bs-toggle='modal', data-bs-target='#ModalApplyJobForm') Apply now
+            .border-bottom.pt-10.pb-10
+    section.section-box.mt-50
+        .container
+            .row
+                .col-lg-8.col-md-12.col-sm-12.col-12
+                    .job-overview
+                        h5.border-bottom.pb-15.mb-30 Employment Information
+                        .row
+                            .col-md-6.d-flex
+                                .sidebar-icon-item
+                                    img(src='assets/imgs/page/job-single/industry.svg', alt='jobBox')
+                                .sidebar-text-info.ml-10
+                                    span.text-description.industry-icon.mb-10 Industry
+                                    strong.small-heading  Mechanical / Auto / Automotive, Civil / Construction
+                            .col-md-6.d-flex.mt-sm-15
+                                .sidebar-icon-item
+                                    img(src='assets/imgs/page/job-single/job-level.svg', alt='jobBox')
+                                .sidebar-text-info.ml-10
+                                    span.text-description.joblevel-icon.mb-10 Job level
+                                    strong.small-heading Experienced (Non - Manager)
+                        .row.mt-25
+                            .col-md-6.d-flex.mt-sm-15
+                                .sidebar-icon-item
+                                    img(src='assets/imgs/page/job-single/salary.svg', alt='jobBox')
+                                .sidebar-text-info.ml-10
+                                    span.text-description.salary-icon.mb-10 Salary
+                                    strong.small-heading $800 - $1000
+                            .col-md-6.d-flex
+                                .sidebar-icon-item
+                                    img(src='assets/imgs/page/job-single/experience.svg', alt='jobBox')
+                                .sidebar-text-info.ml-10
+                                    span.text-description.experience-icon.mb-10 Experience
+                                    strong.small-heading 1 - 2 years
+                        .row.mt-25
+                            .col-md-6.d-flex.mt-sm-15
+                                .sidebar-icon-item
+                                    img(src='assets/imgs/page/job-single/job-type.svg', alt='jobBox')
+                                .sidebar-text-info.ml-10
+                                    span.text-description.jobtype-icon.mb-10 Job type
+                                    strong.small-heading Permanent
+                            .col-md-6.d-flex.mt-sm-15
+                                .sidebar-icon-item
+                                    img(src='assets/imgs/page/job-single/deadline.svg', alt='jobBox')
+                                .sidebar-text-info.ml-10
+                                    span.text-description.mb-10 Deadline
+                                    strong.small-heading 10/08/2022
+                        .row.mt-25
+                            .col-md-6.d-flex.mt-sm-15
+                                .sidebar-icon-item
+                                    img(src='assets/imgs/page/job-single/updated.svg', alt='jobBox')
+                                .sidebar-text-info.ml-10
+                                    span.text-description.jobtype-icon.mb-10 Updated
+                                    strong.small-heading 10/07/2022
+                            .col-md-6.d-flex.mt-sm-15
+                                .sidebar-icon-item
+                                    img(src='assets/imgs/page/job-single/location.svg', alt='jobBox')
+                                .sidebar-text-info.ml-10
+                                    span.text-description.mb-10 Location
+                                    strong.small-heading Dallas, Texas Remote Friendly
+                    .content-single
+                        h4 Welcome to AliStudio Team
+                        p
+                            | The AliStudio Design team has a vision to establish a trusted platform that enables productive and healthy enterprises in a world of digital and remote everything, constantly changing work patterns and norms, and the need for organizational resiliency.
+                        p
+                            | The ideal candidate will have strong creative skills and a portfolio of work which demonstrates their passion for illustrative design and typography. This candidate will have experiences in working with numerous different design platforms such as digital
+                            | and print forms.
+                        h4 Essential Knowledge, Skills, and Experience
+                        ul
+                            li
+                                | A portfolio demonstrating well thought through and polished end to end customer journeys
+                            li 5+ years of industry experience in interactive design and / or visual design
+                            li Excellent interpersonal skills
+                            li Aware of trends in&#x202F;mobile, communications, and collaboration
+                            li
+                                | Ability to create highly polished design prototypes, mockups, and other communication artifacts
+                            li
+                                | The ability to scope and estimate efforts accurately and prioritize tasks and goals independently
+                            li History of impacting shipping products with your work
+                            li
+                                | A Bachelor&rsquo;s Degree in Design (or related field) or equivalent professional experience
+                            li
+                                | Proficiency in a variety of design tools such as Figma, Photoshop, Illustrator, and Sketch
+                        h4 Preferred Experience
+                        ul
+                            li Designing user experiences for enterprise software / services
+                            li Creating and applying established design principles and interaction patterns
+                            li Aligning or influencing design thinking with teams working in other geographies
+                        h4 Product Designer
+                        p
+                            strong Product knowledge:
+                            |  Deeply understand the technology and features of the product area to which you are assigned.
+                        p
+                            strong Research:
+                            |  Provide human and business impact and insights for products.
+                        p
+                            strong Deliverables:
+                            |  Create deliverables for your product area (for example competitive analyses, user flows, low fidelity wireframes, high fidelity mockups, prototypes, etc.) that solve real user problems through
+                            |                                 the user experience.
+                        p
+                            strong Communication:
+                            |  Communicate the results of UX activities within your product area to the design team department, cross-functional partners within your product area, and other interested Superformula team
+                            |                                 members using clear language that simplifies complexity.
+                    .author-single
+                        span AliThemes
+                    .single-apply-jobs
+                        .row.align-items-center
+                            .col-md-5
+                                a.btn.btn-default.mr-15(href='#') Apply now
+                                a.btn.btn-border(href='#') Save job
+                            .col-md-7.text-lg-end.social-share
+                                h6.color-text-paragraph-2.d-inline-block.d-baseline.mr-10 Share this
+                                a.mr-5.d-inline-block.d-middle(href='#')
+                                    img(alt='jobBox', src='assets/imgs/template/icons/share-fb.svg')
+                                a.mr-5.d-inline-block.d-middle(href='#')
+                                    img(alt='jobBox', src='assets/imgs/template/icons/share-tw.svg')
+                                a.mr-5.d-inline-block.d-middle(href='#')
+                                    img(alt='jobBox', src='assets/imgs/template/icons/share-red.svg')
+                                a.d-inline-block.d-middle(href='#')
+                                    img(alt='jobBox', src='assets/imgs/template/icons/share-whatsapp.svg')
+                .col-lg-4.col-md-12.col-sm-12.col-12.pl-40.pl-lg-15.mt-lg-30
+                    .sidebar-border
+                        .sidebar-heading
+                            .avatar-sidebar
+                                figure
+                                    img(alt='jobBox', src='assets/imgs/page/job-single/avatar.png')
+                                .sidebar-info
+                                    span.sidebar-company AliThemes
+                                    span.card-location New York, US
+                                    a.link-underline.mt-15(href='#') 02 Open Jobs
+                        .sidebar-list-job
+                            .box-map
+                                iframe(src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2970.3150609575905!2d-87.6235655!3d41.886080899999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2ca8b34afe61%3A0x6caeb5f721ca846!2s205%20N%20Michigan%20Ave%20Suit%20810%2C%20Chicago%2C%20IL%2060601%2C%20Hoa%20K%E1%BB%B3!5e0!3m2!1svi!2s!4v1658551322537!5m2!1svi!2s', allowfullscreen='', loading='lazy', referrerpolicy='no-referrer-when-downgrade')
+                            ul.ul-disc
+                                li 205 North Michigan Avenue, Suite 810 Chicago, 60601, USA
+                                li Phone: (123) 456-7890
+                                li Email: contact@Evara.com
+                    .sidebar-border
+                        h6.f-18 Similar jobs
+                        .sidebar-list-job
+                            ul
+                                li
+                                    +jobCard-List-Sidebar('assets/imgs/brands/brand-1.png', 'UI / UX Designer fulltime','Fulltime','3', '$250', 'New York, US')
+                                li
+                                    +jobCard-List-Sidebar('assets/imgs/brands/brand-2.png', 'Java Software Engineer','Fulltime','5', '$500', 'Tokyo, Japan')
+                                li
+                                    +jobCard-List-Sidebar('assets/imgs/brands/brand-3.png', 'Frontend Developer','Fulltime','8', '$650', 'Hanoi, Vietnam')
+                                li
+                                    +jobCard-List-Sidebar('assets/imgs/brands/brand-4.png', 'Cloud Engineer','Fulltime','12', '$380', 'Losangl, Au')
+                                li
+                                    +jobCard-List-Sidebar('assets/imgs/brands/brand-5.png', 'DevOps Engineer','Fulltime','34', '$140', 'Paris, France')
+                                li
+                                    +jobCard-List-Sidebar('assets/imgs/brands/brand-6.png', 'Figma design UI/UX','Fulltime','45', '$290', 'New York, US')
+                                li
+                                    +jobCard-List-Sidebar('assets/imgs/brands/brand-7.png', 'Product Manage','Fulltime','50', '$650', 'New York, US')
+                                li
+                                    +jobCard-List-Sidebar('assets/imgs/brands/brand-8.png', 'UI / UX Designer','Fulltime','58', '$270', 'New York, US')
+                                
+    section.section-box.mt-50.mb-50
+        .container
+            .text-left
+                h2.section-title.mb-10.wow.animate__animated.animate__fadeInUp Featured Jobs
+                p.font-lg.color-text-paragraph-2.wow.animate__animated.animate__fadeInUp Get the latest news, updates and tips
+            .mt-50
+                .box-swiper.style-nav-top
+                    .swiper-container.swiper-group-4.swiper
+                        .swiper-wrapper.pb-10.pt-5
+                            .swiper-slide
+                                +jobCard-1('assets/imgs/brands/brand-6.png','Quora JSC','New York, US','Senior System Engineer','Part time','5','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.','$800')
+                                    a.btn.btn-grey-small.mr-5(href='job-details.html') PHP
+                                    a.btn.btn-grey-small.mr-5(href='job-details.html') Android    
+                            .swiper-slide
+                                +jobCard-1('assets/imgs/brands/brand-4.png', 'Dailymotion','New York, US','Frontend Developer','Full time','6','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.','$250')
+                                    a.btn.btn-grey-small.mr-5(href='jobs-grid.html') Typescript
+                                    a.btn.btn-grey-small.mr-5(href='jobs-grid.html') Java
+                            .swiper-slide
+                                +jobCard-1('assets/imgs/brands/brand-8.png', 'Periscope','New York, US','Lead Quality Control QA','Full time','6','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.','$250')
+                                    a.btn.btn-grey-small.mr-5(href='job-details.html') iOS
+                                    a.btn.btn-grey-small.mr-5(href='job-details.html') Laravel
+                                    a.btn.btn-grey-small.mr-5(href='job-details.html') Golang
+                            .swiper-slide
+                                +jobCard-1('assets/imgs/brands/brand-4.png', 'Dailymotion','New York, US','Frontend Developer','Full time','6','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.','$250')
+                                    a.btn.btn-grey-small.mr-5(href='jobs-grid.html') Typescript
+                                    a.btn.btn-grey-small.mr-5(href='jobs-grid.html') Java
+                    .swiper-button-next.swiper-button-next-4
+                    .swiper-button-prev.swiper-button-prev-4
+                .text-center
+                    a.btn.btn-grey(href='#') Load more posts
+
+    include ../sections/newsletter.pug

@@ -1,0 +1,45 @@
+Hosting
+======
+https://us.cloudlogin.co/login/
+Username = ujob
+Password = AdmWe@#2a1
+
+
+===================================
+
+
+1. Janaka@ujob.com.mm 
+password = Ujob!2Jak
+
+2. Zinmar@ujob.com.mm 
+password = Ujob!2Zim
+
+3. Inquiry@ujob.com.mm
+password = Ujob!2Inq
+
+4. sales1@ujob.com.mm 
+password = Ujob!2Sal1
+
+5. sales2@ujob.com.mm
+password = Ujob!2Sal2
+
+6. cv@ujob.com.mm
+password = Ujob!2Cv
+
+
+How To Use Webmail
+======
+https://aspiring-candytuft-864.notion.site/Webmail-669cbb27742e4d3ab4a15161345133bd?pvs=4
+
+Webmail login
+====
+http://mail.ujob.com.mm/
+
+Incoming Mail Server:
+mail.supremecluster.com
+IMAP Port: 993
+POP3 Port: 995
+
+Outgoing Mail Server:
+mail.supremecluster.com
+SMTP Port: 465

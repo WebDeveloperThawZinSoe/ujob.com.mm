@@ -1,0 +1,141 @@
+extends ../layouts/master.pug
+
+block title
+    title Jobbox - Job Portal HTML Template 
+
+block header
+    include ../components/header.pug
+
+block content
+    section.section-box
+        div
+            img(src='assets/imgs/page/blog/img-single.png')
+    section.section-box
+        .archive-header.pt-50.text-center
+            .container
+                .box-white
+                    .max-width-single
+                        a.btn.btn-tag(href='#') Job Tips
+                        h2.mb-30.mt-20.text-center
+                            | 11 Tips to Help You Get New Clients Through Cold Calling
+                        .post-meta.text-muted.d-flex.align-items-center.mx-auto.justify-content-center
+                            .author.d-flex.align-items-center.mr-30
+                                img(alt='jobBox', src='assets/imgs/page/homepage1/user3.png')
+                                span Sarah Harding
+                            .date
+                                span.font-xs.color-text-paragraph-2.mr-20.d-inline-block
+                                    img.img-middle.mr-5(src='assets/imgs/page/blog/calendar.svg')
+                                    |  06 Sep 2022
+                                span.font-xs.color-text-paragraph-2.d-inline-block
+                                    img.img-middle.mr-5(src='assets/imgs/template/icons/time.svg')
+                                    |  8 mins to read
+    .post-loop-grid
+        .container
+            .row
+                .col-lg-10.mx-auto
+                    .single-body
+                        .max-width-single
+                            .font-lg.mb-30
+                                p
+                                    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ornare pellentesque sollicitudin. Suspendisse potenti. Fusce ex risus, iaculis sit amet sapien nec, finibus malesuada mi. Proin at turpis eget sapien
+                                    | pulvinar luctus. Vestibulum bibendum pharetra lorem eu aliquam. In feugiat placerat risus, sed rutrum neque mattis sit amet. Nullam vestibulum ante ac quam tempor, id venenatis velit eleifend. Duis id iaculis risus,
+                                    | quis ullamcorper augue. Nunc tristique venenatis ipsum at euismod. Pellentesque id arcu est.
+                        figure
+                            img(src='assets/imgs/page/blog/img-content.png')
+                        .max-width-single
+                            .content-single
+                                p
+                                p
+                                    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ornare pellentesque sollicitudin. Suspendisse potenti. Fusce ex risus, iaculis sit amet sapien nec, finibus malesuada mi. Proin at turpis eget sapien
+                                    | pulvinar luctus. Vestibulum bibendum pharetra lorem eu aliquam. In feugiat placerat risus, sed rutrum neque mattis sit amet. Nullam vestibulum ante ac quam tempor, id venenatis velit eleifend. Duis id iaculis risus,
+                                    | quis ullamcorper augue. Nunc tristique venenatis ipsum at euismod. Pellentesque id arcu est.
+                                h4 In ut odio libero
+                                ul
+                                    li
+                                        | A portfolio demonstrating well thought through and polished end to end customer journeys
+                                    li 5+ years of industry experience in interactive design and / or visual design
+                                    li Excellent interpersonal skills&#x202F;
+                                    li Aware of trends in&#x202F;mobile, communications, and collaboration
+                                    li
+                                        | Ability to create highly polished design prototypes, mockups, and other communication artifacts
+                                    li
+                                        | The ability to scope and estimate efforts accurately and prioritize tasks and goals independently
+                                    li History of impacting shipping products with your work
+                                    li
+                                        | A Bachelor&rsquo;s Degree in Design (or related field) or equivalent professional experience
+                                    li
+                                        | Proficiency in a variety of design tools such as Figma, Photoshop, Illustrator, and Sketch
+                                p
+                                p
+                                    | Phasellus enim magna, varius et commodo ut, ultricies vitae velit. Ut nulla tellus, eleifend euismod pellentesque vel, sagittis vel justo. In libero urna, venenatis sit amet ornare non, suscipit nec risus. Sed consequat
+                                    | justo non mauris pretium at tempor justo sodales. Quisque tincidunt laoreet malesuada. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer vitae ante enim. Fusce sed elit
+                                    | est. Suspendisse sit amet mauris in quam pretium faucibus et aliquam odio.
+                            .single-apply-jobs.mt-20
+                                .row
+                                    .col-lg-7
+                                        a.btn.btn-border-3.mr-10.hover-up(href='#') # Nature
+                                        a.btn.btn-border-3.mr-10.hover-up(href='#') # Beauty
+                                        a.btn.btn-border-3.hover-up(href='#') # Travel tips
+                                    .col-md-5.text-lg-end.social-share
+                                        h6.color-text-paragraph-2.d-inline-block.d-baseline.mr-20.mt-10 Share
+                                        a.mr-20.d-inline-block.d-middle.hover-up(href='#')
+                                            img(alt='jobBox', src='assets/imgs/page/blog/fb.svg')
+                                        a.mr-20.d-inline-block.d-middle.hover-up(href='#')
+                                            img(alt='jobBox', src='assets/imgs/page/blog/tw.svg')
+                                        a.mr-0.d-inline-block.d-middle.hover-up(href='#')
+                                            img(alt='jobBox', src='assets/imgs/page/blog/pi.svg')
+                            h3 Comments
+                            ul.list-comments
+                                li
+                                    .author-bio.mt-40.bg-white
+                                        .author-image.mb-15
+                                            a(href='author.html')
+                                                img.avatar(src='assets/imgs/page/candidates/user5.png', alt='')
+                                            .author-infor
+                                                h6.mt-0.mb-0 Robert Fox
+                                                p.mb-0.color-text-paragraph-2.font-sm
+                                                    | August 25, 2022
+                                        .author-des
+                                            p.font-md.color-text-paragraph
+                                                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultricies interdum massa nec fermentum. Phasellus interdum dignissim rhoncus. Nam vitae semper magna. Donec massa enim
+                                li
+                                    .author-bio.mt-40.bg-white
+                                        .author-image.mb-15
+                                            a(href='author.html')
+                                                img.avatar(src='assets/imgs/page/candidates/user1.png', alt='')
+                                            .author-infor
+                                                h6.mt-0.mb-0 Jenny Wilson
+                                                p.mb-0.color-text-paragraph-2.font-sm
+                                                    | August 25, 2022
+                                        .author-des
+                                            p.font-md.color-text-paragraph
+                                                | White white dreamy drama tically place everything although. Place out apartment afternoon whimsical kinder, little romantic joy we flowers handmade. Nullam vestibulum semper ultrices.
+                                    ul
+                                        li
+                                            .author-bio.mt-40.bg-white
+                                                .author-image.mb-15
+                                                    a(href='author.html')
+                                                        img.avatar(src='assets/imgs/page/candidates/user3.png', alt='')
+                                                    .author-infor
+                                                        h6.mt-0.mb-0 Eleanor Pena
+                                                        p.mb-0.color-text-paragraph-2.font-sm
+                                                            | August 25, 2022
+                                                .author-des
+                                                    p.font-md.color-text-paragraph
+                                                        | White white dreamy drama tically place everything although. Place out apartment afternoon whimsical kinder, little romantic joy we flowers handmade. Nullam vestibulum semper ultrices.
+                            .border-bottom.mt-50.mb-50
+                            .mt-30
+                                h3 Leave a comment
+                                .form-comment
+                                    form(action='#')
+                                        .form-group
+                                            textarea.input-comment(placeholder='Write a comment')
+                                        .row
+                                            .col-lg-6.col-md-6.col-sm-7.mb-30
+                                                label.box-agree
+                                                    input.chkbox-aggree(type='checkbox')
+                                                    span.font-sm.color-text-paragraph Save my name, email, and website in this browser for the next time I comment.
+                                            .col-lg-6.col-md-6.col-sm-5.text-end
+                                                button.btn.btn-default.font-bold Post comment
+
+    include ../sections/newsletter.pug

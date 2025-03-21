@@ -1,0 +1,60 @@
+extends ../layouts/master.pug
+
+block title
+    title Jobbox - Job Portal HTML Template 
+
+block header
+    include ../components/header.pug
+
+block content
+    include ../components/inner-header1.pug
+    section.section-box.mt-30
+        .container
+            .row.flex-row-reverse
+                .col-lg-9.col-md-12.col-sm-12.col-12.float-right
+                    .content-page 
+                        include ../elements/box-filters-job.pug
+                        .row.display-list
+                            +jobCard-List('assets/imgs/brands/brand-1.png','LinkedIn','New York, US','UI / UX Designer fulltime','Fulltime','4','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur','$500')
+                                a.btn.btn-grey-small.mr-5(href='jobs-grid.html') Adobe XD
+                                a.btn.btn-grey-small.mr-5(href='jobs-grid.html') Figma
+                                a.btn.btn-grey-small.mr-5(href='jobs-grid.html') Photoshop
+                            +jobCard-List('assets/imgs/brands/brand-2.png','Adobe Ilustrator','New York, US','Full Stack Engineer','Part time','5','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.','$800')
+                                a.btn.btn-grey-small.mr-5(href='jobs-grid.html') React
+                                a.btn.btn-grey-small.mr-5(href='jobs-grid.html') NodeJS
+                            +jobCard-List('assets/imgs/brands/brand-3.png', 'Bing Search','New York, US','Java Software Engineer','Full time','6','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.','$250')
+                                a.btn.btn-grey-small.mr-5(href='jobs-grid.html') Python
+                                a.btn.btn-grey-small.mr-5(href='jobs-grid.html') AWS
+                                a.btn.btn-grey-small.mr-5(href='jobs-grid.html') Photoshop
+                            +jobCard-List('assets/imgs/brands/brand-4.png', 'Dailymotion','New York, US','Frontend Developer','Full time','6','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.','$250')
+                                a.btn.btn-grey-small.mr-5(href='jobs-grid.html') Typescript
+                                a.btn.btn-grey-small.mr-5(href='jobs-grid.html') Java
+                            +jobCard-List('assets/imgs/brands/brand-5.png','Linkedin','New York, US','React Native Web Developer','Fulltime','4','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur','$500')
+                                a.btn.btn-grey-small.mr-5(href='jobs-grid.html') Angular
+                            +jobCard-List('assets/imgs/brands/brand-6.png','Quora JSC','New York, US','Senior System Engineer','Part time','5','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.','$800')
+                                a.btn.btn-grey-small.mr-5(href='job-details.html') PHP
+                                a.btn.btn-grey-small.mr-5(href='job-details.html') Android
+                            +jobCard-List('assets/imgs/brands/brand-7.png', 'Nintendo','New York, US','Products Manager','Full time','6','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.','$250')
+                                a.btn.btn-grey-small.mr-5(href='job-details.html') ASP .Net
+                                a.btn.btn-grey-small.mr-5(href='job-details.html') Figma
+                            +jobCard-List('assets/imgs/brands/brand-8.png', 'Periscope','New York, US','Lead Quality Control QA','Full time','6','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.','$250')
+                                a.btn.btn-grey-small.mr-5(href='job-details.html') iOS
+                                a.btn.btn-grey-small.mr-5(href='job-details.html') Laravel
+                                a.btn.btn-grey-small.mr-5(href='job-details.html') Golang
+
+                    include ../elements/pagination.pug
+                
+                .col-lg-3.col-md-12.col-sm-12.col-12
+                    include ../components/jobs-sidebar.pug
+
+    section.section-box.mt-50.mb-50
+        .container
+            .text-start
+                h2.section-title.mb-10.wow.animate__animated.animate__fadeInUp News and Blog
+                p.font-lg.color-text-paragraph-2.wow.animate__animated.animate__fadeInUp Get the latest news, updates and tips
+        include ../sections/blog-slider.pug
+    include ../sections/newsletter.pug
+
+block scripts-custom
+    script(src='assets/js/noUISlider.js')
+    script(src='assets/js/slider.js')

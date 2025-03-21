@@ -1,0 +1,252 @@
+mixin cardstyle1(img='assets/imgs/page/dashboard/computer.svg', number='1568', updown='25', description='Interview Schedules')
+    .card-style-1.hover-up
+        .card-image 
+            img(src= img, alt='jobBox')
+        .card-info 
+            .card-title
+                h3= number
+                    if block 
+                        block
+                    else 
+                        span.font-sm.status.up= updown
+                            span %
+            p.color-text-paragraph-2= description
+mixin cardstyle2(img='assets/imgs/page/dashboard/img1.png', title='Senior Full Stack Engineer, Creator Success', time='3', price='$500', location='New York, US')
+    .card-style-2.hover-up
+        .card-head
+            .card-image 
+                img(src= img, alt='jobBox')
+            .card-title 
+                h6= title
+                span.job-type Full time
+                span.time-post= time 
+                    | mins ago
+                span.location= location
+        .card-tags 
+            if block 
+                block 
+            else
+                a.btn.btn-tag Figma
+                a.btn.btn-tag Adobe XD
+                a.btn.btn-tag PSD
+        .card-price
+            strong= price
+            span.hour /Hour
+
+mixin cardTask(img='assets/imgs/page/dashboard/img1.png', title='Create 5 new landing page templates for JobBox project', time='3', progress='80')
+    .card-style-2.hover-up
+        .card-head
+            .card-image 
+                img(src= img, alt='jobBox')
+            .card-title 
+                h6= title
+                span.text-muted Start:  
+                span=  time  
+                    |  days ago
+        .mr-15 
+            if block 
+                block
+            else
+                a.btn.btn-tag.complete Completed
+        .card-progress
+            span Complete:  
+            strong=  progress 
+            span.hour  %
+            
+
+mixin cardstyle3(img='assets/imgs/page/dashboard/img1.png', title='Robert Fox', department='UI/UX Designer', location='Chicago, US')
+    .card-style-3.hover-up
+        .card-image.online
+            img(src= img, alt='jobBox')
+        .card-title 
+            h6= title
+            span.job-position= department
+        .card-location 
+            span.location= location
+        .card-rating
+            img(src="assets/imgs/page/dashboard/star.svg", alt="jobBox")
+            | 
+            img(src="assets/imgs/page/dashboard/star.svg", alt="jobBox")
+            | 
+            img(src="assets/imgs/page/dashboard/star.svg", alt="jobBox")
+            | 
+            img(src="assets/imgs/page/dashboard/star.svg", alt="jobBox")
+            | 
+            img(src="assets/imgs/page/dashboard/star.svg", alt="jobBox")
+            | 
+            span.font-xs.color-text-mutted 
+                | (65)
+
+mixin cardstyle4(img='assets/imgs/page/dashboard/img6.png', title='Robert Fox', department='UI/UX Designer', location='Chicago, US')
+    .card-style-4.hover-up
+        .d-flex
+            .card-image
+                img(src= img, alt='jobBox')
+            .card-title 
+                h6= title
+                img(src="assets/imgs/page/dashboard/star.svg", alt="jobBox")
+                | 
+                img(src="assets/imgs/page/dashboard/star.svg", alt="jobBox")
+                | 
+                img(src="assets/imgs/page/dashboard/star.svg", alt="jobBox")
+                | 
+                img(src="assets/imgs/page/dashboard/star-none.svg", alt="jobBox")
+                | 
+                img(src="assets/imgs/page/dashboard/star-none.svg", alt="jobBox")
+                | 
+                span.font-xs.color-text-mutted 
+                    | (65)
+        .card-location.d-flex
+            span.location= location
+            span.jobs-number 25 Open Jobs
+
+mixin cardstyle5(title='Developer', number='2635')
+    .card-style-5.hover-up
+        .card-title 
+            h6.font-sm= title
+        .card-progress 
+            .number.font-sm= number
+            .progress
+                if block 
+                    block
+                else
+                    .progress-bar(style='width: 50%')
+
+mixin jobCard-2(img='assets/imgs/brands/brand-1.png',company='LinkedIn', location='New York, US', jobTitle='UI / UX Designer fulltime',jobType='Fulltime',time='3', des='', salary='$500')
+    .col-xl-3.col-lg-4.col-md-6.col-sm-12.col-12
+        .card-grid-2.hover-up
+            .card-grid-2-image-left
+                span.flash
+                .image-box
+                    img(src= img, alt='jobBox')
+                .right-info
+                    a.name-job(href='company-details.html')= company
+                    span.location-small= location
+            .card-block-info
+                h6
+                    a(href='job-details.html')= jobTitle
+                .mt-5
+                    span.card-briefcase= jobType
+                    span.card-time= time
+                        span  minutes ago
+                p.font-sm.color-text-paragraph.mt-15= des                    
+                .mt-30
+                    if block
+                        block
+                .card-2-bottom.mt-30
+                    .row
+                        .col-lg-7.col-7
+                            span.card-text-price= salary
+                            span.text-muted /Hour
+                        .col-lg-5.col-5.text-end
+                            .btn.btn-apply-now(data-bs-toggle='modal', data-bs-target='#ModalApplyJobForm') Apply now
+mixin jobCard-List(img='assets/imgs/brands/brand-1.png',company='LinkedIn', location='New York, US', jobTitle='UI / UX Designer fulltime',jobType='Fulltime',time='3', des='', salary='$500')
+    .card-grid-2.hover-up
+        span.flash
+        .row
+            .col-lg-6.col-md-6.col-sm-12
+                .card-grid-2-image-left
+                    .image-box
+                        img(src= img, alt='jobBox')
+                    .right-info
+                        a.name-job(href='')= company
+                        span.location-small= location
+            .col-lg-6.text-start.text-md-end.pr-60.col-md-6.col-sm-12
+                .pl-15.mb-15.mt-30
+                    a.btn.btn-grey-small.mr-5(href='#') Adobe XD
+                    a.btn.btn-grey-small.mr-5(href='#') Figma
+        .card-block-info
+            h4
+                a(href='job-details.html')= jobTitle
+            .mt-5
+                span.card-briefcase= jobType
+                span.card-time
+                    span= time
+                    span  mins ago
+            p.font-sm.color-text-paragraph.mt-10= des
+            .card-2-bottom.mt-20
+                .row
+                    .col-lg-7.col-7
+                        span.card-text-price= salary
+                        span.text-muted /Hour
+                    .col-lg-5.col-5.text-end
+                        .btn.btn-apply-now(data-bs-toggle='modal', data-bs-target='#ModalApplyJobForm') Apply now
+mixin Timeline(year='2008 - 2012', title='National Design Academy', description='Lorem ipsum dolor sit amet, consectetur dipiscing elit. Proin a ipsum tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus.')
+    .item-timeline 
+        .timeline-year 
+            span= year
+        .timeline-info 
+            h5.color-brand-1.mb-20= title
+            p.color-text-paragraph-2.mb-15= description
+        .timeline-actions 
+            a.btn.btn-editor
+            a.btn.btn-remove
+
+mixin inputWithLabel(id='input-1', label='Full Name *', type='text', name='fullname', placeholder='Steven Job')
+    .form-group
+        label.form-label(for= id)= label
+        input.form-control(id=id, type= type, required='', name= name, placeholder= placeholder)
+
+mixin candidateCard(img='assets/imgs/page/candidates/user1.png', name='Robert Fox', subtile='UI/UX Designer', des='| Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero repellendus magni, atque delectus molestias quis?', location='Chicago, US', lasary='$45 / hour')
+    .card-grid-2.hover-up
+        .card-grid-2-image-left
+            .card-grid-2-image-rd.online
+                a(href='candidate-details.html')
+                    figure
+                        img(alt='jobBox', src= img)
+            .card-profile.pt-10
+                a(href='candidate-details.html')
+                    h5= name
+                span.font-xs.color-text-mutted= subtile
+                .rate-reviews-small.pt-5
+                    span
+                        img(src='assets/imgs/template/icons/star.svg', alt='jobBox')
+                    span
+                        img(src='assets/imgs/template/icons/star.svg', alt='jobBox')
+                    span
+                        img(src='assets/imgs/template/icons/star.svg', alt='jobBox')
+                    span
+                        img(src='assets/imgs/template/icons/star.svg', alt='jobBox')
+                    span
+                        img(src='assets/imgs/template/icons/star.svg', alt='jobBox')
+                    span.ml-10.color-text-mutted.font-xs (65)
+        .card-block-info
+            p.font-xs.color-text-paragraph-2= des        
+            .card-2-bottom.card-2-bottom-candidate.mt-30
+                .text-start
+                    if block
+                        block
+            .employers-info.align-items-center.justify-content-center.mt-15
+                .row
+                    .col-6
+                        span.d-flex.align-items-center
+                            i.fi-rr-marker.mr-5.ml-0
+                            span.font-sm.color-text-mutted= location
+                    .col-6
+                        span.d-flex.justify-content-end.align-items-center
+                            i.fi-rr-clock.mr-5
+                            span.font-sm.color-brand-1= lasary
+
+mixin companyCard(img='assets/imgs/brands/brand-1.png', name='Car Toys', rate='66', location='New York, US', jobNumber='12')
+    .card-grid-1.hover-up.wow.animate__animated.animate__fadeIn
+        .image-box
+            a(href='company-details.html')
+                img(src= img, alt='jobBox')
+        .info-text.mt-10
+            h5.font-bold
+                a(href='company-details.html')= name
+            .mt-5
+                img(alt='jobBox', src='assets/imgs/template/icons/star.svg')
+                img(alt='jobBox', src='assets/imgs/template/icons/star.svg')
+                img(alt='jobBox', src='assets/imgs/template/icons/star.svg')
+                img(alt='jobBox', src='assets/imgs/template/icons/star.svg')
+                img(alt='jobBox', src='assets/imgs/template/icons/star.svg')
+                span.font-xs.color-text-mutted.ml-10
+                    span (
+                    span= rate
+                    span )
+            span.card-location= location
+            .mt-30
+                a.btn.btn-grey-big(href='jobs-grid.html')
+                    span= jobNumber
+                    span  Jobs Open        

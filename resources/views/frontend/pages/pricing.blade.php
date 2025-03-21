@@ -1,0 +1,58 @@
+@extends('frontend.layouts.app')
+@section('style')
+
+@endsection
+
+{{-- Breadcrumb Data Here --}}
+@section('breadcrumb')
+<section class="section-box">
+  <div class="breacrumb-cover">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <h2 class="mb-10">Pricing</h2>
+          {{-- <p class="font-lg color-text-paragraph-2">Pricing built to suits teams of all sizes.</p> --}}
+        </div>
+        <div class="col-lg-6 text-lg-end">
+          <ul class="breadcrumbs mt-40">
+            <li><a class="home-icon" href="/">Home</a></li>
+            <li>Pricing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+@endsection
+@section('content')
+
+
+<section class="section-box mt-90">
+  <div class="container">
+    <h2 class="text-center mb-15 wow animate__animated animate__fadeInUp">Pricing Table</h2>
+    <div class="font-lg color-text-paragraph-2 text-center wow animate__animated animate__fadeInUp">Choose The Best Plan That&rsquo;s For You</div>
+    <div class="max-width-price">
+      <div class="block-pricing mt-70">
+        <div class="row">
+
+          @foreach ($memberships as $data)
+          <div class="col-xl-4 col-lg-6 col-md-6 wow animate__animated animate__fadeInUp" data-wow-delay=".1s">
+            <div class="box-pricing-item">
+              {!! $data->summary !!}
+              <div><a class="btn btn-border" href="{{route('frontend.membership.apply', $data->id)}}">Choose plan</a></div>
+            </div>
+            
+          </div> 
+          @endforeach
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+@endsection
+
+@section('script')
+
+@endsection

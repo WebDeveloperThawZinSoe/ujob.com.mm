@@ -1,0 +1,62 @@
+extends ../layouts/master.pug
+
+block title
+    title Jobbox - Job Portal HTML Template 
+
+block header
+    include ../components/header.pug
+
+block content
+    section.section-box
+        .breacrumb-cover
+            .container
+                .row
+                    .col-lg-6
+                        h2.mb-10 Blog
+                        p.font-lg.color-text-paragraph-2 Get the latest news, updates and tips
+                    .col-lg-6.text-end
+                        ul.breadcrumbs.mt-40
+                            li
+                                a.home-icon(href='index.html') Home
+                            li Blog
+    section.section-box.mt-50
+        .container
+            .row
+                .col-lg-4.col-md-6.col-sm-12.col-12
+                    .card-grid-5
+                        +blogCard-1('assets/imgs/page/blog/img-big1.png', '11 Tips to Help You Get New Clients', 'assets/imgs/page/candidates/user3.png', 'Azumi Rose', '25 April 2022')                       
+                .col-lg-4.col-md-6.col-sm-12.col-12
+                    +blogCard-1('assets/imgs/page/blog/img-big2.png', 'Recruiter and Land Your Dream Job', 'assets/imgs/page/candidates/user1.png', 'Thompson', '28 April 2022')
+                   
+                .col-lg-4.col-md-6.col-sm-12.col-12
+                    +blogCard-1('assets/imgs/page/blog/img-big3.png', 'Work-From-Home Jobs That Pay Well', 'assets/imgs/page/blog/ava_1.png', 'Alice Json', '29 April 2022')
+    section.section-box.mt-50
+        .post-loop-grid
+            .container
+                .text-left
+                    h2.section-title.mb-10.wow.animate__animated.animate__fadeInUp Latest Posts
+                    p.font-lg.color-text-paragraph-2.wow.animate__animated.animate__fadeInUp Don&apos;t miss the trending news
+                .row.mt-30
+                    .col-lg-8
+                        .row
+                            .col-lg-6.mb-30
+                                +blogCard-2('assets/imgs/page/blog/img1.png', 'News', '21 Job Interview Tips: How To Make a Great Impression','Our mission is to create the world&rsquo;s most sustainable healthcare company by creating high-quality healthcare products in iconic, sustainable packaging.', 'assets/imgs/page/homepage1/user1.png', 'Azumi Rose', '25 April 2022', '8 mins to read')
+                            .col-lg-6.mb-30
+                                +blogCard-2('assets/imgs/page/blog/img2.png', 'Events', 'Email Examples: How To Respond to Employer Interview Requests','Our mission is to create the world&rsquo;s most sustainable healthcare company by creating high-quality healthcare products in iconic, sustainable packaging.', 'assets/imgs/page/homepage1/user2.png', 'Azumi Rose', '25 April 2022', '8 mins to read')
+                            .col-lg-6.mb-30
+                                +blogCard-2('assets/imgs/page/blog/img3.png', 'Events', 'How To Write an Application Letter (With Examples)','Our mission is to create the world&rsquo;s most sustainable healthcare company by creating high-quality healthcare products in iconic, sustainable packaging.', 'assets/imgs/page/homepage1/user3.png', 'Azumi Rose', '25 April 2022', '8 mins to read')
+                            .col-lg-6.mb-30
+                                +blogCard-2('assets/imgs/page/homepage1/img-news1.png', 'Events', '17 Jobs That Hire at Age 15 (and Even 14)','Our mission is to create the world&rsquo;s most sustainable healthcare company by creating high-quality healthcare products in iconic, sustainable packaging.', 'assets/imgs/page/about/user1.png', 'Azumi Rose', '25 April 2022', '8 mins to read')
+                            .col-lg-6.mb-30
+                                +blogCard-2('assets/imgs/page/homepage1/img-news2.png', 'Events', 'How To Write a Cover Letter (Plus Tips and Examples)','Our mission is to create the world&rsquo;s most sustainable healthcare company by creating high-quality healthcare products in iconic, sustainable packaging.', 'assets/imgs/page/about/user2.png', 'Azumi Rose', '25 April 2022', '8 mins to read')
+                            .col-lg-6.mb-30
+                                +blogCard-2('assets/imgs/page/homepage1/img-news3.png', 'Events', '10 Best Skills To Include on a Resume','Our mission is to create the world&rsquo;s most sustainable healthcare company by creating high-quality healthcare products in iconic, sustainable packaging.', 'assets/imgs/page/about/user3.png', 'Azumi Rose', '25 April 2022', '8 mins to read')
+                            .col-lg-6.mb-30
+                                +blogCard-2('assets/imgs/page/blog/img1.png', 'Events', '39 Strengths and Weaknesses To Discuss in a Job Interview','Our mission is to create the world&rsquo;s most sustainable healthcare company by creating high-quality healthcare products in iconic, sustainable packaging.', 'assets/imgs/page/homepage1/user1.png', 'Azumi Rose', '25 April 2022', '8 mins to read')
+                            .col-lg-6.mb-30
+                                +blogCard-2('assets/imgs/page/blog/img2.png', 'Events', 'List of Weaknesses: 10 Things To Say in an Interview','Our mission is to create the world&rsquo;s most sustainable healthcare company by creating high-quality healthcare products in iconic, sustainable packaging.', 'assets/imgs/page/homepage1/user1.png', 'Azumi Rose', '25 April 2022', '8 mins to read')
+                        include ../elements/pagination.pug
+                    .col-lg-4.col-md-12.col-sm-12.col-12.pl-40.pl-lg-15.mt-lg-30
+                        include ../components/blog-sidebar.pug
+
+    include ../sections/newsletter.pug

@@ -1,0 +1,48 @@
+.section-box
+    .container 
+        .panel-white.mb-30
+            .box-padding.bg-postjob
+                h5.icon-edu Tell us about your role
+                .row.mt-30
+                    .col-lg-9
+                        .row
+                            .col-lg-12
+                                .form-group.mb-30 
+                                    label.font-sm.color-text-mutted.mb-10 Job title *
+                                    input.form-control(type='text', placeholder='e.g. Senior Product Designer')
+                            .col-lg-12 
+                                .form-group.mb-30 
+                                    label.font-sm.color-text-mutted.mb-10 Add your job description *
+                                    textarea.form-control(name="message", rows="8") 
+                                        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at sem id enim suscipit commodo nec in ante. Sed viverra vel leo vitae pharetra. Morbi viverra venenatis neque, eu porttitor diam blandit nec. Etiam et volutpat magna, id molestie quam. Vestibulum vel libero gravida, scelerisque arcu eu, maximus mi. Suspendisse eu dolor lobortis, posuere enim venenatis, posuere quam.
+                                        |
+                                        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at sem id enim suscipit commodo nec in ante. Sed viverra vel leo vitae pharetra. Morbi viverra venenatis neque, eu porttitor diam blandit nec. Etiam et volutpat magna, id molestie quam. Vestibulum vel libero gravida, scelerisque arcu eu, maximus mi. Suspendisse eu dolor lobortis, posuere enim venenatis, posuere quam.
+                            .col-lg-6.col-md-6
+                                .form-group.mb-30 
+                                    label.font-sm.color-text-mutted.mb-10 Experience
+                                    input.form-control(type='text', value='1 - 5 Years')
+                            .col-lg-6.col-md-6
+                                .form-group.mb-30
+                                    label.font-sm.color-text-mutted.mb-10 Education Levels
+                                    input.form-control(type='text', value='Certificate')
+                            .col-lg-6.col-md-6
+                                .form-group.mb-30
+                                    label.font-sm.color-text-mutted.mb-10 Languages
+                                    input.form-control(type='text', value='English, French')
+                            .col-lg-6.col-md-6
+                                .form-group.mb-30
+                                    label.font-sm.color-text-mutted.mb-10 Categories 
+                                    input.form-control(type='text', value='UI/UX designer')
+                            .col-lg-6.col-md-6
+                                .form-group.mb-30
+                                    .box-upload
+                                        .add-file-upload
+                                            input.fileupload(type="file", name='file')
+                                        a.btn.btn-default Upload File
+                            .col-lg-6.col-md-6
+                                .form-group.mb-30.box-file-uploaded.d-flex.align-items-center
+                                    span Job_required.pdf
+                                    a.btn.btn-delete Delete
+                            .col-lg-12 
+                                .form-group.mt-10
+                                    button.btn.btn-default.btn-brand.icon-tick Post New Job
