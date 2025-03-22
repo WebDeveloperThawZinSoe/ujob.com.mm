@@ -38,7 +38,8 @@
 
 @php
 $user = Auth::user();
-$seeker = App\Models\Seeker::where('user_id', $user)->first();
+$seeker = App\Models\Seeker::where('user_id', $user->id)->first();
+
 @endphp
 <section class="section-box-2">
     <div class="container">
@@ -63,11 +64,11 @@ $seeker = App\Models\Seeker::where('user_id', $user)->first();
     <div class="container">
         <div class="banner-hero banner-image-single">
             <img src="{{ asset('assets/imgs/page/candidates/img.png') }}" alt="jobbox">
-            <a class="btn-editor" href="#"></a>
+            <!-- <a class="btn-editor" href="#"></a> -->
         </div>
         <div class="box-company-profile">
             <div class="image-compay">
-                <img src="{{ asset('assets/imgs/page/candidates/candidate-profile.png') }}" alt="jobbox">
+                <img src="{{ auth()->user()->image ? asset('profile/' . auth()->user()->image) : asset('assets/imgs/page/candidates/candidate-profile.png') }}" style="width: 100px !important; height: 100px !important; border-radius: 10%;" alt="jobbox">
             </div>
             <div class="row mt-10">
                 <div class="col-lg-8 col-md-12">

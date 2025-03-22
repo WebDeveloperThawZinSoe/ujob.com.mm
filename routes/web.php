@@ -141,13 +141,17 @@ Route::group(['middleware' => ['can:seeker','auth']], function () {
     /* Seeker Apply Job */
     Route::get("/seeker/applied/jobs",[SeekerProfileController::class,"appliedJobs"])->name('frontend.seeker.applied.jobs');
 
+    /* Profile Update */
     Route::get('/seeker/profile', [SeekerProfileController::class, 'index'])->name('frontend.seeker.profile');
     Route::put('/seeker/profile/image', [SeekerProfileController::class, 'imageUpdate'])->name('frontend.seeker.profile.image.update');
-
+    Route::delete('/seeker/profile/image', [SeekerProfileController::class, 'imageDelete'])->name('frontend.seeker.profile.image.delete');
+    
     Route::post('/seeker/profile/update', [SeekerProfileController::class, 'updateProfile'])->name('frontend.seeker.update');
+    
     Route::post('/seeker/experience/store', [SeekerProfileController::class, 'storeExperience'])->name('frontend.seeker.experience.store');
     Route::post('/seeker/experience/update', [SeekerProfileController::class, 'updateExperience'])->name('frontend.seeker.experience.update');
     Route::delete('/seeker/experience/delete', [SeekerProfileController::class, 'deleteExperience'])->name('frontend.seeker.experience.delete');
+
     Route::post('/seeker/education/store', [SeekerProfileController::class, 'storeEducation'])->name('frontend.seeker.education.store');
     Route::post('/seeker/education/update', [SeekerProfileController::class, 'updateEducation'])->name('frontend.seeker.education.update');
     Route::delete('/seeker/education/delete', [SeekerProfileController::class, 'deleteEducation'])->name('frontend.seeker.education.delete');
@@ -159,7 +163,7 @@ Route::group(['middleware' => ['can:seeker','auth']], function () {
     Route::post('/seeker/profile/languages', [SeekerProfileController::class, 'updateLanguages'])->name('frontend.seeker.languages.update');
     Route::post('/seeker/profile/interests', [SeekerProfileController::class, 'updateInterests'])->name('frontend.seeker.interests.update');
 
-    Route::put('/seeker/skill/update', [SeekerProfileController::class, 'updateSkill'])->name('frontend.seeker.skill.update');
+    Route::post('/seeker/skill/update', [SeekerProfileController::class, 'updateSkill'])->name('frontend.seeker.skill.update');
 
     Route::post('/seeker/job/apply', [SeekerJobController::class, 'jobApply'])->name('frontend.seeker.jobs.apply');
 

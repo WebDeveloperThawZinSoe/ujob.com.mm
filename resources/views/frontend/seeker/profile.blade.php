@@ -1,36 +1,115 @@
 @extends('frontend.seeker.seeker_template')
 @section('content1')
+<style>
+.image-profile {
+    max-width: 130px !important;
+    max-height: 130px !important;
+}
+</style>
 <div class="tab-pane fade show active" id="tab-my-profile" role="tabpanel" aria-labelledby="tab-my-profile">
     <h3 class="mt-0 mb-15 color-brand-1">My Account</h3>
     <a class="font-md color-text-paragraph-2" href="#">Upload Professional Photo</a>
-    <div class="mt-35 mb-40 box-info-profie">
-        <div class="image-profile">
-            <img src="{{ asset('assets/imgs/page/candidates/candidate-profile.png') }}" alt="jobbox">
+    <div class="mt-35 mb-40 box-info-profie position-relative">
+        <div class="image-profile position-relative">
+            <img src="{{ auth()->user()->image ? asset('profile/' . auth()->user()->image) : asset('assets/imgs/page/candidates/candidate-profile.png') }}"
+                alt="Profile Image" style="width: 250px !important; height: 150px !important; border-radius: 10%;">
+
+            @if(auth()->user()->image)
+            <!-- Delete (X) Button -->
+            <button class="btn btn-danger btn-sm delete-image-btn" onclick="confirmDelete(event)">
+                ✖
+            </button>
+            @endif
         </div>
-        <a class="btn btn-apply">Upload Avatar</a>
-        <a class="btn btn-link">Delete</a>
+
+        <br>
+
+        <form action="{{ route('frontend.seeker.profile.image.update') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+
+            <input style="width:30% !important;" type="file" name="profile_image" id="profile_image"
+                class="form-control mt-3" required>
+
+            @error('profile_image')
+            <div class="text-danger mt-2">{{ $message }}</div>
+            @enderror
+
+            <button type="submit" class="btn btn-apply mt-3">Upload Avatar</button>
+        </form>
+
+        <!-- Hidden Delete Form -->
+        <form id="delete-form" action="{{ route('frontend.seeker.profile.image.delete') }}" method="POST"
+            style="display: none;">
+            @csrf
+            @method('DELETE')
+        </form>
     </div>
+
+    <!-- SweetAlert2 Script -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+    function confirmDelete(event) {
+        event.preventDefault();
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Do you want to delete your profile image?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form').submit();
+            }
+        });
+    }
+    </script>
+
+    <!-- Custom Styling for Delete Button -->
+    <style>
+    .delete-image-btn {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 25px;
+        height: 25px;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border: none;
+        background-color: rgba(220, 53, 69, 0.9);
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    .delete-image-btn:hover {
+        background-color: red;
+    }
+    </style>
+
 
     <div class="row form-contact">
         <div class="col-lg-6 col-md-12">
-            <form action="#" method="POST">
+            <form action="{{route('frontend.seeker.update')}}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label class="font-sm color-text-muted mb-10">Full Name *</label>
-                    <input class="form-control" type="text" name="full_name" value="{{ $seeker->full_name }}">
+                    <input class="form-control" required type="text" name="full_name" value="{{ $seeker->full_name }}">
                 </div>
                 <div class="form-group">
                     <label class="font-sm color-text-muted mb-10">Email *</label>
-                    <input class="form-control" type="email" name="email" value="{{ $user->email }}">
+                    <input class="form-control" required type="email" name="email" value="{{ $user->email }}">
                 </div>
                 <div class="form-group">
                     <label class="font-sm color-text-muted mb-10">Contact number</label>
                     <input class="form-control" type="text" name="contact_number" value="{{ $seeker->contact_number }}">
                 </div>
-                <div class="form-group">
-                    <label class="font-sm color-text-muted mb-10">Contact number</label>
-                    <input class="form-control" type="text" name="contact_number" value="{{ $seeker->contact_number }}">
-                </div>
+
                 <div class="form-group">
                     <label class="font-sm color-text-muted mb-10">Headline</label>
                     <textarea class="form-control" rows="4" name="headline">{{ $seeker->headline }}</textarea>
@@ -44,13 +123,13 @@
 
             <div class="border-bottom pt-10 pb-10 mb-30"></div>
             <h6 class="color-orange mb-20">Change your password</h6>
-            <form action="{{ route('frontend.account.changePassword', auth()->user()->id) }}" method="POST">
+            <form action="/change-password" method="POST">
                 @csrf
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label class="font-sm color-text-muted mb-10">Password</label>
-                            <input class="form-control" type="password" name="current_password">
+                            <input class="form-control" type="password" name="old_password">
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -74,14 +153,16 @@
         </div>
 
         <div class="col-md-6 col-lg-6">
-            <h4 class="mb-30">Professional Experience</h4>
-            <ul id="experienceList mb-15">
+            <h4 style="margin-bottom: 20px; font-weight: bold;">Professional Experience</h4>
+            <ul id="experienceList" style="list-style: none; padding: 0;">
                 @foreach($seeker->seekerExperiences as $data)
-                <div class="card mb-10">
+                <div class="card"
+                    style="margin-bottom: 15px; border-radius: 10px; box-shadow: 2px 2px 10px rgba(0,0,0,0.1);">
                     <div class="card-body">
-                        <h6>{{ $data->title }}</h6>
-                        <p>{{ $data->company }} <small>{{ $data->start_date }} to
-                                {{ $data->end_date ?? '' }}</small></p>
+                        <h6 style="font-weight: bold; margin-bottom: 5px;">{{ $data->title }}</h6>
+                        <p style="margin-bottom: 10px; color: #666;">{{ $data->company }} <small>{{ $data->start_date }}
+                                to
+                                {{ $data->end_date ?? 'Present' }}</small></p>
                         <button type="button" class="btn btn-secondary btn-sm editExperienceButton"
                             data-id="{{ $data->id }}" data-title="{{ $data->title }}"
                             data-company="{{ $data->company }}" data-start_date="{{ $data->start_date }}"
@@ -89,27 +170,60 @@
                             data-bs-target="#experienceModal">
                             Edit
                         </button>
-                        <button type="button" class="btn btn-danger btn-sm deleteExperienceButton"
-                            data-id="{{ $data->id }}">
-                            Delete
-                        </button>
+                        <form style="display:inline-block !important;" id="deleteExperienceForm-{{ $data->id }}"
+                            action="{{ route('frontend.seeker.experience.delete') }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="hidden" name="experience_id" value="{{ $data->id }}">
+
+                            <button type="button" class="btn btn-danger btn-sm deleteExperienceButton"
+                                data-id="{{ $data->id }}" onclick="confirmDelete2(event, {{ $data->id }})">
+                                Delete
+                            </button>
+                        </form>
+
+                        <script>
+                        function confirmDelete2(event, id) {
+                            event.preventDefault();
+
+                            Swal.fire({
+                                title: "Are you sure?",
+                                text: "You won’t be able to revert this!",
+                                icon: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#d33",
+                                cancelButtonColor: "#3085d6",
+                                confirmButtonText: "Yes, delete it!"
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    document.getElementById("deleteExperienceForm-" + id).submit();
+                                }
+                            });
+                        }
+                        </script>
+
                     </div>
                 </div>
                 @endforeach
             </ul>
-            <button type="button" class="btn btn-warning btn-lg " data-bs-toggle="modal"
-                data-bs-target="#experienceModal" style="float: right">
+            <button type="button" class="btn btn-warning btn-lg" data-bs-toggle="modal"
+                data-bs-target="#experienceModal" style="float: right; margin-top: 10px;">
                 Add Experience
             </button>
 
-            <h4 class="mt-30 mb-30">Education</h4>
-            <ul id="educationList mb-15">
+            <br> <br>
+            <hr>
+            <h4 style="margin-top: 40px; font-weight: bold;">Education</h4>
+            <ul id="educationList" style="list-style: none; padding: 0;">
                 @foreach($seeker->seekerEducations as $data)
-                <div class="card mb-10">
+                <div class="card"
+                    style="margin-bottom: 15px; border-radius: 10px; box-shadow: 2px 2px 10px rgba(0,0,0,0.1);">
                     <div class="card-body">
-                        <h6>{{ $data->degree }}</h6>
-                        <p>{{ $data->institution }} <small>{{ $data->start_date }} to
-                                {{ $data->end_date ?? '' }}</small></p>
+                        <h6 style="font-weight: bold; margin-bottom: 5px;">{{ $data->degree }}</h6>
+                        <p style="margin-bottom: 10px; color: #666;">{{ $data->institution }}
+                            <small>{{ $data->start_date }} to
+                                {{ $data->end_date ?? 'Present' }}</small>
+                        </p>
                         <button type="button" class="btn btn-secondary btn-sm editEducationButton"
                             data-id="{{ $data->id }}" data-degree="{{ $data->degree }}"
                             data-institution="{{ $data->institution }}" data-start_date="{{ $data->start_date }}"
@@ -117,68 +231,137 @@
                             data-bs-target="#educationModal">
                             Edit
                         </button>
-                        <button type="button" class="btn btn-danger btn-sm deleteEducationButton"
+                        <!-- <button type="button" class="btn btn-danger btn-sm deleteEducationButton"
                             data-id="{{ $data->id }}">
                             Delete
-                        </button>
+                        </button> -->
+
+                        <form style="display:inline-block !important;" id="deleteEducationForm-{{ $data->id }}"
+                            action="{{ route('frontend.seeker.education.delete') }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="hidden" name="education_id" value="{{ $data->id }}">
+
+                            <button type="button" class="btn btn-danger btn-sm deleteExperienceButton"
+                                data-id="{{ $data->id }}" onclick="confirmDelete3(event, {{ $data->id }})">
+                                Delete
+                            </button>
+                        </form>
+
+                        <script>
+                        function confirmDelete3(event, id) {
+                            event.preventDefault();
+
+                            Swal.fire({
+                                title: "Are you sure?",
+                                text: "You won’t be able to revert this!",
+                                icon: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#d33",
+                                cancelButtonColor: "#3085d6",
+                                confirmButtonText: "Yes, delete it!"
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    document.getElementById("deleteEducationForm-" + id).submit();
+                                }
+                            });
+                        }
+                        </script>
+
+                       
                     </div>
                 </div>
                 @endforeach
             </ul>
-            <button type="button" class="btn btn-warning btn-lg float-rigth" data-bs-toggle="modal"
-                data-bs-target="#educationModal" style="float: right">
+            <button type="button" class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#educationModal"
+                style="float: right; margin-top: 10px;">
                 Add Education
             </button>
 
-            <h4 class="mt-30 mb-30 ">Projects</h4>
-            <ul id="projectList mb-15">
+            <br> <br>
+            <hr>
+            <h4 style="margin-top: 40px; font-weight: bold;">Projects</h4>
+            <ul id="projectList" style="list-style: none; padding: 0;">
                 @foreach($seeker->seekerProjects as $data)
-                <div class="card mb-10">
+                <div class="card"
+                    style="margin-bottom: 15px; border-radius: 10px; box-shadow: 2px 2px 10px rgba(0,0,0,0.1);">
                     <div class="card-body">
-                        <h6>{{ $data->title }}</h6>
-                        <p><small>{{ $data->start_date }} to {{ $data->end_date ?? '' }}</small>
-                        </p>
-                        <p>{{ $data->description }} </p>
+                        <h6 style="font-weight: bold; margin-bottom: 5px;">{{ $data->title }}</h6>
+                        <p style="margin-bottom: 5px; color: #666;"><small>{{ $data->start_date }} to
+                                {{ $data->end_date ?? 'Present' }}</small></p>
+                        <p style="margin-bottom: 10px;">{{ $data->description }}</p>
                         <button type="button" class="btn btn-secondary btn-sm editProjectButton"
                             data-id="{{ $data->id }}" data-title="{{ $data->title }}"
                             data-description="{{ $data->description }}" data-start_date="{{ $data->start_date }}"
                             data-end_date="{{ $data->end_date }}" data-bs-toggle="modal" data-bs-target="#projectModal">
                             Edit
                         </button>
-                        <button type="button" class="btn btn-danger btn-sm deleteProjectButton"
+                        <!-- <button type="button" class="btn btn-danger btn-sm deleteProjectButton"
                             data-id="{{ $data->id }}">
                             Delete
-                        </button>
+                        </button> -->
+                        <form style="display:inline-block !important;" id="deleteProjectForm-{{ $data->id }}"
+                            action="{{ route('frontend.seeker.project.delete') }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="hidden" name="project_id" value="{{ $data->id }}">
+
+                            <button type="button" class="btn btn-danger btn-sm deleteExperienceButton"
+                                data-id="{{ $data->id }}" onclick="confirmDelete3(event, {{ $data->id }})">
+                                Delete
+                            </button>
+                        </form>
+
+                        <script>
+                        function confirmDelete3(event, id) {
+                            event.preventDefault();
+
+                            Swal.fire({
+                                title: "Are you sure?",
+                                text: "You won’t be able to revert this!",
+                                icon: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#d33",
+                                cancelButtonColor: "#3085d6",
+                                confirmButtonText: "Yes, delete it!"
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    document.getElementById("deleteProjectForm-" + id).submit();
+                                }
+                            });
+                        }
+                        </script>
                     </div>
                 </div>
                 @endforeach
             </ul>
-            <button type="button" class="btn btn-warning btn-lg float-rigth" data-bs-toggle="modal"
-                data-bs-target="#projectModal" style="float: right">
+            <button type="button" class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#projectModal"
+                style="float: right; margin-top: 10px;">
                 Add Project
             </button>
 
-
-            <h4 class="mt-30 mb-30 mt-30">Skills</h4>
-
-            <form action="#" method="post">
+            <br> <br>
+            <hr>
+            <h4 style="margin-top: 40px; font-weight: bold;">Skills</h4>
+            <form action="{{route('frontend.seeker.skill.update')}}" method="post">
                 @csrf
-                @method('PUT')
+                @method('POST')
 
-                <select class="form-control" name="skills[]" id="skills" multiple>
+                <select class="form-control" name="skills[]" id="skills" multiple
+                    style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
                     @foreach ($skills as $skill)
-                    <option {{ str_contains($seeker->skills, $skill->name) ? 'selected' : '' }}>
+                    <option {{ in_array($skill->name, explode(', ', $seeker->skills)) ? 'selected' : '' }}>
                         {{ $skill->name }}
                     </option>
                     @endforeach
                 </select>
 
-                <button type="submit" class="btn btn-warning mt-15 float-rigth btn-lg" style="float: right">
+                <button type="submit" class="btn btn-warning btn-lg" style="float: right; margin-top: 15px;">
                     Save Skills
                 </button>
             </form>
-
         </div>
+
     </div>
 </div>
 
@@ -317,7 +500,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="modalTitleId">Add Experience</h5>
             </div>
-            <form id="experienceForm">
+            <form action="{{route('frontend.seeker.experience.store')}}" method="post" id="experienceForm">
                 @csrf
                 <input type="hidden" name="experience_id" id="experienceId">
                 <div class="modal-body">
@@ -356,7 +539,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="modalTitleId">Add Education</h5>
             </div>
-            <form id="educationForm">
+            <form action="{{route('frontend.seeker.education.store')}}" method="post" id="educationForm">
                 @csrf
                 <input type="hidden" name="education_id" id="educationId">
                 <div class="modal-body">
@@ -395,7 +578,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="modalTitleId">Add Project</h5>
             </div>
-            <form id="projectForm">
+            <form action="{{route('frontend.seeker.project.store')}}" method="post" id="projectForm">
                 @csrf
                 <input type="hidden" name="project_id" id="projectId">
                 <div class="modal-body">
@@ -424,5 +607,6 @@
         </div>
     </div>
 </div>
+
 
 @endsection

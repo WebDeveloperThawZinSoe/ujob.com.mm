@@ -47,48 +47,65 @@ class ProfileController extends Controller
 
     //jobBasedOnProfile
     public function jobBasedOnProfile(){
-        $jobs = $jobs = Job::where('is_active', 1)->orderBy("id","desc")->paginate(3);
+        $jobs = $jobs = Job::where('is_active', 1)->orderBy("id","desc")->paginate(15);
         return view('frontend.seeker.job_based_on_profile', compact("jobs"));
     }
 
-    public function imageUpdate(Request $request){
-
-        $user = User::find(auth()->user()->id);
-
-        $validated = $request->validate([
-            'profile_image' => 'required|mimes:jpeg,png,jpg,gif,svg,webp|max:5120',
+    public function imageUpdate(Request $request)
+    {
+        $user = auth()->user();
+    
+        $request->validate([
+            'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:5120',
         ]);
     
-         
-            // insert Main Image to local file
-            $asset_file = $request->file('profile_image');
-                    
-            $asset_file->move(public_path().'/profile/', $img = rand(1, 1000).time().'.'.$request->profile_image->extension());
-
-            // Delete old main image
-            if ($user->image != '') {
-                $del_main_image_path = public_path().'/ads/'.$user->image;
-                unlink($del_main_image_path);
-            }
-
-        
-
-        $user->image = $img;
+        // Store the new image
+        $asset_file = $request->file('profile_image');
+        $filename = uniqid() . '.' . $asset_file->getClientOriginalExtension();
+        $asset_file->move(public_path('profile'), $filename);
+    
+        // Delete old image if exists
+        if ($user->image && file_exists(public_path('profile/' . $user->image))) {
+            unlink(public_path('profile/' . $user->image));
+        }
+    
+        // Update user image
+        $user->image = $filename;
         $user->save();
-
-        return redirect()->back()->with('success', 'Image successfully updated!');
+    
+        return redirect()->back()->with('success', 'Profile image updated successfully!');
     }
+    
+    public function imageDelete()
+    {
+        $user = auth()->user();
+    
+        if ($user->image && file_exists(public_path('profile/' . $user->image))) {
+            unlink(public_path('profile/' . $user->image));
+        }
+    
+        $user->image = null;
+        $user->save();
+    
+        return redirect()->back()->with('success', 'Profile image deleted successfully!');
+    }
+    
     
     public function updateSkill(Request $request)
     {
+        // dd($request->all());
         // Validate request data
-        $request->validate([
-            'skills' => 'required|array', // Adjust validation rules as needed
-            // Add other validation rules for other fields if necessary
-        ]);
-
+        
         $seeker = Seeker::findOrFail(auth()->user()->seeker->id);
-
+        if(!$request->skills){
+            $seeker->update([
+                "skills" => "",
+            ]);
+            return redirect()->back()->with('success', 'Remove all Skill successfully !');
+        }
+        $seeker->update([
+            "skills" => "",
+        ]);
         // Create seeker
         $seeker->update([
             // Add other fields here
@@ -100,6 +117,7 @@ class ProfileController extends Controller
 
     public function updateProfile(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'full_name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
@@ -126,7 +144,8 @@ class ProfileController extends Controller
         $experience->end_date = $request->end_date;
         $experience->save();
 
-        return response()->json(['experience' => $experience], 200);
+        // return response()->json(['experience' => $experience], 200);
+        return redirect()->back()->with('success', 'Add new Experience  successfully!');
     }
 
     public function updateExperience(Request $request)
@@ -147,13 +166,15 @@ class ProfileController extends Controller
 
     public function deleteExperience(Request $request)
     {
+        // dd($request->all());
         $experience = SeekerExperience::find($request->experience_id);
         if ($experience) {
             $experience->delete();
-            return response()->json(['message' => 'Experience deleted successfully'], 200);
+            return redirect()->back()->with('success', 'Experience  Delete Success!');
         }
 
-        return response()->json(['message' => 'Experience not found'], 404);
+        // return response()->json(['message' => 'Experience not found'], 404);
+        return redirect()->back()->with('success', 'Experience  Delete Fail!');
     }
 
     // Educations
@@ -167,7 +188,9 @@ class ProfileController extends Controller
         $education->end_date = $request->end_date;
         $education->save();
 
-        return response()->json(['education' => $education], 200);
+        // return response()->json(['education' => $education], 200);
+
+        return redirect()->back()->with('success', 'Add new Education  successfully!');
     }
 
     public function updateEducation(Request $request)
@@ -191,10 +214,11 @@ class ProfileController extends Controller
         $education = SeekerEducation::find($request->education_id);
         if ($education) {
             $education->delete();
-            return response()->json(['message' => 'Education deleted successfully'], 200);
+            // return response()->json(['message' => 'Education deleted successfully'], 200);
+            return redirect()->back()->with('success', 'Education deleted successfully');
         }
-
-        return response()->json(['message' => 'Education not found'], 404);
+        return redirect()->back()->with('success', 'Education deleted fail');
+        //return response()->json(['message' => 'Education not found'], 404);
     }
 
     // Projects
@@ -208,7 +232,8 @@ class ProfileController extends Controller
         $project->end_date = $request->end_date;
         $project->save();
 
-        return response()->json(['project' => $project], 200);
+        // return response()->json(['project' => $project], 200);
+        return redirect()->back()->with('success', 'Add new Project  successfully!');
     }
 
     public function updateProject(Request $request)
@@ -232,10 +257,12 @@ class ProfileController extends Controller
         $project = SeekerProject::find($request->project_id);
         if ($project) {
             $project->delete();
-            return response()->json(['message' => 'Project deleted successfully'], 200);
+            // return response()->json(['message' => 'Project deleted successfully'], 200);
+            return redirect()->back()->with('success', 'Project deleted success');
         }
 
-        return response()->json(['message' => 'Project not found'], 404);
+        // return response()->json(['message' => 'Project not found'], 404);
+        return redirect()->back()->with('success', 'Project deleted fail');
     }
 
     
