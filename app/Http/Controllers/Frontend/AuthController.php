@@ -41,6 +41,8 @@ class AuthController extends Controller
         $employer =  Employer::create([
             'company_name' => $validatedData['company_name'],
             'user_id' => $user->id,
+            'total_jobs' => 10,
+            'total_highlights' =>  1,
         ]);
 
         

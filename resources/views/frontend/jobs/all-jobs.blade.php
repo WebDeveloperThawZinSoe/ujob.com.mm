@@ -73,7 +73,7 @@
 
             <div class="row">
               @foreach ($jobs as $data)
-              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12" style="margin-bottom: 20px !important;">
                 @include('frontend.jobs.part.job-card', [
                     'data' => $data,
                     'jobLink' => route('frontend.jobs-detail', $data->id)

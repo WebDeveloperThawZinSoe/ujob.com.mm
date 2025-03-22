@@ -162,6 +162,8 @@ Route::group(['middleware' => ['can:seeker','auth']], function () {
 //authRedirect
 Route::group(['middlware'=>'auth'],function(){
     Route::get("/redirect/auth",[RedirectController::class,"redirect"]);
+    Route::post('/change-password', [RedirectController::class, 'changePassword'])
+    ->name('change_password');
 });
 
 

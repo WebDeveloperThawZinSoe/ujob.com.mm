@@ -60,6 +60,7 @@
             @auth
               @if ($employer->user_id ==Auth::user()->id)
               <a class="btn btn-call-icon btn-apply btn-apply-big" href="#" data-bs-toggle="modal" data-bs-target="#modalIdWholeData">Edit Company</a>
+              <a href="/employer/dashboard" class="btn btn-call-icon btn-apply btn-apply-big" >Dashboard</a>
               @endif
             @endauth
             
@@ -223,7 +224,7 @@
                   name="location_id"
                   id=""
                 >
-                  <option selected>Select Location</option>
+                  <option value="" selected>Select Location</option>
                   @foreach ($locations as $data)
                   <option value="{{$data->id}}">{{$data->name}}</option>
                   @endforeach

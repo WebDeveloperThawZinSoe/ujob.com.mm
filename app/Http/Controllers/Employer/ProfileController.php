@@ -66,6 +66,7 @@ class ProfileController extends Controller
 
     public function companyDataUpdate(Request $request)
 {
+    // dd($request->all());
     $company = Employer::where('user_id', auth()->user()->id)->firstOrFail();
 
     $validated = $request->validate([
@@ -74,13 +75,13 @@ class ProfileController extends Controller
         'phone' => 'nullable|max:255',
         'location_id' => 'nullable',
     ]);
-
+    
     $company->update([
         'company_name' => $request->company_name,
         'company_website' => $request->company_website,
         'phone' => $request->phone,
         'company_description' => $request->company_description,
-        'location_id' => $request->location_id,
+        'location_id' => $request->location_id == "Select Location" ? null : $request->location_id,
     ]);
 
     return redirect()->route('frontend.employer.profile', $company->company_name)->with('success', 'Company information successfully updated!');
