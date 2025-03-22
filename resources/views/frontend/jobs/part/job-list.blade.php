@@ -37,7 +37,7 @@
                             <p class="font-sm color-text-paragraph mt-10">{{ $shortDescription }}...</p>
                             <div class="card-2-bottom mt-20">
                               <div class="row">
-                                <div class="col-lg-7 col-7"><span class="card-text-price">{{$data->salary}}</span> Month</div>
+                                <div class="col-lg-7 col-7"><span class="card-text-price">{{$data->salary}}</span> Ks Month</div>
                                 <div class="col-lg-5 col-5 text-end">
                                   @auth
                                   @can('seeker')

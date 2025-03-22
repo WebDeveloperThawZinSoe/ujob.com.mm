@@ -54,7 +54,7 @@
               <div class="row mt-25">
                 <div class="col-md-6 d-flex mt-sm-15">
                   <div class="sidebar-icon-item"><img src="{{asset('assets')}}/imgs/page/job-single/salary.svg" alt="jobBox"></div>
-                  <div class="sidebar-text-info ml-10"><span class="text-description salary-icon mb-10">Salary</span><strong class="small-heading">{{$job->salary}} / Month</strong></div>
+                  <div class="sidebar-text-info ml-10"><span class="text-description salary-icon mb-10">Salary</span><strong class="small-heading">{{$job->salary}} Ks / Month</strong></div>
                 </div>
                 <div class="col-md-6 d-flex mt-sm-15">
                     <div class="sidebar-icon-item"><img src="{{asset('assets')}}/imgs/page/job-single/deadline.svg" alt="jobBox"></div>
@@ -147,7 +147,7 @@
                         <div class="mt-5">
                           <div class="row">
                             <div class="col-6">
-                              <h6 class="card-price">{{$data->salary}}<span>/ Month</span></h6>
+                              <h6 class="card-price">{{$data->salary}}<span> Ks / Month</span></h6>
                             </div>
                             <div class="col-6 text-end"><span class="card-briefcase">{{$data->location->name}}</span></div>
                           </div>

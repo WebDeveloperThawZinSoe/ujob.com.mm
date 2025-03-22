@@ -94,7 +94,7 @@
           <div class="box-related-job content-page">
             <h5 class="mb-30">Latest Jobs</h5>
             <div class="box-list-jobs display-list">
-                @foreach ($employer->jobs as $data)
+                @foreach ($jobs as $data)
 
                 @include('frontend.jobs.part.job-list', [
                     'data' => $data,

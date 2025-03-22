@@ -18,12 +18,13 @@ class ProfileController extends Controller
         $employer = Employer::where('company_name', '=', $company_name)->with('jobs')->firstOrFail();
         $locations = Location::all();
         $ads = Advertisement::all();
-        return view('frontend.employer.profile', compact('employer', 'locations', 'ads'));
+        $jobs = Job::where('employer_id', '=', $employer->id)->orderBy("id","desc")->get();
+        return view('frontend.employer.profile', compact('employer', 'locations', 'ads',"jobs"));
     }
 
     public function jobs($company_name){
         $employer = Employer::where('company_name', '=', $company_name)->firstOrFail();
-        $jobs = Job::where('employer_id', '=', $employer->id)->get();
+        $jobs = Job::where('employer_id', '=', $employer->id)->orderBy("id","desc")->get();
 
         $categories = Category::all();
         $locations = Location::all();

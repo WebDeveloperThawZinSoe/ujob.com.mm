@@ -26,21 +26,21 @@ class LoginController extends Controller
      *
      * @var string
      */
-    // protected $redirectTo = '/home';
-    protected function redirectTo()
-{
-    // Get the authenticated user
-    $user = Auth::user();
+    protected $redirectTo = '/redirect/auth';
+//     protected function redirectTo()
+// {
+//     // Get the authenticated user
+//     $user = Auth::user();
 
-    // Check user role and redirect accordingly
-    if ($user->role == 'seeker') {
-        return '/'; // Redirect user to home
-    } elseif ($user->role == 'employer') {
-        return '/'; // Redirect employer to employer dashboard
-    } elseif ($user->role == 'admin') {
-        return '/admin'; // Redirect admin to admin dashboard
-    }
-}
+//     // Check user role and redirect accordingly
+//     if ($user->role == 'seeker') {
+//         return '/'; // Redirect user to home
+//     } elseif ($user->role == 'employer') {
+//         return '/'; // Redirect employer to employer dashboard
+//     } elseif ($user->role == 'admin') {
+//         return '/admin'; // Redirect admin to admin dashboard
+//     }
+// }
 
     /**
      * Create a new controller instance.

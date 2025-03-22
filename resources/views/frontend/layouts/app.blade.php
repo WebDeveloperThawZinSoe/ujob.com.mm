@@ -13,6 +13,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('/backend/images/logofc.png')}}">
     <link href="{{asset('/')}}assets/css/style.css?version=4.1" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <title>UJob.com.mm</title>
     @yield('style')

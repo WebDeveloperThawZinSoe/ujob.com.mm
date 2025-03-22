@@ -23,10 +23,14 @@
               <li class="">
                 <a class="{{ Route::is('frontend.pricing') ? 'active' : '' }}" href="{{route('frontend.pricing')}}">Pricing</a>
               </li>
-              @guest
               <li class="">
-                <a class="{{ Route::is('frontend.contact') ? 'active' : '' }}" href="{{route('frontend.auth.register.employer')}}">Employer Register</a>
+                <a class="" href="/about-us">About Us</a>
               </li>
+              
+              @guest
+              <!-- <li class="">
+                <a class="{{ Route::is('frontend.contact') ? 'active' : '' }}" href="{{route('frontend.auth.register.employer')}}">Employer Register</a>
+              </li> -->
               <li class="has-children"><a href="#">Register</a>
                 <ul class="sub-menu">
                   <li><a href="{{route('frontend.auth.register.employer')}}" >Employer Register</a></li>
@@ -36,22 +40,26 @@
               </li>
               @endguest
               @auth
-              <li class="has-children"><a href="#">Dashboard</a>
+             
                 @can('employer')
-                <ul class="sub-menu">
+                <!-- <li class="has-children"><a href="#">Dashboard</a> -->
+                <!-- <ul class="sub-menu">
                   <li><a href="{{route('frontend.employer.profile', auth()->user()->employer->company_name)}}">Porfile</a></li>
                   <li><a href="{{route('frontend.employer.jobs', auth()->user()->employer->company_name)}}">Post Jobs</a></li>
                   <li><a href="{{route('frontend.employer.membership.show')}}">My Membership</a></li>
-                </ul>
+                </ul> -->
+                  <!-- </li> -->
                 @endcan
                 @can('seeker')
+                <li class="has-children"><a href="#">Dashboard</a>
                 <ul class="sub-menu">
                   <li><a href="{{route('frontend.seeker.profile')}}" >Porfile</a></li>
                   <li><a href="{{route('frontend.cv', auth()->user()->seeker->id)}}">Preview CV</a></li>
                   
                 </ul>
+                </li>
                 @endcan
-              </li>
+             
               @endauth
               
 
@@ -62,9 +70,11 @@
         <div class="header-right">
           <div class="block-signin">
             @auth
+            <a  href="/redirect/auth" class="btn btn-default btn-shadow ml-40 hover-up">Dashboard</a>
+           
             
-            <button class="btn btn-default btn-shadow ml-40 hover-up" data-bs-toggle="modal"
-            data-bs-target="#jobHuntingPopup">Job Hunting</button>
+            <!-- <button class="btn btn-default btn-shadow ml-40 hover-up" data-bs-toggle="modal"
+            data-bs-target="#jobHuntingPopup">Job Hunting</button> -->
            
            <!-- Modal Body -->
            <div
@@ -83,7 +93,7 @@
               role="document"
             >
               <div class="modal-content">
-                <form action="{{route('frontend.job.hunting.apply')}}" method="post">
+                <!-- <form action="{{route('frontend.job.hunting.apply')}}" method="post">
                   @method('POST')
                   @csrf
                   <div class="modal-header">
@@ -113,7 +123,7 @@
                     <button type="submit" class="btn btn-default btn-shadow">Submit</button>
                   </div>
 
-                </form>
+                </form> -->
                 
 
               </div>

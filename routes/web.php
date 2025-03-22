@@ -18,6 +18,8 @@ use App\Http\Controllers\SaleController;
 use App\Http\Controllers\Seeker\JobController as SeekerJobController;
 use App\Http\Controllers\Seeker\ProfileController as SeekerProfileController;
 use App\Http\Controllers\SkillController;
+use App\Http\Controllers\RedirectController;
+use App\Http\Controllers\Employer\EmployerDashboardController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -86,22 +88,43 @@ Route::group(['middleware' => ['can:admin','auth']], function () {
 
 // employer
 Route::group(['middleware' => ['can:employer','auth']], function () {
-    Route::get('/employer/jobs/{company_name}', [ProfileController::class, 'jobs'])->name('frontend.employer.jobs');
-    Route::put('/employer/profile/image', [ProfileController::class, 'imageUpdate'])->name('frontend.employer.profile.image.update');
-    Route::put('/employer/profile/company-data', [ProfileController::class, 'companyDataUpdate'])->name('frontend.employer.profile.company.data.update');
 
+
+    /* Dashboard */
+    Route::get('/employer/dashboard', [EmployerDashboardController::class, 'index'])->name('frontend.employer.dashboard');
+
+    /* Job Post */
+    Route::get('/employer/jobs/create', [EmployerJobController::class, 'jobCreate'])->name('frontend.employer.jobs.create');
     Route::post('/employer/jobs/store/{id}', [EmployerJobController::class, 'store'])->name('employer.jobs.store');
+    Route::get("/employer/jobs/lists", [EmployerJobController::class, 'jobLists'])->name('frontend.employer.jobs.lists');
+    Route::get('/employer/jobs/edit/{id}', [EmployerJobController::class, 'edit'])->name('frontend.employer.jobs.edit');
+    Route::post("/employer/jobs/update", [EmployerJobController::class, 'update'])->name('frontend.employer.jobs.update');
+    
+    /* Profile Update */
+    Route::get("/employer/password/update", [EmployerDashboardController::class, 'password_update'])->name('frontend.employer.password_update');
 
+    /* Membership */
+    Route::get('/employer/memberships', [EmployerMembershipController::class, 'showMembership'])->name('frontend.employer.membership');
+
+    
     // Membership Apply
     Route::get('/membership/apply/{id}', [EmployerMembershipController::class, 'checkout'])->name('frontend.membership.apply');
     Route::post('/membership/apply/submit', [EmployerMembershipController::class, 'membershipApply'])->name('frontend.membership.apply.submit');
     Route::get('/membership/apply/success/page', [EmployerMembershipController::class, 'checkoutSuccess'])->name('frontend.membership.apply.success');
 
 
-    Route::get('/employer/memberships', [EmployerMembershipController::class, 'showMembership'])->name('frontend.employer.membership.show');
+    Route::get('/employer/jobs/{company_name}', [ProfileController::class, 'jobs'])->name('frontend.employer.jobs');
+    Route::put('/employer/profile/image', [ProfileController::class, 'imageUpdate'])->name('frontend.employer.profile.image.update');
+    Route::put('/employer/profile/company-data', [ProfileController::class, 'companyDataUpdate'])->name('frontend.employer.profile.company.data.update');
+
+   
+
+
+
+    Route::get('/employer/memberships/old', [EmployerMembershipController::class, 'showMembership'])->name('frontend.employer.membership.show');
 
     // Jobs Detail
-    Route::get('/employer/jobs/{id}', [ResumeController::class, 'resumes'])->name('frontend.employer.jobs.edit');
+    Route::get('/employer/jobs/{id}', [ResumeController::class, 'resumes'])->name('frontend.employer.jobs.edit.Old');
     Route::put('/employer/jobs/update/{id}', [ResumeController::class, 'resumeUpdate'])->name('frontend.employer.jobs.update');
 
 
@@ -135,6 +158,13 @@ Route::group(['middleware' => ['can:seeker','auth']], function () {
     Route::post('/seeker/job/apply', [SeekerJobController::class, 'jobApply'])->name('frontend.seeker.jobs.apply');
 
 });
+
+//authRedirect
+Route::group(['middlware'=>'auth'],function(){
+    Route::get("/redirect/auth",[RedirectController::class,"redirect"]);
+});
+
+
 
 // Job Hunting
 Route::post('/job/hunting/apply', [SeekerJobController::class, 'jobHuntingApply'])->name('frontend.job.hunting.apply');
