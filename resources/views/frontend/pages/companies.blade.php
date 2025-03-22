@@ -45,7 +45,7 @@
                     <div class="info-text mt-10">
                       <h5 class="font-bold"><a href="{{route('frontend.employer.profile', $data->company_name)}}">{{$data->company_name}}</a></h5>
                       
-                      <span class="card-location">{{$data->location->name}}</span>
+                    <span class="card-location">{{$data->location->name ?? ''}}</span>
                       <div class="mt-30"><a class="btn btn-grey-big" href="{{route('frontend.employer.profile', $data->company_name)}}"><span>{{$data->activeJobs->count()}}</span><span> Jobs Open</span></a></div>
                     </div>
                   </div>
