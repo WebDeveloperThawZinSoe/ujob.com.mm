@@ -49,10 +49,10 @@ class ProfileController extends Controller
             $asset_file->move(public_path().'/profile/', $img = rand(1, 1000).time().'.'.$request->profile_image->extension());
 
             // Delete old main image
-            if ($user->image != '') {
-                $del_main_image_path = public_path().'/profile/'.$user->image;
-                unlink($del_main_image_path);
-            }
+            // if ($user->image != '') {
+            //     $del_main_image_path = public_path().'/profile/'.$user->image;
+            //     unlink($del_main_image_path);
+            // }
 
         
 

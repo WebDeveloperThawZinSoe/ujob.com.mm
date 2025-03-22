@@ -51,13 +51,13 @@
                   <!-- </li> -->
                 @endcan
                 @can('seeker')
-                <li class="has-children"><a href="#">Dashboard</a>
+                <!-- <li class="has-children"><a href="#">Dashboard</a>
                 <ul class="sub-menu">
                   <li><a href="{{route('frontend.seeker.profile')}}" >Porfile</a></li>
                   <li><a href="{{route('frontend.cv', auth()->user()->seeker->id)}}">Preview CV</a></li>
                   
                 </ul>
-                </li>
+                </li> -->
                 @endcan
              
               @endauth

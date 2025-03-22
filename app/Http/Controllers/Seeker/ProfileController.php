@@ -11,16 +11,44 @@ use App\Models\SeekerExperience;
 use App\Models\SeekerProject;
 use App\Models\Skill;
 use App\Models\User;
+use App\Models\Employer;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
+
+    //dashboard
+    public function dashboard(){
+        $leading_employers = Employer::where("is_feature", 1)
+        ->inRandomOrder()
+        ->limit(4)
+        ->get();    
+        /* Job Based On Your Profile Feature */
+        $jobs = $jobs = Job::where('is_active', 1)->orderBy("id","desc")->paginate(10);
+        return view('frontend.seeker.dashboard', compact('leading_employers',"jobs"));
+    }
+
+    //index
     public function index(){
         $user = User::where('role', '=', 'seeker')->where('id', auth()->user()->id)->first();
         $seeker = $user->seeker;
         $myJobs = JobSeeker::where('seeker_id', $user->seeker->id)->paginate(8);
         $skills = Skill::all();
         return view('frontend.seeker.profile', compact('user', 'myJobs', 'seeker', 'skills'));
+    }
+
+    //appliedJobs
+    public  function appliedJobs(){
+        $user = User::where('role', '=', 'seeker')->where('id', auth()->user()->id)->first();
+        $seeker = $user->seeker;
+        $myJobs = JobSeeker::where('seeker_id', $user->seeker->id)->paginate(15);
+        return view('frontend.seeker.applied_jobs', compact('user', 'myJobs', 'seeker'));
+    }
+
+    //jobBasedOnProfile
+    public function jobBasedOnProfile(){
+        $jobs = $jobs = Job::where('is_active', 1)->orderBy("id","desc")->paginate(3);
+        return view('frontend.seeker.job_based_on_profile', compact("jobs"));
     }
 
     public function imageUpdate(Request $request){

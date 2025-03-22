@@ -85,7 +85,7 @@
             <div class="content-single">
               {!! $job->description !!}
             </div>
-            <div class="author-single"><span>{{$job->employer->company_name}}</span></div>
+            <div class="author-single"><span>{{$job->employer->company_name ?? ""}}</span></div>
             <div class="single-apply-jobs">
               <div class="row align-items-center">
                 <div class="col-md-5">
@@ -121,13 +121,13 @@
             <div class="sidebar-heading">
               <div class="avatar-sidebar">
                 <figure><img alt="jobBox" src="{{asset('profile/'.$job->employer->user->image)}}" width="100px"></figure>
-                <div class="sidebar-info"><span class="sidebar-company">{{$job->employer->company_name}}</span><span class="card-location">{{$job->employer->location->name}}</span><a class="link-underline mt-15" href="#">{{$job->employer->jobs->count()}} Open Jobs</a></div>
+                <div class="sidebar-info"><span class="sidebar-company">{{$job->employer->company_name ?? ""}}</span><span class="card-location">{{$job->employer->location->name  ?? ""}}</span><a class="link-underline mt-15" href="#">{{$job->employer->jobs->count()}} Open Jobs</a></div>
               </div>
             </div>
             <div class="sidebar-list-job">
               
               <ul class="ul-disc">
-                <li>{{$job->employer->location->name}}</li>
+                <li>{{$job->employer->location->name  ?? ""}}</li>
                 <li>Phone: {{$job->employer->phone}}</li>
                 <li>Email: {{$job->employer->user->email}}</li>
               </ul>
@@ -149,7 +149,7 @@
                             <div class="col-6">
                               <h6 class="card-price">{{$data->salary}}<span> Ks / Month</span></h6>
                             </div>
-                            <div class="col-6 text-end"><span class="card-briefcase">{{$data->location->name}}</span></div>
+                            <div class="col-6 text-end"><span class="card-briefcase">{{$data->location->name ?? ""}}</span></div>
                           </div>
                         </div>
                       </div>

@@ -19,8 +19,8 @@ class Employer extends Model
         'end_date',
         'total_jobs',
         'total_highlights',
-        'membership_name'
-
+        'membership_name',
+        'is_feature',
     ];
 
     public function user()

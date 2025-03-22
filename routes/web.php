@@ -135,6 +135,12 @@ Route::group(['middleware' => ['can:employer','auth']], function () {
 
 // seeker
 Route::group(['middleware' => ['can:seeker','auth']], function () {
+
+    Route::get('/seeker/dashboard', [SeekerProfileController::class, 'dashboard'])->name('frontend.seeker.dashboard');
+    Route::get("/seeker/job/base_on_profile",[SeekerProfileController::class,"jobBasedOnProfile"])->name('frontend.seeker.job.base_on_profile');
+    /* Seeker Apply Job */
+    Route::get("/seeker/applied/jobs",[SeekerProfileController::class,"appliedJobs"])->name('frontend.seeker.applied.jobs');
+
     Route::get('/seeker/profile', [SeekerProfileController::class, 'index'])->name('frontend.seeker.profile');
     Route::put('/seeker/profile/image', [SeekerProfileController::class, 'imageUpdate'])->name('frontend.seeker.profile.image.update');
 
