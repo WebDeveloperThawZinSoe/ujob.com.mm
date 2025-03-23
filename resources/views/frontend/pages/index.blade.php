@@ -99,7 +99,12 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-lg-5 col-md-5 text-end"><span class="card-text-price">{{$data->salary}}</span><span class="text-muted">Month</span></div>
+                    @if($data->salary != null)
+                    <div class="col-lg-5 col-md-5 text-end"><span class="card-text-price">{{ number_format($data->salary) }}</span> &nbsp;<span class="text-muted">Month</span></div>
+                    @else  
+                    <div class="col-lg-5 col-md-5 text-end"><span class="card-text-price">Negotiate</span></div>
+
+                    @endif
                   </div>
                 </div>
               </div>
@@ -129,7 +134,7 @@
             <h5 class="color-brand-2 mb-15 mt-15">Create Profile</h5>
             <h2 class="color-brand-1 mt-0 mb-15">Create Your Personal Account Profile</h2>
             <p class="font-lg color-text-paragraph-2">Work Profile is a personality assessment that measures an individual's work personality through their workplace traits, social and emotional traits; as well as the values and aspirations that drive them forward.</p>
-            <div class="mt-20"><a class="btn btn-default">Create Profile</a></div>
+            <div class="mt-20"><a href="/register" class="btn btn-default">Create Profile</a></div>
           </div>
         </div>
       </div>
