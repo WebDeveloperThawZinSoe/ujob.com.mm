@@ -83,7 +83,9 @@
                                         data-user-email="{{ $data->user_email }}"
                                         data-user-phone="{{ $data->user_phone }}"
                                         data-user-cv="{{ $data->user_cv }}"
-                                        data-cover-letter="{{ $data->cover_letter }}">
+                                        data-cover-letter="{{ $data->cover_letter }}"
+                                        data-user-seeker-id="{{ $data->seeker_id }}"
+                                        >
                                         <td>{{ $counter++ }}</td>
                                         <td>{{ $data->user_name }}</td>
                                         <td>{{ $data->user_phone}}</td>
@@ -184,6 +186,10 @@
                                 <td scope="row">CV</td>
                                 <td><a class="text-warning" id="modalUserCv" href="" target="_blank">Download CV</a></td>
                             </tr>
+                            <tr class="">
+                                <td scope="row">Ujob CV Detail</td>
+                                <td><a class="text-warning" id="modalUserCvUjob" href="#"target="_blank">Download CV</a></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -253,6 +259,7 @@
           const userPhone = row.getAttribute('data-user-phone');
           const userCv = row.getAttribute('data-user-cv');
           const coverLetter = row.getAttribute('data-cover-letter');
+          const seekerId = row.getAttribute('data-user-seeker-id');
           
           document.getElementById('modalStatus').innerText = status;
           document.getElementById('modalUserName').innerText = userName;
@@ -262,7 +269,7 @@
           document.getElementById('modalUserCv').href = `/cv-data-001/${userCv}`;
           document.getElementById('selectedStatus').innerText = status;
           document.getElementById('resumeUpdateForm').setAttribute('action', formUrl);
-          
+          document.getElementById('modalUserCvUjob').href = `/cv/${seekerId}`;
           $('#resumeDetailModal').modal('show');
         });
       });

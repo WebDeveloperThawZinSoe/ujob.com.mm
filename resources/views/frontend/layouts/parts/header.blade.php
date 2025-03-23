@@ -179,39 +179,63 @@
                 <li class="">
                   <a class="{{ Route::is('frontend.pricing') ? 'active' : '' }}" href="{{route('frontend.pricing')}}">Pricing</a>
                 </li>
-                @guest
-                <li class="">
-                  <a class="{{ Route::is('frontend.contact') ? 'active' : '' }}" href="{{route('frontend.auth.register.employer')}}">Employer Register</a>
-                </li>
-                @endguest
+                
               
               </ul>
             </nav>
           </div>
           <div class="mobile-account">
-            <h6 class="mb-10">Your Account</h6>
+            @guest
+            <h6 class="mb-10">Account</h6>
+            @endguest
+            @auth
+            <h6 class="mb-10">Dashboard</h6>
+            @endauth
             <ul class="mobile-menu font-heading">
               @auth
               @can('employer')
-                <li><a href="{{route('frontend.employer.profile', auth()->user()->employer->company_name)}}">Porfile</a></li>
+                <li><a href="{{ route('frontend.employer.dashboard') }}">Dashboard</a></li>
+                <li><a href="{{ route('frontend.employer.jobs.lists') }}">My Jobs</a></li>
+                <li><a href="{{ route('frontend.employer.jobs.lists') }}">CV List</a></li>
+                @php 
+                $user_id = Auth::user()->id;
+                $employer = App\Models\Employer::where('user_id', $user_id)->first();
+                @endphp
+                <li><a href="/employer/profile/{{ $employer->company_name }}">Profile Setting</a></li>
+                <li><a href="{{ route('frontend.employer.password_update') }}">Change Password</a></li>
+                <!-- <li><a href="{{route('frontend.employer.profile', auth()->user()->employer->company_name)}}">Porfile</a></li>
                 <li><a href="{{route('frontend.employer.jobs', auth()->user()->employer->company_name)}}">Post Jobs</a></li>
-                <li><a href="{{route('frontend.employer.membership.show')}}">My Membership</a></li>
+                <li><a href="{{route('frontend.employer.membership.show')}}">My Membership</a></li> -->
               
               @endcan
               @can('seeker')
-                <li><a href="{{route('frontend.seeker.profile')}}" >Porfile</a></li>
-                <li><a href="{{route('frontend.cv', auth()->user()->seeker->id)}}">Preview CV</a></li>
+                <li><a href="/seeker/dashboard">Dashboard</a></li>
+                <li><a href="/seeker/profile">My Profile</a></li>
+                <li><a href="/seeker/job/base_on_profile">Jobs Based On Your Profile</a></li>
+                <li><a href="/seeker/applied/jobs"> My Jobs</a></li>
+               
+                <li><a  target="_blank" href="{{ route('frontend.cv', auth()->user()->seeker->id) }}">View Ujob CV</a></li>
+                <!-- <li><a href="{{route('frontend.seeker.profile')}}" >Porfile</a></li>
+                <li><a href="{{route('frontend.cv', auth()->user()->seeker->id)}}">Preview CV</a></li> -->
                 
               @endcan
-            @endauth
-
-
               <li><a href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                               document.getElementById('logout-form').submit();">Sign Out</a></li>
+            @endauth
+
+            @guest
+            <li><a href="/register/employer"
+                >Employer Register</a></li>
+                <li><a href="/register/employer"
+                >Seeker Register</a></li>
+                <li><a href="/login"
+                >Login Your Account</a></li>
+            @endguest
+             
             </ul>
           </div>
-          <div class="site-copyright">Copyright 2022 &copy; JobBox. <br>Designed by AliThemes.</div>
+        
         </div>
       </div>
     </div>

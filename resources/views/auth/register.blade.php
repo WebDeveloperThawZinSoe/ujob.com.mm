@@ -11,8 +11,8 @@
             <p class="font-sm text-brand-2">Register </p>
             <h2 class="mt-10 mb-5 text-brand-1">Register As Seeker</h2>
             <p class="font-sm text-muted mb-30">YOUR DREAM JOB AT YOUR FINGERTIPS!</p>
-            <!-- <button class="btn social-login hover-up mb-20"><img src="assets/imgs/template/icons/icon-google.svg" alt="jobbox"><strong>Sign up with Google</strong></button>
-            <div class="divider-text-center"><span>Or continue with</span></div> -->
+            <button class="btn social-login hover-up mb-20"><img src="assets/imgs/template/icons/icon-google.svg" alt="jobbox"><strong>Sign up with Google</strong></button>
+            <div class="divider-text-center"><span>Or continue with</span></div>
           </div>
           <form class="login-register text-start mt-20" method="POST" action="{{ route('register') }}">
             @csrf
