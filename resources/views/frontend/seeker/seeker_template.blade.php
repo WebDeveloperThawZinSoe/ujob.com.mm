@@ -13,19 +13,19 @@
     color: #333;
     text-decoration: none;
     transition: all 0.3s ease;
-}
+    }
 
-.btn-border:hover {
-    background-color: #f8f9fa;
-    color: #007bff;
-}
+    .btn-border:hover {
+        background-color: #f8f9fa;
+        color: #007bff;
+    }
 
-.btn-border.active {
-    background-color: #007bff !important;
-    color: white !important;
-    border-color: #007bff !important;
-    font-weight: bold;
-}
+    .btn-border.active {
+        background-color: #007bff !important;
+        color: white !important;
+        border-color: #007bff !important;
+        font-weight: bold;
+    }
 
 </style>
 @endsection

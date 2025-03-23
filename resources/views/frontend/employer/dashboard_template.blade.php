@@ -3,6 +3,7 @@
 @section('style')
 <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
 /* Custom CSS to increase the height of the Quill editor */
 .ql-container {
@@ -15,6 +16,30 @@
     /* Ensure the content area takes the full height */
 }
 </style>
+<style>
+    .btn-border {
+        display: flex;
+        align-items: center;
+        padding: 10px 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        color: #333;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-border:hover {
+        background-color: #f8f9fa;
+        color: #007bff;
+    }
+
+    .btn-border.active {
+        background-color: #007bff !important;
+        color: white !important;
+        border-color: #007bff !important;
+        font-weight: bold;
+    }
+</style>
 @endsection
 
 @section('breadcrumb')
@@ -23,9 +48,9 @@
 
 @section('content')
 
-@php 
-    $user_id = Auth::user()->id;
-    $employer = App\Models\Employer::where('user_id', $user_id)->first();
+@php
+$user_id = Auth::user()->id;
+$employer = App\Models\Employer::where('user_id', $user_id)->first();
 @endphp
 
 
@@ -92,46 +117,58 @@
         <div class="row">
             <div class="col-lg-3 col-md-4 col-sm-12">
                 <div class="box-nav-tabs nav-tavs-profile mb-5">
-                    <ul class="nav" role="tablist">
+                    <ul class="nav flex-column" role="tablist">
                         <li>
-                            <a class="btn btn-border aboutus-icon mb-20 active" href="{{route('frontend.employer.dashboard')}}"
-                               
-                                >Dashboard</a>
+                            <a class="btn btn-border mb-20  {{ request()->is('employer/dashboard') ? 'active' : '' }}"
+                                href="{{ route('frontend.employer.dashboard') }}">
+                                <i class="fas fa-tachometer-alt"></i> &nbsp; Dashboard
+                            </a>
                         </li>
                         <li>
-                            <a href="{{route('frontend.employer.jobs.lists')}}" class="btn btn-border recruitment-icon mb-20" href="#tab-my-jobs" >My Jobs</a>
-                        </li>
-
-                        <li>
-                            <a class="btn btn-border recruitment-icon mb-20" href="#tab-cv-list" >CV List</a>
-                        </li>
-                        <li>
-                            <a class="btn btn-border people-icon mb-20" href="{{route('frontend.employer.membership')}}" >Membership</a>
+                            <a class="btn btn-border mb-20 {{ request()->is('employer/jobs/lists') ? 'active' : '' }}"
+                                href="{{ route('frontend.employer.jobs.lists') }}">
+                                <i class="fas fa-briefcase"></i> &nbsp; My Jobs
+                            </a>
                         </li>
                         <li>
-                            <a target="_blank" class="btn btn-border edit-icon mb-20" href="/employer/profile/{{ $employer->company_name }}" >Profile Setting</a>
+                            <a class="btn btn-border mb-20 {{ request()->is('employer/cv-list') ? 'active' : '' }}"
+                                href="#tab-cv-list">
+                                <i class="fas fa-file"></i> &nbsp; CV List
+                            </a>
                         </li>
-
-
                         <li>
-                            <a class="btn btn-border edit-icon mb-20" href="{{route('frontend.employer.password_update')}}" >Change Password</a>
+                            <a class="btn btn-border mb-20 {{ request()->is('employer/memberships') ? 'active' : '' }}"
+                                href="{{ route('frontend.employer.membership') }}">
+                                <i class="fas fa-users"></i> &nbsp; Membership
+                            </a>
                         </li>
-
+                        <li>
+                            <a target="_blank" class="btn btn-border mb-20"
+                                href="/employer/profile/{{ $employer->company_name }}">
+                                <i class="fas fa-user-cog"></i> &nbsp; Profile Setting
+                            </a>
+                        </li>
+                        <li>
+                            <a class="btn btn-border mb-20 {{ request()->is('employer/password/update') ? 'active' : '' }}"
+                                href="{{ route('frontend.employer.password_update') }}">
+                                <i class="fas fa-key"></i> &nbsp; Change Password
+                            </a>
+                        </li>
                         <li>
                             <!-- Logout Button -->
-                            <a class="btn btn-danger btn-border logout-icon mb-20" href="#"
-                                onclick="confirmLogout(event)"
+                            <a class="btn btn-danger btn-border mb-20" href="#" onclick="confirmLogout(event)"
                                 style="background-color: #dc3545; border-color: #dc3545; color: white;">
-                                Logout
+                                <i class="fas fa-sign-out-alt"></i> &nbsp; Logout
                             </a>
 
                             <!-- Hidden Logout Form -->
                             <form id="logout-form" action="/logout" method="POST" style="display: none;">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             </form>
-
                         </li>
                     </ul>
+
+                   
                 </div>
             </div>
 

@@ -52,6 +52,9 @@
                                       @endif
                                   @endcan
                                 @endauth
+                                @guest 
+                <a href="/login" class="btn btn-apply-icon btn-apply btn-apply-big hover-up btn-apply-now" style="color:white !important;">Login First</a>
+                @endguest
                                 </div>
                               </div>
                             </div>

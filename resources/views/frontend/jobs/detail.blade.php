@@ -27,13 +27,28 @@
                           $currentDate = \Carbon\Carbon::now();
                           $jobDeadline = \Carbon\Carbon::parse($job->deadline);
                           $hasApplied = auth()->user()->appliedJobs->contains($job->id);
+                          $seeker_id = auth()->user()->seeker->id;
+                          
+                          $hasApplied = App\Models\JobSeeker::where('job_id', $job->id)->where('seeker_id', $seeker_id)->count();
+             
                       @endphp
 
                       @if ($jobDeadline->isFuture() && !$hasApplied)
                           <div class="btn btn-apply-icon btn-apply btn-apply-big hover-up btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm" data-bs-jobName="{{ $job->title }}" data-bs-jobId="{{ $job->id }}">Apply now</div>
+
+                      @endif
+                      @if(!$jobDeadline->isFuture())
+                      <div ><span class="btn btn-danger" style="border-radius:0px !important;">Apply Date Expired</span></div>
+                      @endif
+                      @if($hasApplied)
+                      <div ><span class="btn btn-success" style="border-radius:0px !important;">Applied</span></div>
                       @endif
                   @endcan
                 @endauth
+
+                @guest 
+                <a href="/login" class="btn btn-apply-icon btn-apply btn-apply-big hover-up btn-apply-now" style="color:white !important;">Login First</a>
+                @endguest
 
               </div>
             </div>
@@ -97,8 +112,13 @@
                       @if ($jobDeadline->isFuture() && !$hasApplied)
                           <div class="btn btn-default mr-15 btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm" data-bs-jobName="{{ $job->title }}" data-bs-jobId="{{ $job->id }}">Apply now</div>
                       @endif
+
+                      
                   @endcan
                 @endauth
+                @guest 
+                <a href="/login" class="btn btn-apply-icon btn-apply btn-apply-big hover-up btn-apply-now" style="color:white !important;">Login First</a>
+                @endguest
                 </div>
                 <div class="col-md-7 text-lg-end social-share">
                   <h6 class="color-text-paragraph-2 d-inline-block d-baseline mr-10">Share this</h6>
@@ -190,7 +210,7 @@
           <div class="swiper-button-next swiper-button-next-4"></div>
           <div class="swiper-button-prev swiper-button-prev-4"></div>
         </div>
-        <div class="text-center"><a class="btn btn-grey" href="#">Load more posts</a></div>
+       
       </div>
     </div>
   </section>

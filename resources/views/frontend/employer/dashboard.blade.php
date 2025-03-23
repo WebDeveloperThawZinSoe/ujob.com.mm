@@ -87,6 +87,7 @@
                                             <th>Title & Job Category</th>
                                             <th>Start Date</th>
                                             <th>Deadline</th>
+                                            <th>Resume</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -101,6 +102,12 @@
                                             </td>
                                             <td>{{ $job->created_at->format('Y-m-d') }}</td>
                                             <td>{{ $job->deadline }}</td>
+                                            <td>
+                                               @php 
+                                                echo App\Models\JobSeeker::where('job_id', $job->id)->count();
+                                               @endphp  
+                                               
+                                            </td>
                                             <td>
                                                 <div class="dropdown open">
                                                     <button class="btn btn-warning dropdown-toggle" type="button"

@@ -80,12 +80,13 @@ $skills = explode(', ', $data->skills);
 
                     @if ($jobDeadline->isFuture() && !$hasApplied)
                     <div class="btn btn-apply-now " data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm"
-                        data-bs-jobName="{{ $data->title }}" data-bs-jobId="{{ $data->id }}">Apply now</div>
+                        data-bs-jobName="{{ $data->title }}" data-bs-jobId="{{ $data->id }}">Apply now 1</div>
                     @endif
+                    
                     @endcan
                     @endauth
 
-
+                    
 
                 </div>
             </div>
