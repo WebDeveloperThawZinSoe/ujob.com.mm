@@ -16,7 +16,8 @@ class Seeker extends Model
         'user_id',
         'skills',
         'contact_number',
-        'viber_number'
+        'viber_number',
+        'open_to_work'
     ];
 
     public function user()

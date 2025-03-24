@@ -22,16 +22,16 @@
                   <div class="display-flex2">
                     <div class="box-border mr-10"><span class="text-sortby">Show:</span>
                       <div class="dropdown dropdown-sort">
-                        <button class="btn dropdown-toggle" id="dropdownSort" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static"><span>12</span><i class="fi-rr-angle-small-down"></i></button>
-                        <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownSort">
+                        <!-- <button class="btn dropdown-toggle" id="dropdownSort" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static"><span>12</span><i class="fi-rr-angle-small-down"></i></button> -->
+                        <!-- <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownSort">
                           <li><a class="dropdown-item active" href="#">10</a></li>
                           <li><a class="dropdown-item" href="#">12</a></li>
                           <li><a class="dropdown-item" href="#">20</a></li>
-                        </ul>
+                        </ul> -->
                       </div>
                     </div>
                     
-                    <div class="box-view-type"><a class="view-type" href="#"><img src="assets/imgs/template/icons/icon-grid-hover.svg" alt="jobBox"></a></div>
+                    <!-- <div class="box-view-type"><a class="view-type" href="#"><img src="assets/imgs/template/icons/icon-grid-hover.svg" alt="jobBox"></a></div> -->
                   </div>
                 </div>
               </div>

@@ -34,6 +34,41 @@
                 </ul>
             </li>
 
+
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-user"></i>
+                    </span>
+                    <span class="title">Seekers</span>
+                    <span class="arrow">
+                        <i class="arrow-icon"></i>
+                    </span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="{{ Route::is('admin.seeker.index') ? 'active' : '' }}">
+                        <a href="/admin/seekers">All Seekers</a>
+                    </li> 
+                    <li class="{{ Route::is('admin.seeker.open_to_work') ? 'active' : '' }}">
+                        <a href="/admin/seekers/open-to-work">Open To Work Seekers</a>
+                    </li> 
+                   
+                    
+                </ul>
+            </li>
+
+
+            <li class="nav-item dropdown {{ Route::is('admin.employers.index') ? 'active' : '' }}">
+                <a href="{{route('admin.employers.index')}}">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-appstore"></i>
+                    </span>
+                    <span class="title">Employers</span>
+                </a>
+            </li>
+
+
+
             <li class="nav-item dropdown {{ Route::is('admin.categories.index') ? 'active' : '' }}">
                 <a href="{{route('admin.categories.index')}}">
                     <span class="icon-holder">
@@ -88,7 +123,7 @@
             </li>
 
             <li class="nav-item dropdown {{ Route::is('admin.orders.index') ? 'active' : '' }}">
-                <a href="{{route('admin.orders.index')}}">
+                <a href="/cooming-soon">
                     <span class="icon-holder">
                         <i class="anticon anticon-solution"></i>
                     </span>
@@ -96,7 +131,7 @@
                 </a>
             </li>
 
-            <li class="nav-item dropdown {{ Route::is('admin.email-lists.index') ? 'active' : '' }}">
+            <!-- <li class="nav-item dropdown {{ Route::is('admin.email-lists.index') ? 'active' : '' }}">
                 <a href="{{route('admin.email-lists.index')}}">
                     <span class="icon-holder">
                         <i class="anticon anticon-solution"></i>
@@ -112,7 +147,7 @@
                     </span>
                     <span class="title">Seekers / CV</span>
                 </a>
-            </li>
+            </li> -->
 
             {{-- <li class="nav-item dropdown {{ Route::is('admin.events.index') ? 'active' : '' }}">
                 <a href="{{route('admin.events.index')}}">

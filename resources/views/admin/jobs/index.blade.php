@@ -72,40 +72,48 @@
             @foreach ($jobs as $item)
             <div class="col-md-3 mb-2">
                 <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <div class="media">
-                                
-                                <div class="m-l-1">
-                                    <h5 class="m-b-0">{{$item->title}}</h5>
-                                    {{-- need to update --}}
-                                    <span class="text-muted font-size-13">{{$item->job_type}} | {{ $item->created_at->diffForHumans() }}</span>
-                                    <span class="text-muted font-size-12">Company : {{$item->employer->company_name}}</span>
-                                </div>
-                            </div>
-                            <div class="dropdown dropdown-animated scale-left">
-                                <a class="text-gray font-size-18" href="javascript:void(0);" data-toggle="dropdown">
-                                    <i class="anticon anticon-setting"></i>
-                                </a>
-                                <div class="dropdown-menu">
-                                    <a href="{{route('admin.jobs.show', $item->id)}}" class="dropdown-item" type="button">
-                                        <i class="anticon anticon-eye"></i>
-                                        <span class="m-l-10">View</span>
-                                    </a>
+                    <a href="{{route('admin.jobs.show', $item->id)}}">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div class="media">
                                     
+                                    <div class="m-l-1">
+                                        <h5 class="m-b-0">{{$item->title}}</h5>
+                                        {{-- need to update --}}
+                                        <span class="text-muted font-size-13">{{$item->job_type}} | {{ $item->created_at->diffForHumans() }}</span>
+                                        <span class="text-muted font-size-12">Company : {{$item->employer->company_name}}</span>
+                                    </div>
+                                </div>
+                                <div class="dropdown dropdown-animated scale-left">
+                                    <a class="text-gray font-size-18" href="javascript:void(0);" data-toggle="dropdown">
+                                        <i class="anticon anticon-setting"></i>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a href="{{route('admin.jobs.show', $item->id)}}" class="dropdown-item" type="button">
+                                            <i class="anticon anticon-eye"></i>
+                                            <span class="m-l-10">View</span>
+                                        </a>
+                                        
+                                    </div>
                                 </div>
                             </div>
+                            <p class="m-t-25">
+                                <div>
+                                    
+                                    
+                                    <p style="text-align:right;" class="text-warning">
+                                        @if($item->salary != null)
+                                        {{number_format($item->salary)}} Ks
+                                        @else 
+                                        Negotiate
+                                        @endif
+                                    </p>
+                                </div>
+                            </p>
+                            
+                            
                         </div>
-                        <p class="m-t-25">
-                            <div>
-                                
-                                
-                                <p style="text-align:right;" class="text-warning">{{$item->salary}} Month</p>
-                            </div>
-                        </p>
-                        
-                        
-                    </div>
+                    </a>
                 </div>
             </div>
             @endforeach

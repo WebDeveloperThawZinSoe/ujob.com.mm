@@ -19,6 +19,8 @@ use App\Http\Controllers\Seeker\JobController as SeekerJobController;
 use App\Http\Controllers\Seeker\ProfileController as SeekerProfileController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\RedirectController;
+use App\Http\Controllers\EmployerController;
+use App\Http\Controllers\SeekerController;
 use App\Http\Controllers\Employer\EmployerDashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -83,6 +85,22 @@ Route::group(['middleware' => ['can:admin','auth']], function () {
     // Location 
     Route::get('/admin/email-lists', [EmailListController::class, 'index'])->name('admin.email-lists.index');
     Route::delete('/admin/email-lists/destroy/{id}', [EmailListController::class, 'destroy'])->name('admin.email-lists.destroy');
+
+
+    //Employer
+    Route::get('/admin/employers', [EmployerController::class, 'index'])->name('admin.employers.index');
+    Route::get("/admin/employer/{id}",[EmployerController::class, 'detail']);
+    Route::delete("/admin/employer/job/{id}/delete",[EmployerController::class, 'deleteJob']);
+
+
+    //Seeker
+    Route::get("/admin/seekers",[SeekerController::class,"index"])->name("admin.seeker.index");
+    Route::get("/admin/seeker/{id}",[SeekerController::class,"detail"])->name("admin.seeker.detail");
+    Route::get("/admin/seekers/open-to-work",[SeekerController::class,"open_to_work"])->name("admin.seeker.open_to_work");
+    Route::delete("/admin/seeker/{id}/delete",[SeekerController::class,"deleteSeeker"]);
+
+    //Change Password 
+    Route::get("/admin/change-password",[HomeController::class,"adminChangePassword"]);
 });
 
 
@@ -212,3 +230,8 @@ Route::get('/cv/download/{id}', [PageController::class, 'downloadCv'])->name('fr
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//CoomingSoon
+Route::get("/cooming-soon",function(){
+    return view("frontend.pages.coming-soon");
+})->name('frontend.coming.soon');

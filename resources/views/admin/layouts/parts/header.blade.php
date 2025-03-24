@@ -51,9 +51,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="
-                    {{-- {{route('admin.accounts.detail', Auth::user()->id)}} --}}
-                    " class="dropdown-item d-block p-h-15 p-v-10">
+                    <a href="/admin/change-password" class="dropdown-item d-block p-h-15 p-v-10">
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <i class="anticon opacity-04 font-size-16 anticon-user"></i>
@@ -65,23 +63,42 @@
                 
                 
             
-            <a href="
-            {{-- {{ route('logout') }} --}}
-            "
-            onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item d-block p-h-15 p-v-10">
-            <div class="d-flex align-items-center justify-content-between">
-                <div>
-                    <i class="anticon opacity-04 font-size-16 anticon-logout"></i>
-                    <span class="m-l-10">Logout</span>
-                </div>
-                <i class="anticon font-size-10 anticon-right"></i>
-            </div>
-            
-            {{-- logout form --}}
-            <form id="logout-form" action=" {{ route('logout') }}  " method="POST" class="d-none">
-                @csrf
-            </form>
-            {{-- end logout form --}}
+                <a href="#" onclick="confirmLogout(event);" class="dropdown-item d-block p-h-15 p-v-10">
+    <div class="d-flex align-items-center justify-content-between">
+        <div>
+            <i class="anticon opacity-04 font-size-16 anticon-logout"></i>
+            <span class="m-l-10">Logout</span>
+        </div>
+        <i class="anticon font-size-10 anticon-right"></i>
+    </div>
+</a>
+
+<!-- Logout Form -->
+<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+    @csrf
+</form>
+
+<!-- SweetAlert Script -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function confirmLogout(event) {
+        event.preventDefault();
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You will be logged out!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Yes, logout!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById("logout-form").submit();
+            }
+        });
+    }
+</script>
+
         </a>
     </div>
 </li>

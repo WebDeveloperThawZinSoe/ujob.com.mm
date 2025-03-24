@@ -66,7 +66,7 @@
               </div>
               <div class="login_footer form-group d-flex justify-content-between">
                 <label class="cb-container">
-                  <input type="checkbox"><span class="text-small">Agree our terms and policy</span><span class="checkmark"></span>
+                  <input required type="checkbox"><span class="text-small">Agree our terms and policy</span><span class="checkmark"></span>
                 </label><a class="text-muted" href="#">Lean more</a>
               </div>
               <div class="form-group">

@@ -7,9 +7,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>UJob Admin - {{ $page_action ?? '' }}</title>
+    <title>UJob Admin - {{ $page_action ?? 'Dashoboard' }}</title>
     <link rel="shortcut icon" href="{{asset('/backend/images/logofc.png')}}" type="image/x-icon" />
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Scripts -->
     
     @yield('style')
@@ -65,6 +65,24 @@
 
     <!-- page js -->
     @yield('script')
+
+    @if(session('success'))
+        <script>
+        Swal.fire(
+            'Success!',
+            '{{ session('success') }}',
+            'success'
+        );
+        </script>
+    @elseif(session('error'))
+    <script>
+        Swal.fire(
+            'Error!',
+            '{{ session('error') }}',
+            'error'
+        );
+        </script>
+    @endif
 
 </body>
 </html>

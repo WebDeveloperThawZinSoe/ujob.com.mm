@@ -41,5 +41,10 @@ class HomeController extends Controller
         return view('admin.index', compact('totalJobs', 'totalSeekers', 'totalEmployers', 'latestJobs', 'latestSeekers', 'latestEmployers'));
         // return view('admin.index');
     }
+
+    //adminChangePassword
+    public function adminChangePassword(){
+        return view('admin.password_change');
+    }
     
 }

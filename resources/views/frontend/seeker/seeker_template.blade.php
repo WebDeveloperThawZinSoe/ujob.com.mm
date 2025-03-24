@@ -118,12 +118,12 @@ $seeker = App\Models\Seeker::where('user_id', $user->id)->first();
                                 <i class="fas fa-file-alt"></i>  &nbsp; My Jobs
                             </a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a target="_blank" class="btn btn-border mb-20 {{ request()->is('frontend/cv*') ? 'active' : '' }}"
                                 href="{{ route('frontend.cv', auth()->user()->seeker->id) }}">
                                 <i class="fas fa-file"></i> &nbsp; View Ujob CV
                             </a>
-                        </li>
+                        </li> -->
                         <li>
                             <!-- Logout Button -->
                             <a class="btn btn-danger btn-border mb-20" href="#"

@@ -67,7 +67,13 @@
                             @foreach ($latestJobs as $job)
                             <tr>
                               <td>{{ $job->title }}</td>
-                              <td>{{ $job->salary }} / Month</td>
+                              <td>
+                                @if($job->salary != null)
+                                {{number_format($job->salary )}} Ks
+                                @else 
+                                Negotiate
+                                @endif
+                                </td>
                               <td>{{ $job->job_type }}</td>
                               <td>
                                 <a href="{{ route('admin.jobs.show', $job->id) }}" class="btn btn-icon btn-hover btn-sm btn-rounded text-primary">

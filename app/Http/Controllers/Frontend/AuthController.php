@@ -43,6 +43,7 @@ class AuthController extends Controller
             'user_id' => $user->id,
             'total_jobs' => 10,
             'total_highlights' =>  1,
+            'membership_name' => 'Basic'
         ]);
 
         

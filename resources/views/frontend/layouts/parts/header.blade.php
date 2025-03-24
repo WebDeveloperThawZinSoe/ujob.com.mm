@@ -196,7 +196,7 @@
               @can('employer')
                 <li><a href="{{ route('frontend.employer.dashboard') }}">Dashboard</a></li>
                 <li><a href="{{ route('frontend.employer.jobs.lists') }}">My Jobs</a></li>
-                <li><a href="{{ route('frontend.employer.jobs.lists') }}">CV List</a></li>
+                <!-- <li><a href="{{ route('frontend.employer.jobs.lists') }}">CV List</a></li> -->
                 @php 
                 $user_id = Auth::user()->id;
                 $employer = App\Models\Employer::where('user_id', $user_id)->first();
