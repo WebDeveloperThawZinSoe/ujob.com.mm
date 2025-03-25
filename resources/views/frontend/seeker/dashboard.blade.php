@@ -85,7 +85,7 @@
                             @foreach($leading_employers as $employer)
                             <div class="col-md-3 col-sm-4 col-xs-6"
                                 style="display: flex; flex-direction: column; align-items: center; text-align: center; background: #f8f9fa; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08); transition: transform 0.3s ease-in-out;">
-
+                                <a href="/employer/profile/{{$employer->company_name}}">
                                 <div style="display: flex; flex-direction: column; align-items: center;">
                                     @if($employer->user->image == null || $employer->user->image == '')
                                     <img src="{{ asset('assets/imgs/company_logo.png') }}" alt="logo"
@@ -103,6 +103,7 @@
                                 <span style="font-size: 14px; color: #666; margin-top: 5px;">
 
                                 </span>
+                                </a>
                             </div>
                             @endforeach
                         </div>
