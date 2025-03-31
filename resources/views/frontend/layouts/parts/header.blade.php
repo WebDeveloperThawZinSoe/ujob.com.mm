@@ -227,7 +227,7 @@
             @guest
             <li><a href="/register/employer"
                 >Employer Register</a></li>
-                <li><a href="/register/employer"
+                <li><a href="/register"
                 >Seeker Register</a></li>
                 <li><a href="/login"
                 >Login Your Account</a></li>

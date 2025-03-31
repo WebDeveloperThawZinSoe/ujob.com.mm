@@ -23,6 +23,7 @@ use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\SeekerController;
 use App\Http\Controllers\Employer\EmployerDashboardController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 
 Route::group(['middleware' => ['can:admin','auth']], function () {
@@ -235,3 +236,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get("/cooming-soon",function(){
     return view("frontend.pages.coming-soon");
 })->name('frontend.coming.soon');
+
+
+
+Route::get('auth/google', function () {
+    return Socialite::driver('google')->redirect();
+})->name('google.login');
+
+Route::get('auth/google/callback', [AuthController::class,"googleSSO"]);

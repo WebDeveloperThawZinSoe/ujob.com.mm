@@ -14,7 +14,7 @@
             <p class="font-sm text-brand-2">Welcome back! </p>
             <h2 class="mt-10 mb-5 text-brand-1">Sign in</h2>
             <p class="font-sm text-muted mb-30">YOUR DREAM JOB AT YOUR FINGERTIPS!</p>
-            <button class="btn social-login hover-up mb-20"><img src="assets/imgs/template/icons/icon-google.svg" alt="jobbox"><strong>Sign up with Google</strong></button>
+            <a href="{{ route('google.login') }}" class="btn social-login hover-up mb-20"><img src="assets/imgs/template/icons/icon-google.svg" alt="jobbox"><strong>Sign up with Google</strong></a>
             <div class="divider-text-center"><span>Or continue with</span></div>
           </div>
           <form class="login-register text-start mt-20" action="{{ route('login') }}" method="post">
@@ -39,7 +39,7 @@
             </div>
             <div class="login_footer form-group d-flex justify-content-between">
               <label class="cb-container">
-                <input  type="checkbox" {{ old('remember') ? 'checked' : '' }}><span class="text-small">Remenber me</span><span class="checkmark"></span>
+                <input  type="checkbox" {{ old('remember') ? 'checked' : '' }}><span class="text-small">Remember me</span><span class="checkmark"></span>
               </label><a class="text-muted" href="/cooming-soon">Forgot Password</a>
             </div>
             <div class="form-group">

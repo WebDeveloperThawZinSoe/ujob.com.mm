@@ -7,6 +7,8 @@ use App\Models\Employer;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Socialite\Facades\Socialite;
+use App\Models\Seeker;
 
 class AuthController extends Controller
 {
@@ -55,5 +57,31 @@ class AuthController extends Controller
         return redirect()->route('frontend.employer.profile', ['company_name' => $employer->company_name]);
     }
 
+
+    public function googleSSO(){
+        $googleUser = Socialite::driver('google')->stateless()->user(); // Add stateless()
+    
+        // Find or create the user
+        $user = User::updateOrCreate([
+            'email' => $googleUser->getEmail(),
+        ], [
+            'name' => $googleUser->getName(),
+            'google_id' => $googleUser->getId(),
+            'password' => bcrypt('password'),
+            'role' => "seeker"
+        ]);
+    
+        Seeker::create([
+            'user_id' => $user->id,
+            'viber_number' => null,
+            'full_name' => $user->name,
+        ]);
+    
+        auth()->login($user);
+    
+        return redirect('/redirect/auth');
+    }
+    
     
 }
+ 

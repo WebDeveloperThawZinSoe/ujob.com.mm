@@ -43,10 +43,10 @@
                                 style="display: flex; flex-direction: column; align-items: start; gap: 5px; font-size: 16px; color: #555;">
                                 <div style="display: flex; align-items: center; gap: 10px;">
                                     <i class="fas fa-eye" style="font-size: 22px; color: #007bff;"></i>
-                                    <span style="font-weight: bold; font-size: 18px;">50 Profiles View</span>
+                                    <span style="font-weight: bold; font-size: 18px;">50 Job Match </span>
                                 </div>
-                                <span style="font-size: 14px; color: #888; margin-left: 32px;">Employers who viewed your
-                                    profile</span>
+                                <span style="font-size: 14px; color: #888; margin-left: 32px;"> Job Match Base On
+                                 Your Profile</span>
                             </div>
 
                             <div class="col-md-4 col-sm-6 col-xs-12"
