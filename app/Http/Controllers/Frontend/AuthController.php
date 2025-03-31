@@ -70,12 +70,16 @@ class AuthController extends Controller
             'password' => bcrypt('password'),
             'role' => "seeker"
         ]);
-    
-        Seeker::create([
-            'user_id' => $user->id,
-            'viber_number' => null,
-            'full_name' => $user->name,
-        ]);
+        
+        $alreadyExsitsOrNot = Seeker::where("user_id",$user->id)->count();
+        if($alreadyExsitsOrNot == 0){
+            Seeker::create([
+                'user_id' => $user->id,
+                'viber_number' => null,
+                'full_name' => $user->name,
+            ]);
+        }
+       
     
         auth()->login($user);
     

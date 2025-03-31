@@ -11,11 +11,11 @@
                     style="background: #ffffff; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); padding: 20px;">
                     <div class="card-body">
                         <h4 class="m3" style="font-size: 20px; color: #333; font-weight: bold; margin-bottom: 15px;">
-                             Jobs Based On Your Profile
+                             Jobs Based On Your Profile ( Sort By More Match )
                         </h4>
                         <hr style="border-top: 2px solid #ddd; margin-bottom: 20px;">
 
-                        @if($jobs->count() > 0)
+                        @if($paginatedJobs->count() > 0)
                         <div style="overflow-x: auto;">
                             <table style="width: 100%; border-collapse: collapse;">
                                 <thead>
@@ -30,7 +30,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($jobs as $job)
+                                    @foreach($paginatedJobs as $job)
                                     <tr style="border-bottom: 1px solid #eee;">
                                         <td style="padding: 12px; color: #007bff; font-weight: bold;">{{ $job->title }}
                                         </td>
@@ -59,9 +59,9 @@
 
                         <!-- Pagination -->
                         <div style="margin-top: 20px; text-align: center;">
-                            <!-- {{ $jobs->links() }} -->
+                          
                         
-                            {{ $jobs->links('pagination::bootstrap-5') }}
+                            {{ $paginatedJobs->links('pagination::bootstrap-5') }}
                         </div>
                         @else
                         <p style="text-align: center; font-size: 16px; color: #777;">No jobs found matching your

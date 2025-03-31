@@ -40,7 +40,7 @@
             <div class="login_footer form-group d-flex justify-content-between">
               <label class="cb-container">
                 <input  type="checkbox" {{ old('remember') ? 'checked' : '' }}><span class="text-small">Remember me</span><span class="checkmark"></span>
-              </label><a class="text-muted" href="/cooming-soon">Forgot Password</a>
+              </label><a class="text-muted" href="/password/reset">Forgot Password</a>
             </div>
             <div class="form-group">
               <button class="btn btn-brand-1 hover-up w-100" type="submit">Login</button>

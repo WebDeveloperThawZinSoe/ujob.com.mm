@@ -13,6 +13,8 @@ use App\Models\Skill;
 use App\Models\User;
 use App\Models\Employer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class ProfileController extends Controller
 {
@@ -24,8 +26,37 @@ class ProfileController extends Controller
         ->limit(4)
         ->get();    
         /* Job Based On Your Profile Feature */
-        $jobs = $jobs = Job::where('is_active', 1)->orderBy("id","desc")->paginate(10);
-        return view('frontend.seeker.dashboard', compact('leading_employers',"jobs"));
+                // Get the seeker associated with the authenticated user
+                $seeker = Seeker::where("user_id", Auth::id())->firstOrFail();
+                // Convert seeker's skills into an array
+                $seekerSkills = explode(', ', $seeker->skills);
+        
+                // Fetch jobs and prioritize jobs with matching skills
+                $jobs = Job::where('is_active', 1)
+                ->when($seeker->category_id, function ($query) use ($seeker) {
+                    return $query->where("category_id", $seeker->category_id);
+                })
+                ->get() // Fetch all jobs before sorting
+                ->map(function ($job) use ($seekerSkills) {
+                    $jobSkills = explode(', ', $job->skills);
+                    $job->matchingSkillsCount = count(array_intersect($seekerSkills, $jobSkills));
+                    return $job;
+                })
+                ->sortByDesc('matchingSkillsCount') // Sort by matching skills
+                ->values(); // Re-index array
+    
+            // Convert collection to a paginator
+            $perPage = 10;
+            $currentPage = request()->get('page', 1); // Get current page
+            $paginatedJobs = new \Illuminate\Pagination\LengthAwarePaginator(
+                $jobs->forPage($currentPage, $perPage),
+                $jobs->count(),
+                $perPage,
+                $currentPage,
+                ['path' => request()->url()] // Maintain pagination links
+            );
+    
+        return view('frontend.seeker.dashboard', compact('leading_employers',"paginatedJobs","jobs"));
     }
 
     //index
@@ -47,8 +78,37 @@ class ProfileController extends Controller
 
     //jobBasedOnProfile
     public function jobBasedOnProfile(){
-        $jobs = $jobs = Job::where('is_active', 1)->orderBy("id","desc")->paginate(15);
-        return view('frontend.seeker.job_based_on_profile', compact("jobs"));
+        // Get the seeker associated with the authenticated user
+        $seeker = Seeker::where("user_id", Auth::id())->firstOrFail();
+        // Convert seeker's skills into an array
+        $seekerSkills = explode(', ', $seeker->skills);
+
+        // Fetch jobs and prioritize jobs with matching skills
+        $jobs = Job::where('is_active', 1)
+            ->when($seeker->category_id, function ($query) use ($seeker) {
+                return $query->where("category_id", $seeker->category_id);
+            })
+            ->get() // Fetch all jobs before sorting
+            ->map(function ($job) use ($seekerSkills) {
+                $jobSkills = explode(', ', $job->skills);
+                $job->matchingSkillsCount = count(array_intersect($seekerSkills, $jobSkills));
+                return $job;
+            })
+            ->sortByDesc('matchingSkillsCount') // Sort by matching skills
+            ->values(); // Re-index array
+
+        // Convert collection to a paginator
+        $perPage = 15;
+        $currentPage = request()->get('page', 1); // Get current page
+        $paginatedJobs = new \Illuminate\Pagination\LengthAwarePaginator(
+            $jobs->forPage($currentPage, $perPage),
+            $jobs->count(),
+            $perPage,
+            $currentPage,
+            ['path' => request()->url()] // Maintain pagination links
+        );
+
+        return view('frontend.seeker.job_based_on_profile', compact("paginatedJobs"));
     }
 
     public function imageUpdate(Request $request)
@@ -122,13 +182,14 @@ class ProfileController extends Controller
             'full_name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'contact_number' => 'nullable|string|max:20',  
+            'category_id' => 'nullable',  
         ]);
 
         $user = auth()->user();
         $user->update(['email' => $request->email]);
 
         $seeker = $user->seeker;
-        $seeker->update($request->only(['full_name', 'contact_number', 'headline', 'summary']));
+        $seeker->update($request->only(['full_name', 'contact_number', 'headline', 'summary','category_id']));
 
         return redirect()->back()->with('success', 'Profile updated successfully');
     }

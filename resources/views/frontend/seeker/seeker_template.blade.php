@@ -72,7 +72,7 @@ $seeker = App\Models\Seeker::where('user_id', $user->id)->first();
             </div>
             <div class="row mt-10">
                 <div class="col-lg-8 col-md-12">
-                    <h5 class="f-18">{{$user->name ? "Welcome, ".$user->name : "Welcome, Job Seeker"}}</h5>
+                    <h5 class="f-18">{{$user->name ? "Welcome, ".$user->name : "Welcome, Job Seeker"}}  &nbsp; &nbsp;{{$seeker->category_id ? " ( " .$seeker->category->name  . " ) " : ""}} </h5>
 
                     </h5>
                     <p class="mt-0 font-md color-text-paragraph-2 mb-15">{{$seeker->headline ?? ''}}</p>

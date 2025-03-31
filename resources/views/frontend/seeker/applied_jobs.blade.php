@@ -7,51 +7,47 @@
         @foreach ($myJobs as $data)
         <div class="col-xl-12 col-12">
             <div class="card-grid-2 hover-up">
-                @if ($data->job->highlight == 1)
-                <span class="flash"></span>
-                @endif
+
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="card-grid-2-image-left">
                             <div class="image-box">
-                                <img style="width: 50px" src="{{ asset('profile/'.$data->job->employer->user->image) }}"
-                                    alt="jobBox">
+                                @if (!empty($data->job->employer->user->image))
+                                    <img style="width: 50px" src="{{ asset('profile/'.$data->job->employer->user->image) }}" alt="jobBox">
+                                @else
+                                    <img style="width: 50px" src="{{ asset('default-profile.png') }}" alt="Default Profile">
+                                @endif
                             </div>
                             <div class="right-info">
-                                <a class="name-job"
-                                    href="{{ route('frontend.employer.profile', $data->job->employer->company_name) }}">{{ $data->job->employer->company_name }}</a>
-                                <span class="location-small">{{ $data->job->location->name }}</span>
+                                <a href="{{ !empty($data->job->employer) ? route('frontend.employer.profile', $data->job->employer->company_name) : '#' }}">
+                                    {{ $data->job->employer->company_name ?? 'N/A' }}
+                                </a>
+                                <span class="location-small">{{ $data->job->location->name ?? 'Unknown Location' }}</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6 text-start text-md-end pr-60 col-md-6 col-sm-12">
                         <div class="pl-15 mb-15 mt-30">
-                            @foreach(explode(', ', $data->job->skills) as $skill)
-                            <a class="btn btn-grey-small mr-5" href="#">{{ $skill }}</a>
+                            @foreach(explode(', ', $data->job->skills ?? '') as $skill)
+                                <a class="btn btn-grey-small mr-5" href="#">{{ $skill }}</a>
                             @endforeach
                         </div>
                     </div>
                 </div>
                 <div class="card-block-info">
-                    <h4><a href="{{ route('frontend.jobs-detail', $data->job->id) }}">{{ $data->job->title }}</a>
-                    </h4>
+                    <h4><a href="{{ route('frontend.jobs-detail', $data->job->id) }}">{{ $data->job->title ?? 'No Title' }}</a></h4>
                     <div class="mt-5">
                         <div class="row">
                             <div class="col-lg-7 col-7">
-                                <span class="card-briefcase">{{ $data->job->job_type }}</span>
-                                <span class="card-time"><span>{{ $data->job->created_at->diffForHumans() }}</span></span>
+                                <span class="card-briefcase">{{ $data->job->job_type ?? 'N/A' }}</span>
+                                <span class="card-time"><span>{{ $data->job->created_at ? $data->job->created_at->diffForHumans() : 'Unknown Time' }}</span></span>
                             </div>
                             <div class="col-lg-5 col-5 text-end">
-                                <a href="{{ route('frontend.jobs-detail', $data->job->id) }}"
-                                    class="btn btn-apply-now">View Job</a>
-                                <div class="btn btn-apply-now" data-bs-toggle="modal"
-                                    data-bs-target="#ModalCheckStatus{{ $data->id }}">Check
-                                    Status</div>
+                                <a href="{{ route('frontend.jobs-detail', $data->job->id) }}" class="btn btn-apply-now">View Job</a>
+                                <div class="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalCheckStatus{{ $data->id }}">Check Status</div>
                             </div>
                         </div>
-                       
                     </div>
-                
                 </div>
             </div>
         </div>
@@ -63,17 +59,14 @@
 </div>
 @endsection
 
-
 @section('content2')
 
 @foreach ($myJobs as $data)
-<div class="modal fade" id="ModalCheckStatus{{ $data->id }}" tabindex="-1" data-bs-backdrop="static"
-    data-bs-keyboard="false" role="dialog" aria-labelledby="ModalCheckStatus{{ $data->id }}" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document"
-        style="min-width: 1000px">
+<div class="modal fade" id="ModalCheckStatus{{ $data->id }}" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="ModalCheckStatus{{ $data->id }}" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document" style="min-width: 1000px">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">{{ $data->job->title }}</h5>
+                <h5 class="modal-title">{{ $data->job->title ?? 'No Title' }}</h5>
             </div>
             <div class="modal-body">
                 <div class="container">
@@ -89,20 +82,17 @@
                             @else
                             @php
                             $steps = [
-                            'Submitted' => ['Submitted', 'Under Review', 'Interviewed', 'Hired'],
-                            'Under Review' => ['Under Review', 'Interviewed', 'Hired'],
-                            'Interviewed' => ['Interviewed', 'Hired'],
-                            'Hired' => ['Hired']
+                                'Submitted' => ['Submitted', 'Under Review', 'Interviewed', 'Hired'],
+                                'Under Review' => ['Under Review', 'Interviewed', 'Hired'],
+                                'Interviewed' => ['Interviewed', 'Hired'],
+                                'Hired' => ['Hired']
                             ];
                             @endphp
                             @foreach (['Submitted', 'Under Review', 'Interviewed', 'Hired'] as $step)
                             <div class="col-lg-3">
-                                <div class="box-step 
-                                                    @if ($step != 'Hired')
-                                                        step-1
-                                                    @endif">
+                                <div class="box-step @if ($step != 'Hired') step-1 @endif">
                                     <h1 class="number-element">
-                                        @if (in_array($data->status, $steps[$step]))
+                                        @if (in_array($data->status, $steps[$step] ?? []))
                                         ✅
                                         @else
                                         ⌛️
@@ -126,10 +116,8 @@
 @endforeach
 
 <!-- Add/Edit Experience Modal -->
-<div class="modal fade" id="experienceModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
-    role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document"
-        style="min-width: 500px">
+<div class="modal fade" id="experienceModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document" style="min-width: 500px">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalTitleId">Add Experience</h5>
@@ -165,10 +153,8 @@
 </div>
 
 <!-- Add/Edit Education Modal -->
-<div class="modal fade" id="educationModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
-    role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document"
-        style="min-width: 500px">
+<div class="modal fade" id="educationModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document" style="min-width: 500px">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalTitleId">Add Education</h5>
@@ -204,10 +190,8 @@
 </div>
 
 <!-- Add/Edit Project Modal -->
-<div class="modal fade" id="projectModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
-    aria-labelledby="modalTitleId" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document"
-        style="min-width: 500px">
+<div class="modal fade" id="projectModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document" style="min-width: 500px">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalTitleId">Add Project</h5>
