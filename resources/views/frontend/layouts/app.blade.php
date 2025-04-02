@@ -38,7 +38,7 @@
     </main>
 
     @include('frontend.layouts.parts.footer')
-
+  
     
     <script src="{{asset('/')}}assets/js/vendor/modernizr-3.6.0.min.js"></script>
     <script src="{{asset('/')}}assets/js/vendor/jquery-3.6.0.min.js"></script>
@@ -55,7 +55,6 @@
     <script src="{{asset('/')}}assets/js/main.js?v=4.1"></script>
     
     @yield('script')
-
-
+    <!-- Hosting Expire Date : 6 October 2025 -->
   </body>
 </html>

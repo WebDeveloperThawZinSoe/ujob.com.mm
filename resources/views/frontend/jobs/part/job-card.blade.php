@@ -16,7 +16,7 @@ $skills = explode(', ', $data->skills);
     flex-direction: column;
     justify-content: space-between;
     /* Spreads content evenly from top to bottom */
-    height: 100%;
+    height: 400px !important;
     /* Ensures all cards have equal height */
     margin-bottom: 20px !important;
 }
@@ -35,18 +35,24 @@ $skills = explode(', ', $data->skills);
     /* Pushes the bottom section down */
 }
 </style>
-<div class="card-grid-2 hover-up">
+<div class="card-grid-2 hover-up" >
     <div class="card-grid-2-image-left">
         @if ($data->hightlight == 1)
         <span class="flash"></span>
         @endif
-
+        @if($data->is_anonymous == 0)
+       
+        <div class="right-info"><a class="name-job"
+                href="#"> Anonymous </a></div>
+        </div>
+        @else
         <div class="image-box"><img src="{{asset('profile/'.$data->employer->user->image)}}" alt="jobBox"
                 style="width: 50px"></div>
         <div class="right-info"><a class="name-job"
                 href="{{route('frontend.employer.profile',$data->employer->company_name)}}">{{$data->employer->company_name}}</a><span
                 class="location-small">{{$data->location->name}}</span></div>
-    </div>
+        </div>
+        @endif
     <div class="card-block-info">
         <h6><a href="{{ $jobLink }}">{{$data->title}}</a></h6>
         <div class="mt-5"><span class="card-briefcase">{{$data->job_type}}</span><span
@@ -82,11 +88,11 @@ $skills = explode(', ', $data->skills);
                     <div class="btn btn-apply-now " data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm"
                         data-bs-jobName="{{ $data->title }}" data-bs-jobId="{{ $data->id }}">Apply now 1</div>
                     @endif
-                    
+
                     @endcan
                     @endauth
 
-                    
+
 
                 </div>
             </div>

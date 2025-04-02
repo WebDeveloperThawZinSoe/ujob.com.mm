@@ -74,6 +74,7 @@ class JobController extends Controller
         $job->employer_id = $employer_id;
         $job->category_id = $request->input('category_id');
         $job->location_id = $request->input('location_id');
+        $job->is_anonymous = $request->anynomous;
 
         // Save skills as a comma-separated list
         $job->skills = implode(', ', $request->input('skills'));
@@ -147,7 +148,7 @@ class JobController extends Controller
         $job->highlight = $request->input('highlight');
         $job->category_id = $request->input('category_id');
         $job->location_id = $request->input('location_id');
-
+        $job->is_anonymous = $request->anynomous;
         // Save skills as a comma-separated list
         $job->skills = implode(', ', $request->input('skills'));
 

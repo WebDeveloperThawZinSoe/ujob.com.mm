@@ -92,12 +92,22 @@
                 </div>
                 <div class="card-2-bottom mt-20">
                   <div class="row">
-                    <div class="col-lg-7 col-md-7">
+                    <div class="col-lg-7 col-md-7" style="min-height:40px !important">
+
+                      @if($data->is_anonymous == 0)
                       <div class="d-flex"><img class="img-rounded" src="{{asset('profile/'.$data->employer->user->image)}}" alt="jobBox" width="100px">
                         <div class="info-right-img">
                           <h6 class="color-brand-1 lh-14">{{$data->employer->company_name}}</h6><span class="card-location font-xxs pl-15 color-text-paragraph-2">{{$data->location->name}}</span>
                         </div>
                       </div>
+                      @else
+                      <div class="d-flex">
+                        <div class="info-right-img">
+                          <h6 class="color-brand-1 lh-14">Anonymous</h6>
+                        </div>
+                      </div>
+                      @endif
+
                     </div>
                     @if($data->salary != null)
                     <div class="col-lg-5 col-md-5 text-end"><span class="card-text-price">{{ number_format($data->salary) }}</span> &nbsp;<span class="text-muted">Month</span></div>

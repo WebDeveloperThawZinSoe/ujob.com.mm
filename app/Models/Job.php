@@ -22,7 +22,7 @@ class Job extends Model
         'location_id',
         'skills',
         'highlight',
-        
+        'is_anonymous'
     ];
 
     public function user()

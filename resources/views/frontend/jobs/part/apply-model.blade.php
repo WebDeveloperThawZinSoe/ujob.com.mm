@@ -13,15 +13,15 @@
             <input type="hidden" name="job_id" id="dataId" />
             <div class="form-group">
               <label class="form-label" for="input-1">Full Name *</label>
-              <input class="form-control" id="input-1" type="text" required name="user_name" placeholder="Kaung Kaung">
+              <input class="form-control" id="input-1" type="text" required name="user_name" placeholder="Kaung Kaung"  @auth value="{{Auth::user()->name}}"@endauth >
             </div>
             <div class="form-group">
               <label class="form-label" for="input-2">Email *</label>
-              <input class="form-control" id="input-2" type="email" required name="user_email" placeholder="kaung@gmail.com">
+              <input class="form-control" id="input-2" type="email" required name="user_email" placeholder="kaung@gmail.com"   @auth value="{{Auth::user()->email}}" @endauth>
             </div>
             <div class="form-group">
               <label class="form-label" for="number">Contact Number *</label>
-              <input class="form-control" id="number" type="text" required name="user_phone" placeholder="(+959) 123 123 1245">
+              <input class="form-control" id="number" type="text" required name="user_phone" placeholder="(+959) 123 123 1245"  @auth value="{{Auth::user()->seeker->contact_number}}" @endauth>
             </div>
             <div class="form-group">
               <label class="form-label" for="des">Cover Letter</label>

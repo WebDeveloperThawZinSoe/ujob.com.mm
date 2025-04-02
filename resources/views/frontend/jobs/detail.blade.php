@@ -104,7 +104,11 @@
             <div class="content-single">
               {!! $job->description !!}
             </div>
+            @if($job->is_anonymous == 0)
             <div class="author-single"><span>{{$job->employer->company_name ?? ""}}</span></div>
+            @else
+            <div class="author-single"><span>Anynomous</span></div>
+            @endif
             <div class="single-apply-jobs">
               <div class="row align-items-center">
                 <div class="col-md-5">
@@ -144,10 +148,15 @@
           <div class="sidebar-border">
             <div class="sidebar-heading">
               <div class="avatar-sidebar">
+                @if($job->is_anonymous == 0)
                 <figure><img alt="jobBox" src="{{asset('profile/'.$job->employer->user->image)}}" width="100px"></figure>
                 <div class="sidebar-info"><span class="sidebar-company">{{$job->employer->company_name ?? ""}}</span><span class="card-location">{{$job->employer->location->name  ?? ""}}</span><a class="link-underline mt-15" href="#">{{$job->employer->jobs->count()}} Open Jobs</a></div>
+                @else
+                <h3>Anynomous Post</h3>
+                @endif
               </div>
             </div>
+            @if($job->is_anonymous == 0)
             <div class="sidebar-list-job">
               
               <ul class="ul-disc">
@@ -156,6 +165,7 @@
                 <li>Email: {{$job->employer->user->email}}</li>
               </ul>
             </div>
+            @endif
           </div>
           <div class="sidebar-border">
             <h6 class="f-18">Similar jobs</h6>
@@ -164,7 +174,9 @@
                 @foreach ($simplerJobs as $data)
                 <li>
                     <div class="card-list-4 wow animate__animated animate__fadeIn hover-up">
+                     @if($job->is_anonymous == 0)
                       <div class="image"><a href="{{route('frontend.jobs-detail', $data->id)}}"><img src="{{asset('profile/'.$data->employer->user->image)}}" alt="jobBox" style="width:45px"></a></div>
+                      @endif
                       <div class="info-text">
                         <h5 class="font-md font-bold color-brand-1"><a href="{{route('frontend.jobs-detail', $data->id)}}">{{$data->title}}</a></h5>
                         <div class="mt-0"><span class="card-briefcase">{{$data->job_type}}</span><span class="card-time"><span>{{ $data->created_at->diffForHumans() }}</span></div>
@@ -177,7 +189,11 @@
                               <h6 class="card-price">Negotiate</h6>
                               @endif
                             </div>
+                            @if($job->is_anonymous == 0)
                             <div class="col-6 text-end"><span class="card-briefcase">{{$data->location->name ?? ""}}</span></div>
+                            @else
+                            <div class="col-6 text-end"><span class="card-briefcase">Anynomous</span></div>
+                            @endif
                           </div>
                         </div>
                       </div>

@@ -74,6 +74,15 @@
             </select>
         </div>
 
+
+        <div class="form-group">
+            <label for="anynomous">Is Anynomous?</label>
+            <select class="form-control" name="anynomous" id="anynomous" required>
+                <option value="0" {{ old('anynomous', '') == '0' ? 'selected' : '' }}>No</option>
+                <option value="1" {{ old('anynomous', '') == '1' ? 'selected' : '' }}>Yes</option>
+            </select>
+        </div>
+
         <button type="submit" class="btn btn-primary">Create Job</button>
     </form>
 </div>
