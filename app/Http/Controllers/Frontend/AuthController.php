@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Employer;
+use App\Models\Membership;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -40,12 +41,18 @@ class AuthController extends Controller
             'password' => Hash::make($validatedData['password']),
         ]);
 
+
+        $memership = Membership::where("price",0)->firstOrFail();
         $employer =  Employer::create([
             'company_name' => $validatedData['company_name'],
             'user_id' => $user->id,
-            'total_jobs' => 10,
-            'total_highlights' =>  1,
-            'membership_name' => 'Basic'
+            'total_jobs' => $memership->total_job,
+            'total_highlights' =>  $memership->highlight_job,
+            'membership_name' => "$memership->title",
+            "is_feature" => $memership->is_feature_company,
+            "pre_question" => $memership->pre_question,
+            "auto_match"  => $memership->auto_match,
+            "bulk_cvs" => $memership->bluk_cvs
         ]);
 
         

@@ -27,25 +27,42 @@ class MembershipController extends Controller
         $validated = $request->validate([
             'title' => 'required|max:255',
             'order' => 'unique:memberships',
-            'image' => 'required|mimes:jpeg,png,jpg,gif,svg,webp|max:5120',
+            'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg,webp|max:5120',
+            'total_job' => 'required',
+            'highlight_job' => 'required',
+            'is_feature_company' => 'required',
+            'price' => 'required',
+            'pre_question' => 'required',
+            'bluk_cvs' => 'required',
         ]);
-
-        // insert Main Image to local file
-        $main_image_name = $request->file('image');
-            
-        $main_image_name->move(public_path().'/memberships/', $img = rand(1, 1000).time().'.'.$request->image->extension());
-
     
+        // Handle image upload
+        $img = null;
+        if ($request->hasFile('image')) {
+            $main_image_name = $request->file('image');
+            $img = rand(1, 1000) . time() . '.' . $main_image_name->extension();
+            $main_image_name->move(public_path('/memberships/'), $img);
+        }
+    
+        // Create Membership instance
         $memberships = new Membership();
         $memberships->title = $request->title;
         $memberships->image = $img;
         $memberships->short_detail = $request->short_detail;
         $memberships->summary = $request->summary;
         $memberships->order = $request->order ?? $this->order();
+        $memberships->total_job = $request->total_job;
+        $memberships->auto_match = $request->auto_match;
+        $memberships->highlight_job = $request->highlight_job;
+        $memberships->is_feature_company = $request->is_feature_company;
+        $memberships->price = $request->price; // Fixed the wrong variable
+        $memberships->pre_question = $request->pre_question;
+        $memberships->bluk_cvs = $request->bluk_cvs;
         $memberships->save();
-
+    
         return redirect()->back()->with('success', 'Membership successfully created!');
     }
+    
 
     public function edit($id)
     {
@@ -63,7 +80,7 @@ class MembershipController extends Controller
             
             'order' => 'unique:memberships,order,'.$membership->id,
             'title' => 'required|max:255',
-            'image' => 'required|mimes:jpeg,png,jpg,gif,svg,webp|max:5120',
+            'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg,webp|max:5120',
         ]);
 
         // edit Main image

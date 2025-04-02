@@ -66,13 +66,13 @@
                     </div>
 
                     {{-- Image --}}
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <input type="file" name="image" id="order" class="form-control  @error('image') is-invalid @enderror" value="{{ old('image') }}" placeholder="image">
                         <small id="helpId" class="form-text text-muted">maximum file size (5 MB)</small>
                         @error('image')
                         <p class="text-danger">{{$message}}</p>
                         @enderror
-                    </div> 
+                    </div>  -->
 
                     <div class="form-group">
                         <label for="short_detail" class="form-label">Short Detail</label>
@@ -92,7 +92,74 @@
                         @error('order')
                         <p class="text-danger">{{$message}}</p>
                         @enderror
-                    </div>                   
+                    </div>  
+                    
+                    
+                    <div class="form-group">
+                        <input type="number" name="total_job" id="total_job" class="form-control  @error('total_job') is-invalid @enderror" value="{{ old('total_job') }}" placeholder="Total  Job">
+                        @error('total_job')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
+                    </div>  
+
+
+                    <div class="form-group">
+                        <input type="number" name="highlight_job" id="highlight_job" class="form-control  @error('highlight_job') is-invalid @enderror" value="{{ old('highlight_job') }}" placeholder="Highlight  Job">
+                        @error('highlight_job')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
+                    </div>  
+
+                    <div class="form-group">
+                        <label for="">Is  Feature Company</label>
+                        <select type="number" name="is_feature_company" id="is_feature_company" class="form-control  @error('is_feature_company') is-invalid @enderror" value="{{ old('is_feature_company') }}" placeholder="Is Feature Company">
+                                <option value="1">Yes</option>
+                                <option value="0" selected>No</option>
+                        </select>
+                        @error('is_feature_company')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
+                    </div>  
+
+
+                    <div class="form-group">
+                        <label for="">Auto Match</label>
+                        <select type="number" name="auto_match" id="auto_match" class="form-control  @error('auto_match') is-invalid @enderror" value="{{ old('auto_match') }}" placeholder="Is Feature Company">
+                                <option value="1">Yes</option>
+                                <option value="0" selected>No</option>
+                        </select>
+                        @error('auto_match')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
+                    </div>  
+
+
+                    <div class="form-group">
+                        <input type="number" name="price" id="price" class="form-control  @error('price') is-invalid @enderror" value="{{ old('price') }}" placeholder="Price">
+                        @error('price')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
+                    </div>  
+
+
+                    <div class="form-group" style="display:none !important;">
+                        <label for="">Pre  Question</label>
+                        <select type="number" name="pre_question" id="pre_question" class="form-control  @error('pre_question') is-invalid @enderror" value="{{ old('pre_question') }}" placeholder="Is Feature Company">
+                                <option value="1">Yes</option>
+                                <option value="0" selected>No</option>
+                        </select>
+                        @error('pre_question')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
+                    </div>  
+
+
+                    <div class="form-group">
+                        <input type="number" name="bluk_cvs" id="bluk_cvs" class="form-control  @error('bluk_cvs') is-invalid @enderror" value="{{ old('bluk_cvs') }}" placeholder="Bluk CVs">
+                        @error('bluk_cvs')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
+                    </div>  
                     
                     
                     <button type="submit" class="btn btn-primary">Create <i class="anticon anticon-save"></i></button>
@@ -131,14 +198,18 @@
                                         <i class="anticon anticon-edit"></i>
                                     </a>
                                     
-                                    
+                                    @if($data->price != 0)
                                     <button class="btn btn-icon btn-hover btn-sm btn-rounded text-danger" onclick="if(confirm('Are you sure you want to delete this data?')){document.getElementById('delete-form{{$data->id}}').submit(); }">
                                         <i class="anticon anticon-delete"></i>
                                     </button>
                                     
+                                   
+
                                     <form style="display: none;" id="delete-form{{$data->id}}" method="POST" action="{{route('admin.memberships.destroy', $data->id)}}" >
                                         @csrf @method('DELETE')
                                     </form>
+
+                                    @endif
                                     
                                 </td>
                             </tr>

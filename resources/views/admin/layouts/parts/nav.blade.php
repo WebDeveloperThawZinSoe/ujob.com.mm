@@ -123,7 +123,7 @@
             </li>
 
             <li class="nav-item dropdown {{ Route::is('admin.orders.index') ? 'active' : '' }}">
-                <a href="/cooming-soon">
+                <a href="{{route('admin.orders.index')}}">
                     <span class="icon-holder">
                         <i class="anticon anticon-solution"></i>
                     </span>

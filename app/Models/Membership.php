@@ -14,6 +14,13 @@ class Membership extends Model
         'image',
         'short_detail',
         'summary',
-        'order'
+        'order',
+        'total_job',
+        'highlight_job',
+        'is_feature_company',
+        'price',
+        'pre_question',
+        'bluk_cvs',
+        'auto_match'
     ];
 }

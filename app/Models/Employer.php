@@ -21,6 +21,9 @@ class Employer extends Model
         'total_highlights',
         'membership_name',
         'is_feature',
+        'pre_question',
+        'auto_match',
+        'bulk_cvs'
     ];
 
     public function user()

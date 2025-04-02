@@ -36,7 +36,11 @@ class JobController extends Controller
         $jobDeadline = Carbon::parse($employer->end_date);
 
         // Check if job postings are full and the deadline is in the future
-        if ($employer->total_jobs <= $jobs && $jobDeadline->isFuture()) {
+        // if ($employer->total_jobs <= $jobs && $jobDeadline->isFuture()) {
+        //     return redirect()->back()->with('error', 'Your Job Posts are full.');
+        // }
+
+        if ($employer->total_jobs <= $jobs ) {
             return redirect()->back()->with('error', 'Your Job Posts are full.');
         }
 

@@ -124,7 +124,7 @@ class PageController extends Controller
     
     public function pricing(){
         $ads = Advertisement::all();
-        $memberships = Membership::all();
+        $memberships = Membership::orderBy("order","asc")->get();
         return view('frontend.pages.pricing', compact('ads', 'memberships'));
     }
 }
