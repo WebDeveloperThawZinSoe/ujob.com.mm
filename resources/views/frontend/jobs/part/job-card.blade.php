@@ -40,7 +40,7 @@ $skills = explode(', ', $data->skills);
         @if ($data->hightlight == 1)
         <span class="flash"></span>
         @endif
-        @if($data->is_anonymous == 0)
+        @if($data->is_anonymous == 1)
        
         <div class="right-info"><a class="name-job"
                 href="#"> Anonymous </a></div>

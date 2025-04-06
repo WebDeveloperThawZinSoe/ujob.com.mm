@@ -66,10 +66,14 @@ Route::group(['middleware' => ['can:admin','auth']], function () {
 
     // Job 
     Route::get('/admin/jobs', [JobController::class, 'index'])->name('admin.jobs.index');
+    Route::get("/admin/jobs/create", [JobController::class, 'create'])->name('admin.jobs.create');
+    Route::post('/admin/jobs/store', [JobController::class, 'store'])->name('admin.jobs.store');
     Route::get('/admin/jobs/show/{id}', [JobController::class, 'show'])->name('admin.jobs.show');
-    Route::put('/admin/jobs/update/{id}', [JobController::class, 'update'])->name('admin.jobs.update');
-    Route::delete('/admin/jobs/destroy/{id}', [JobController::class, 'destroy'])->name('admin.jobs.destroy');
+    Route::get("/admin/jobs/edit/{id}", [JobController::class, 'edit'])->name('admin.jobs.edit');
+    Route::post('/admin/jobs/update', [JobController::class, 'update'])->name('admin.jobs.update');
+    Route::delete('/admin/jobs/{id}', [JobController::class, 'destroy'])->name('admin.jobs.destroy');
 
+    
     // ADS
     Route::get('/admin/advertisements', [AdvertisementController::class, 'index'])->name('admin.advertisements.index');
     Route::post('/admin/advertisements/store', [AdvertisementController::class, 'store'])->name('admin.advertisements.store');

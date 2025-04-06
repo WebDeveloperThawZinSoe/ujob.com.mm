@@ -97,7 +97,7 @@
                       @if($data->is_anonymous == 0)
                       <div class="d-flex"><img class="img-rounded" src="{{asset('profile/'.$data->employer->user->image)}}" alt="jobBox" width="100px">
                         <div class="info-right-img">
-                          <h6 class="color-brand-1 lh-14">{{$data->employer->company_name}}</h6><span class="card-location font-xxs pl-15 color-text-paragraph-2">{{$data->location->name}}</span>
+                          <h6 class="color-brand-1 lh-14">{{$data->employer->company_name}}</h6><span class="card-location font-xxs pl-15 color-text-paragraph-2">{{$data->location->name }}</span>
                         </div>
                       </div>
                       @else

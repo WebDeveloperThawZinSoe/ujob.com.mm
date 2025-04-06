@@ -28,7 +28,9 @@
                     <li class="{{ Route::is('admin.jobs.index') ? 'active' : '' }}">
                         <a href="{{route('admin.jobs.index')}}">All Jobs</a>
                     </li> 
-                    
+                    <li class="{{ Route::is('admin.jobs.create') ? 'active' : '' }}">
+                        <a href="{{route('admin.jobs.create')}}">Create Job</a>
+                    </li> 
                    
                     
                 </ul>
