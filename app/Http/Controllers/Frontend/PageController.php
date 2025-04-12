@@ -19,6 +19,7 @@ class PageController extends Controller
 {
     public function index(){
         $ads = Advertisement::all();
+       
         $categories = Category::all();
         $locations = Location::all();
         $jobs = Job::where('is_active', 1)

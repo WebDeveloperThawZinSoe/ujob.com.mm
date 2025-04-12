@@ -17,7 +17,7 @@
     <div class="container">
       <div class="banner-hero banner-single banner-single-bg">
         <div class="block-banner text-center">
-          <h3 class="wow animate__animated animate__fadeInUp"><span class="color-brand-2">{{$jobs->total()}} Jobs</span> Available Now</h3>
+          <h3 class="wow animate__animated animate__fadeInUp"><span class="color-brand-2"></span> Available Now</h3>
           
           <div class="form-find text-start mt-40 wow animate__animated animate__fadeInUp" data-wow-delay=".2s">
             <form method="GET" action="{{ route('frontend.jobs') }}">

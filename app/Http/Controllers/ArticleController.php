@@ -17,11 +17,13 @@ class ArticleController extends Controller
         return view('admin.articles.create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
+        // dd($request->all());
         // check validation
         $validated = $request->validate([
             'title' => 'required|max:255',
-            'asset' => 'required|mimes:jpeg,png,jpg,gif,svg,webp|max:5120',
+            'asset' => 'nullable|mimes:jpeg,png,jpg,gif,svg,webp|max:5120',
         ]);
     
         // insert Main Image to local file
@@ -35,7 +37,7 @@ class ArticleController extends Controller
         $article->description = $request->description;
         $article->save();
 
-        return redirect()->route('admin.articles.index')->with('success','(' . $request->name.') Article successfully created!');
+        return redirect()->route('admin.articles.index')->with('success',' Article successfully created!');
     }
 
     public function edit($id)

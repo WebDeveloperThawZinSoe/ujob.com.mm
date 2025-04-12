@@ -1,3 +1,4 @@
+
 <div class="modal fade" id="ModalApplyJobForm" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content apply-job-form">
@@ -5,6 +6,8 @@
         <div class="modal-body pl-30 pr-30 pt-50">
           <div class="text-center">
             <p class="font-sm text-brand-2">Job Application </p>
+            @auth 
+            @if(auth::user()->role == 'seeker')
             <h4 class="mt-10 mb-5 text-brand-1 text-capitalize" id="modalJobTitle">Job Title Here</h4>
             <p class="font-sm text-muted mb-30">Please fill in your information and send it to the employer.</p>
           </div>
@@ -13,15 +16,15 @@
             <input type="hidden" name="job_id" id="dataId" />
             <div class="form-group">
               <label class="form-label" for="input-1">Full Name *</label>
-              <input class="form-control" id="input-1" type="text" required name="user_name" placeholder="Kaung Kaung"  @auth value="{{Auth::user()->name}}"@endauth >
+              <input class="form-control" id="input-1" type="text" required name="user_name" placeholder="Kaung Kaung"  @auth value="{{Auth::user()->name ?? ''}}"@endauth >
             </div>
             <div class="form-group">
               <label class="form-label" for="input-2">Email *</label>
-              <input class="form-control" id="input-2" type="email" required name="user_email" placeholder="kaung@gmail.com"   @auth value="{{Auth::user()->email}}" @endauth>
+              <input class="form-control" id="input-2" type="email" required name="user_email" placeholder="kaung@gmail.com"   @auth value="{{Auth::user()->email ?? ''}}" @endauth>
             </div>
             <div class="form-group">
               <label class="form-label" for="number">Contact Number *</label>
-              <input class="form-control" id="number" type="text" required name="user_phone" placeholder="(+959) 123 123 1245"  @auth value="{{Auth::user()->seeker->contact_number}}" @endauth>
+              <input class="form-control" id="number" type="text" required name="user_phone" placeholder="(+959) 123 123 1245"  @auth value="{{Auth::user()->seeker->contact_number ?? ''}}" @endauth>
             </div>
             <div class="form-group">
               <label class="form-label" for="des">Cover Letter</label>
@@ -44,6 +47,10 @@
             </div>
             
           </form>
+          @else 
+        <h1>Your Role Can't Apply .</h1>
+          @endif
+          @endauth
         </div>
       </div>
     </div>

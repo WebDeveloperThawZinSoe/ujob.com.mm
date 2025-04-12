@@ -121,8 +121,8 @@
 
             <div class="form-group">
                 <label for="anynomous">Is Anynomous?</label>
-                <select class="form-control" name="anynomous" id="anynomous" required>
-                    <option value="0">No</option>
+                <select class="form-control" name="anynomous" id="anynomous" >
+                    <option value="">No</option>
                     <option value="1">Yes</option>
                 </select>
             </div>

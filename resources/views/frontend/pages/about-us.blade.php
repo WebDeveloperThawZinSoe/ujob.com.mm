@@ -32,19 +32,42 @@
         <div class="text-center">
           <h6 class="f-18 color-text-mutted text-uppercase">Our company</h6>
           <h2 class="section-title mb-10 wow animate__animated animate__fadeInUp">About Our Company</h2>
-          <p class="font-sm color-text-paragraph wow animate__animated animate__fadeInUp w-lg-50 mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ligula ante, dictum non aliquet eu, dapibus ac quam. Morbi vel ante viverra orci tincidunt tempor eu id ipsum. Sed consectetur, risus a blandit tempor, velit magna pellentesque risus, at congue tellus dui quis nisl.</p>
+          <p class="font-sm color-text-paragraph wow animate__animated animate__fadeInUp w-lg-50 mx-auto">JZ Myanmar Company Limited was established with a visionary goal: to
+transform the recruitment landscape in Myanmar. As the creators and
+operators of ujob.com.mm, the nation’s premier online job portal, we are
+committed to seamlessly connecting job seekers with ideal career
+opportunities, while providing employers with an efficient, cost-effective, and
+automated recruitment platform. Our extensive service offerings span across a
+wide range of job categories from executive and professional roles to clerical
+positions ensuring that there is an opportunity suited for everyone.</p>
         </div>
         <div class="row mt-70">
           <div class="col-lg-6 col-md-12 col-sm-12"><img src="assets/imgs/page/about/img-about2.png" alt="joxBox"></div>
           <div class="col-lg-6 col-md-12 col-sm-12">
-            <h3 class="mt-15">What we can do?</h3>
+            <h3 class="mt-15">Our Commitment</h3>
             <div class="mt-20">
-              <p class="font-md color-text-paragraph mt-20">Aenean sollicituin, lorem quis bibendum auctor nisi elit consequat ipsum sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet maurisorbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctora ornare odio.</p>
-              <p class="font-md color-text-paragraph mt-20">Aenean sollicituin, lorem quis bibendum auctor nisi elit consequat ipsum sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet maurisorbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctora ornare odio.</p>
-              <p class="font-md color-text-paragraph mt-20">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis non nisi purus. Integer sit nostra, per inceptos himenaeos.</p>
-              <p class="font-md color-text-paragraph mt-20">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis non nisi purus. Integer sit nostra, per inceptos himenaeos.</p>
+              <p class="font-md color-text-paragraph mt-20">At JZ Myanmar Company Limited, we are dedicated to making job discovery
+                effortless. Our mission is to bridge the gap between skilled job seekers and
+                the employers who need them, fostering a dynamic and thriving job market
+                in Myanmar. Through ujob.com.mm, we provide unmatched convenience,
+                efficiency, and success in the recruitment process for both job seekers and
+                employers alike.
+                </p>
+            
             </div>
-            <div class="mt-30"><a class="btn btn-brand-1" href="{{asset('about.pdf')}}">Read More Detail</a></div>
+            <h3 class="mt-15">Contact Us</h3>
+            <div class="mt-20">
+              <p class="font-md color-text-paragraph mt-20">Whether you are embarking on a new career path or seeking top-tier talent,
+ujob.com.mm offers the advanced tools and opportunities to help you
+achieve your goals.
+
+                </p>
+            <p><b>JZ Myanmar Company Limited</b></p>
+            <p><b>Website: www.ujob.com.mm Your dream job is just a click away at
+ujob.com.mm – where opportunity meets talent.
+</b></p>
+            </div>
+            <div class="mt-30"><a class="btn btn-brand-1" href="{{asset('about.pdf')}}">Read More Detail & Our Service >>> </a></div>
           </div>
         </div>
       </div>

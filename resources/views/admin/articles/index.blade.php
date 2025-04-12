@@ -65,9 +65,11 @@
                                 <button class="btn btn-icon btn-hover btn-sm btn-rounded text-danger" type="submit" onclick="if(confirm('Are you sure you want to delete this data?')){document.getElementById('delete-form{{$article->id}}').submit(); }">
                                     <i class="anticon anticon-delete"></i>
                                 </button>
-                                <form id="delete-form{{$article->id}}" method="POST" action="{{route('admin.articles.destroy', $article->id)}}" >
-                                    @csrf
-                                </form>
+                               <form id="delete-form{{$article->id}}" method="POST" action="{{ route('admin.articles.destroy', $article->id) }}">
+    @csrf
+    @method('DELETE')
+</form>
+
                                 
                             </td>
                         </tr>

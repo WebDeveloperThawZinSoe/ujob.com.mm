@@ -15,7 +15,12 @@
     <link href="{{asset('/')}}assets/css/style.css?version=4.1" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>UJob.com.mm</title>
-
+    <style>
+        
+        .tawk-min-container .tawk-button-circle.tawk-button-large{
+            margin-bottom: 300px !important;
+        }
+    </style>
     @yield('style')
   </head>
   <body>
@@ -55,6 +60,20 @@
     <script src="{{asset('/')}}assets/js/main.js?v=4.1"></script>
     
     @yield('script')
-    <!-- Hosting Expire Date : 6 October 2025 -->
+    
+<script type="text/javascript">
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function () {
+    var s1 = document.createElement("script"),
+        s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/66b281fb1601a2195ba18112/1i4kkngc5';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+</script>
+
+    <!-- Hosting Expire Date : 18 March 2026 -->
   </body>
 </html>

@@ -73,7 +73,6 @@ Route::group(['middleware' => ['can:admin','auth']], function () {
     Route::post('/admin/jobs/update', [JobController::class, 'update'])->name('admin.jobs.update');
     Route::delete('/admin/jobs/{id}', [JobController::class, 'destroy'])->name('admin.jobs.destroy');
 
-    
     // ADS
     Route::get('/admin/advertisements', [AdvertisementController::class, 'index'])->name('admin.advertisements.index');
     Route::post('/admin/advertisements/store', [AdvertisementController::class, 'store'])->name('admin.advertisements.store');

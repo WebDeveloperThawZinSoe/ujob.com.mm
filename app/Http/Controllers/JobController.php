@@ -40,16 +40,14 @@ class JobController extends Controller
         return view('admin.jobs.index', compact( 'jobs', 'categories', 'locations'));
     }
 
-
     public function show($id){
         $job = Job::findOrFail($id);
        
         $resumes = JobSeeker::where('job_id', $id)->get();
         return view('admin.jobs.show.index', compact('job', 'resumes'));
     }
-
     
-    public function create() {
+      public function create() {
         $employers = Employer::all();
         $categories = Category::all();
         $locations = Location::all();
@@ -59,6 +57,7 @@ class JobController extends Controller
 
 
     public function store(Request $request) {
+        
         $employer_id = $request->employer;
          // Retrieve employer and job data
          $employer = Employer::findOrFail($employer_id);
@@ -106,7 +105,7 @@ class JobController extends Controller
          $job->employer_id = $employer_id;
          $job->category_id = $request->input('category_id');
          $job->location_id = $request->input('location_id');
-         $job->is_anonymous = $request->anynomous;
+         $job->is_anonymous = $request->anynomous ?? null;
  
          // Save skills as a comma-separated list
          $job->skills = implode(', ', $request->input('skills'));
@@ -170,7 +169,7 @@ class JobController extends Controller
         $job->highlight = $request->input('highlight');
         $job->category_id = $request->input('category_id');
         $job->location_id = $request->input('location_id');
-        $job->is_anonymous = $request->input('anynomous');  // Make sure this matches the request parameter name
+        $job->is_anonymous = $request->input('anynomous') ?? null;  // Make sure this matches the request parameter name
     
         // Convert skills from array to comma-separated string
         $skills = $request->input('skills');
@@ -197,6 +196,5 @@ class JobController extends Controller
         // Redirect back with a success message
         return redirect()->route('admin.jobs.index')->with('success', 'Job deleted successfully!');
     }
-    
     
 }

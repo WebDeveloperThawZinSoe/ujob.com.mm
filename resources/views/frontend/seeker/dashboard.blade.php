@@ -93,32 +93,30 @@
                         <h4 class="m3" style="font-size: 20px; color: #333; font-weight: bold; margin-bottom: 15px;">
                             Leading Employers</h4>
                         <hr style="border-top: 2px solid #ddd; margin-bottom: 20px;">
-                        <div class="row" style="display: flex; flex-wrap: wrap; gap: 15px;">
-                            @foreach($leading_employers as $employer)
-                            <div class="col-md-3 col-sm-4 col-xs-6"
-                                style="display: flex; flex-direction: column; align-items: center; text-align: center; background: #f8f9fa; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08); transition: transform 0.3s ease-in-out;">
-                                <a href="/employer/profile/{{$employer->company_name}}">
-                                    <div style="display: flex; flex-direction: column; align-items: center;">
-                                        @if($employer->user->image == null || $employer->user->image == '')
-                                        <img src="{{ asset('assets/imgs/company_logo.png') }}" alt="logo"
-                                            style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; background: #fff; border: 2px solid #ddd; padding: 5px;">
-                                        @else
-                                        <img src="{{ asset('profile/'.$employer->user->image) }}" alt="logo"
-                                            style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; background: #fff; border: 2px solid #ddd; padding: 5px;">
-                                        @endif
-                                    </div>
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+    @foreach($leading_employers as $employer)
+        <div class="col">
+            <div class="d-flex flex-column align-items-center text-center p-3 bg-light rounded shadow-sm" 
+                style="transition: transform 0.3s ease-in-out;">
+                <a href="/employer/profile/{{$employer->company_name}}" class="text-decoration-none">
+                    <div class="d-flex flex-column align-items-center">
+                        @if(empty($employer->user->image))
+                            <img src="{{ asset('assets/imgs/company_logo.png') }}" alt="logo"
+                                class="rounded-circle border p-1 bg-white" 
+                                style="width: 60px; height: 60px; object-fit: cover; border: 2px solid #ddd;">
+                        @else
+                            <img src="{{ asset('profile/'.$employer->user->image) }}" alt="logo"
+                                class="rounded-circle border p-1 bg-white" 
+                                style="width: 60px; height: 60px; object-fit: cover; border: 2px solid #ddd;">
+                        @endif
+                    </div>
+                    <span class="fw-bold text-dark mt-2 d-block">{{$employer->company_name}}</span>
+                </a>
+            </div>
+        </div>
+    @endforeach
+</div>
 
-                                    <span style="font-weight: bold; font-size: 16px; color: #333; margin-top: 10px;">
-                                        {{$employer->company_name}}
-                                    </span>
-
-                                    <span style="font-size: 14px; color: #666; margin-top: 5px;">
-
-                                    </span>
-                                </a>
-                            </div>
-                            @endforeach
-                        </div>
                     </div>
                 </div>
             </div>
