@@ -14,12 +14,15 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('/backend/images/logofc.png')}}">
     <link href="{{asset('/')}}assets/css/style.css?version=4.1" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <title>UJob.com.mm</title>
     <style>
         
         .tawk-min-container .tawk-button-circle.tawk-button-large{
             margin-bottom: 300px !important;
         }
+
+
     </style>
     @yield('style')
   </head>

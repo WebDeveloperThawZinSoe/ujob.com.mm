@@ -321,13 +321,12 @@
             <div class="box-swiper">
               <div class="swiper-container swiper-group-7 swiper">
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide"><a href="#"><img src="assets/imgs/page/homepage3/microsoft.svg" alt="jobBox"></a></div>
-                  <div class="swiper-slide"><a href="#"><img src="assets/imgs/page/homepage3/sony.svg" alt="jobBox"></a></div>
-                  <div class="swiper-slide"><a href="#"><img src="assets/imgs/page/homepage3/acer.svg" alt="jobBox"></a></div>
-                  <div class="swiper-slide"><a href="#"><img src="assets/imgs/page/homepage3/nokia.svg" alt="jobBox"></a></div>
-                  <div class="swiper-slide"><a href="#"><img src="assets/imgs/page/homepage3/asus.svg" alt="jobBox"></a></div>
-                  <div class="swiper-slide"><a href="#"><img src="assets/imgs/page/homepage3/casio.svg" alt="jobBox"></a></div>
-                  <div class="swiper-slide"><a href="#"><img src="assets/imgs/page/homepage3/dell.svg" alt="jobBox"></a></div>
+                  <div class="swiper-slide"><a href="#"><img style="max-height:120px !important" src="{{asset('assets/imgs/1.png')}}" alt="jobBox"></a></div>
+                  <div class="swiper-slide"><a href="#"><img style="max-height:200px !important" src="{{asset('assets/imgs/2.png')}}" alt="jobBox"></a></div>
+                  <div class="swiper-slide"><a href="#"><img style="max-height:200px !important" src="{{asset('assets/imgs/3.png')}}" alt="jobBox"></a></div>
+                  <div class="swiper-slide"><a href="#"><img style="max-height:200px !important" src="{{asset('assets/imgs/4.png')}}" alt="jobBox"></a></div>
+                  <div class="swiper-slide"><a href="#"><img style="max-height:200px !important" src="{{asset('assets/imgs/5.png')}}" alt="jobBox"></a></div>
+               
                 </div>
               </div>
             </div>

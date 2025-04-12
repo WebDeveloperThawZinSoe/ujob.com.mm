@@ -92,10 +92,8 @@
                         <h6 class="f-18">Payment</h6>
                         <div class="sidebar-list-job">
                             <ul class="ul-disc">
-                                <li>KBZ Pay: 09403077739 ( Thaw Zin Soe )</li>
-                                <li>Wave Pay :  09403077739 ( Thaw Zin Soe )</li>
-                                <li>UAB Pay :  09403077739 ( Thaw Zin Soe )</li>
-                                <li>AYA Pay :  09403077739 ( Thaw Zin Soe )</li>
+                                <li><strong>23051323003024401</strong>(KBZ-HTY 4) <br> JZ Myanmar Co.,Ltd</li>
+
                             </ul>
 
                             <div class="form-group mt-15">

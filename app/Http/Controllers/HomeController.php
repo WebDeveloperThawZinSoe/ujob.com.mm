@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Job;
 use App\Models\User;
+use App\Models\Category;
+
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -46,5 +48,45 @@ class HomeController extends Controller
     public function adminChangePassword(){
         return view('admin.password_change');
     }
+
+    public function exportData()
+{
+    $employer_count = User::where('role', 'employer')->count();
+    $seeker_count = User::where('role', 'seeker')->count();
+    $opening_job = Job::where('is_active', 1)->count();
+    $categories = Category::withCount('jobs')->get();
+
+    $filename = "job_summary_" . now()->format('Ymd_His') . ".csv";
+
+    $headers = [
+        "Content-type"        => "text/csv",
+        "Content-Disposition" => "attachment; filename=$filename",
+        "Pragma"              => "no-cache",
+        "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+        "Expires"             => "0"
+    ];
+
+    $callback = function () use ($employer_count, $seeker_count, $opening_job, $categories) {
+        $file = fopen('php://output', 'w');
+
+        // Section 1: Summary Counts
+        fputcsv($file, ['Data Summary']);
+        fputcsv($file, ['Employers', 'Job Seekers', 'Active Jobs']);
+        fputcsv($file, [$employer_count, $seeker_count, $opening_job]);
+        fputcsv($file, []); // Empty line
+
+        // Section 2: Categories
+        fputcsv($file, ['Job Categories']);
+        fputcsv($file, ['Category Name', 'Number of Jobs']);
+
+        foreach ($categories as $category) {
+            fputcsv($file, [$category->name, $category->jobs_count]);
+        }
+
+        fclose($file);
+    };
+
+    return response()->stream($callback, 200, $headers);
+}
     
 }

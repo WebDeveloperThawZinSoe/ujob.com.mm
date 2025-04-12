@@ -42,13 +42,26 @@
 
         <!-- footer ads end -->
     </div>
+
+    <br>
     
     
     <div class="container">
       <div class="row">
         <div class=" col-md-3 col-sm-12"><a href="/"><img alt="jobBox" src="{{asset('/')}}assets/imgs/ujob/logo.svg"></a>
-          <div class="mt-20 mb-20 font-xs color-text-paragraph-2">Ujob.com.mm: Premier job agency in Myanmar, linking job seekers with diverse opportunities. </div>
-          <div class="footer-social"><a class="icon-socials icon-facebook" href="#"></a><a class="icon-socials icon-twitter" href="#"></a><a class="icon-socials icon-linkedin" href="#"></a></div>
+          <div class="mt-20 mb-20 font-xs color-text-paragraph-2">Ujob.com.mm: A job portal in Myanmar that connects job seekers with diverse opportunities. </div>
+          <div class="footer-social">
+    <a href="https://www.facebook.com/share/16GQHGoxp2/?mibextid=wwXIfr" target="_blank" class="me-3">
+        <i class="fab fa-facebook-f fa-lg"></i>
+    </a>
+    <a href="https://invite.viber.com/?g2=AQAyIM8HnI%2FfPFNNOLHybbiy9bd5EZ4tnYx9%2B%2BTZYqYcc9guvcrwytLaZ7chT%2BLb" target="_blank" class="me-3">
+        <i class="fab fa-viber fa-lg"></i>
+    </a>
+    <a href="https://www.linkedin.com/company/106683524" target="_blank">
+        <i class="fab fa-linkedin-in fa-lg"></i>
+    </a>
+</div>
+
         </div>
         <div class=" col-md-3 col-xs-6">
           <h6 class="mb-20">Resources</h6>
@@ -79,9 +92,9 @@
       </div>
       <div class="footer-bottom mt-50">
         <div class="row">
-          <div class="col-md-6"><span class="font-xs color-text-paragraph">Copyright © 2024. UJob all right reserved</span></div>
+          <div class="col-md-6"><span class="font-xs color-text-paragraph">Copyright@2024. JZ Myanmar Co.,Ltd all right reserved.</span></div>
           <div class="col-md-6 text-md-end text-start">
-            <div class="footer-social"><a class="font-xs color-text-paragraph" href="#">Privacy Policy</a><a class="font-xs color-text-paragraph mr-30 ml-30" href="#">Terms &amp; Conditions</a><a class="font-xs color-text-paragraph" href="#">Security</a></div>
+            <div class="footer-social"><a class="font-xs color-text-paragraph" href="http://localhost:8000/privacy-policy">Privacy Policy</a><a class="font-xs color-text-paragraph mr-30 ml-30" href="http://localhost:8000/terms-and-conditions">Terms &amp; Conditions</a></div>
           </div>
         </div>
       </div>

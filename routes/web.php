@@ -28,6 +28,7 @@ use Laravel\Socialite\Facades\Socialite;
 
 Route::group(['middleware' => ['can:admin','auth']], function () {
     Route::get('/admin', [HomeController::class, 'indexAdmin'])->name('admin.index');
+    Route::get("/admin/export/data", [HomeController::class, 'exportData'])->name('admin.export.data');
     // Membership 
     Route::get('/admin/memberships', [MembershipController::class, 'index'])->name('admin.memberships.index');
     Route::post('/admin/memberships/store', [MembershipController::class, 'store'])->name('admin.memberships.store');
@@ -247,3 +248,14 @@ Route::get('auth/google', function () {
 })->name('google.login');
 
 Route::get('auth/google/callback', [AuthController::class,"googleSSO"]);
+
+
+/* Other Pages */
+Route::get("/privacy-policy",function(){
+    return view("frontend.pages.privacy-policy");
+})->name('frontend.privacy.policy');
+
+
+Route::get("/terms-and-conditions",function(){
+    return view("frontend.pages.terms-and-conditions");
+})->name('frontend.terms.conditions');

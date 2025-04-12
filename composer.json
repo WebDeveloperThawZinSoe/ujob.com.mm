@@ -13,6 +13,7 @@
         "laravel/socialite": "^5.18",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.5",
+        "maatwebsite/excel": "*",
         "nesbot/carbon": "^2.72"
     },
     "require-dev": {

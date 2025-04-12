@@ -9,10 +9,13 @@ use App\Models\Employer;
 use App\Models\Job;
 use App\Models\Location;
 use App\Models\Skill;
+use App\Models\Seeker;
 use App\Models\User;
 use Carbon\Carbon;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewJobPostedMail;
 
 
 class JobController extends Controller
@@ -80,6 +83,14 @@ class JobController extends Controller
         $job->skills = implode(', ', $request->input('skills'));
 
         $job->save();
+
+        $matchedSeekers = Seeker::where('category_id',$request->input('category_id'))->with('user')->get();
+
+        foreach ($matchedSeekers as $seeker) {
+            if ($seeker->user && $seeker->user->email) {
+                Mail::to($seeker->user->email)->send(new NewJobPostedMail($job));
+            }
+        }
 
         return redirect("/employer/jobs/lists")->with('success', 'Job posted successfully!');
     }

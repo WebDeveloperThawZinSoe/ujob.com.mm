@@ -9,7 +9,8 @@
       <div class="media m-v-10 align-items-center">
           <div class="media-body">
               <h4 class="m-b-0">Welcome back, {{ auth()->user()->name }}!</h4>
-              <span class="text-gray">Admin</span>
+              <span class="text-gray">Admin</span> <br> <br>
+              <a href="{{route('admin.export.data')}}" class="btn btn-primary">Download Summary Data</a>
           </div>
       </div>
       <div class="d-md-flex align-items-center d-none">
