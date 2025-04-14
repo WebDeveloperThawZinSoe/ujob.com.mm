@@ -3,266 +3,251 @@
 @section('style')
 @endsection
 
-{{-- Breadcrumb Data Here --}}
 @section('breadcrumb')
 @endsection
 
 @section('content')
 <section class="section-box mt-50">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-12 col-sm-12 col-12">
-          <div class="box-border-single">
-            <div class="row mt-10">
-              <div class="col-lg-8 col-md-12">
-                <h3>{{$job->title}}</h3>
-                <div class="mt-0 mb-15"><span class="card-briefcase">{{$job->job_type}}</span><span class="card-time">{{ $job->created_at->diffForHumans() }}</span></div>
+  <div class="container">
+    <div class="row">
+      <!-- Job Detail Content -->
+      <div class="col-lg-8 col-md-12">
+        <div class="box-border-single">
+          <div class="row mt-10 align-items-center">
+            <div class="col-md-8">
+              <h3>{{ $job->title }}</h3>
+              <div class="mb-3">
+                <span class="card-briefcase">{{ $job->job_type }}</span>
+                <span class="card-time">{{ $job->created_at->diffForHumans() }}</span>
               </div>
-              <div class="col-lg-4 col-md-12 text-lg-end">                              
-                
+            </div>
+            <div class="col-md-4 text-end">
+              @auth
+                @can('seeker')
+                  @php
+                      $jobDeadline = \Carbon\Carbon::parse($job->deadline);
+                      $seeker_id = auth()->user()->seeker->id;
+                      $hasApplied = App\Models\JobSeeker::where('job_id', $job->id)->where('seeker_id', $seeker_id)->exists();
+                  @endphp
+                  @if ($jobDeadline->isFuture() && !$hasApplied)
+                    <button class="btn btn-apply btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm" data-bs-jobName="{{ $job->title }}" data-bs-jobId="{{ $job->id }}">Apply now</button>
+                  @elseif(!$jobDeadline->isFuture())
+                    <span class="btn btn-danger">Apply Date Expired</span>
+                  @elseif($hasApplied)
+                    <span class="btn btn-success">Applied</span>
+                  @endif
+                @endcan
+              @endauth
 
+              @guest
+                <a href="/login" class="btn btn-primary">Login First</a>
+              @endguest
+            </div>
+          </div>
+
+          <!-- Overview -->
+          <div class="job-overview mt-4">
+            <h5 class="border-bottom pb-15 mb-3">Overview</h5>
+            <div class="row">
+              <div class="col-md-6 d-flex mb-3">
+                <div class="sidebar-icon-item me-2">
+                  <img src="{{ asset('assets/imgs/page/job-single/industry.svg') }}" alt="Industry">
+                </div>
+                <div>
+                  <span class="text-description">Industry</span>
+                  <strong class="d-block">{{ $job->category->name }}</strong>
+                </div>
+              </div>
+              <div class="col-md-6 d-flex mb-3">
+                <div class="sidebar-icon-item me-2">
+                  <img src="{{ asset('assets/imgs/page/job-single/job-level.svg') }}" alt="Job Type">
+                </div>
+                <div>
+                  <span class="text-description">Job Type</span>
+                  <strong class="d-block">{{ $job->job_type }}</strong>
+                </div>
+              </div>
+              <div class="col-md-6 d-flex mb-3">
+                <div class="sidebar-icon-item me-2">
+                  <img src="{{ asset('assets/imgs/page/job-single/salary.svg') }}" alt="Salary">
+                </div>
+                <div>
+                  <span class="text-description">Salary</span>
+                  <strong class="d-block">{{ $job->salary ? number_format($job->salary) . ' Ks / Month' : 'Negotiate' }}</strong>
+                </div>
+              </div>
+              <div class="col-md-6 d-flex mb-3">
+                <div class="sidebar-icon-item me-2">
+                  <img src="{{ asset('assets/imgs/page/job-single/deadline.svg') }}" alt="Deadline">
+                </div>
+                <div>
+                  <span class="text-description">Deadline</span>
+                  <strong class="d-block">{{ $job->deadline }}</strong>
+                </div>
+              </div>
+              <div class="col-md-6 d-flex mb-3">
+                <div class="sidebar-icon-item me-2">
+                  <img src="{{ asset('assets/imgs/page/job-single/location.svg') }}" alt="Location">
+                </div>
+                <div>
+                  <span class="text-description">Location</span>
+                  <strong class="d-block">{{ $job->location->name }}</strong>
+                </div>
+              </div>
+              <div class="col-md-6 d-flex mb-3">
+                <div class="sidebar-icon-item me-2">
+                  <img src="{{ asset('assets/imgs/page/job-single/deadline.svg') }}" alt="Skills">
+                </div>
+                <div>
+                  <span class="text-description">Skills</span>
+                  <div class="d-flex flex-wrap gap-1 mt-1">
+                    @foreach (explode(', ', $job->skills) as $skill)
+                      <span class="badge bg-secondary">{{ $skill }}</span>
+                    @endforeach
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="content-single mt-4">{!! $job->description !!}</div>
+
+          <!-- Company Info -->
+          <div class="author-single mt-4">
+            <span>{{ $job->is_anonymous ? 'Anonymous' : ($job->employer->company_name ?? '') }}</span>
+          </div>
+
+          <!-- Apply and Share -->
+          <div class="single-apply-jobs mt-4">
+            <div class="row align-items-center">
+              <div class="col-md-5">
                 @auth
                   @can('seeker')
-                      @php
-                          $currentDate = \Carbon\Carbon::now();
-                          $jobDeadline = \Carbon\Carbon::parse($job->deadline);
-                          $hasApplied = auth()->user()->appliedJobs->contains($job->id);
-                          $seeker_id = auth()->user()->seeker->id;
-                          
-                          $hasApplied = App\Models\JobSeeker::where('job_id', $job->id)->where('seeker_id', $seeker_id)->count();
-             
-                      @endphp
-
-                      @if ($jobDeadline->isFuture() && !$hasApplied)
-                          <div class="btn btn-apply-icon btn-apply btn-apply-big hover-up btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm" data-bs-jobName="{{ $job->title }}" data-bs-jobId="{{ $job->id }}">Apply now</div>
-
-                      @endif
-                      @if(!$jobDeadline->isFuture())
-                      <div ><span class="btn btn-danger" style="border-radius:0px !important;">Apply Date Expired</span></div>
-                      @endif
-                      @if($hasApplied)
-                      <div ><span class="btn btn-success" style="border-radius:0px !important;">Applied</span></div>
-                      @endif
+                    @if ($jobDeadline->isFuture() && !$hasApplied)
+                      <button class="btn btn-default btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm" data-bs-jobName="{{ $job->title }}" data-bs-jobId="{{ $job->id }}">Apply now</button>
+                    @endif
                   @endcan
                 @endauth
-
-                @guest 
-                <a href="/login" class="btn btn-apply-icon btn-apply btn-apply-big hover-up btn-apply-now" style="color:white !important;">Login First</a>
+                @guest
+                  <a href="/login" class="btn btn-primary">Login First</a>
                 @endguest
-
               </div>
-            </div>
-            
-            
-            <div class="job-overview">
-              <h5 class="border-bottom pb-15 mb-30">Overview</h5>
-              <div class="row">
-                <div class="col-md-6 d-flex">
-                  <div class="sidebar-icon-item"><img src="{{asset('assets')}}/imgs/page/job-single/industry.svg" alt="jobBox"></div>
-                  <div class="sidebar-text-info ml-10"><span class="text-description industry-icon mb-10">Industry</span><strong class="small-heading"> {{$job->category->name}}</strong></div>
-                </div>
-                <div class="col-md-6 d-flex mt-sm-15">
-                  <div class="sidebar-icon-item"><img src="{{asset('assets')}}/imgs/page/job-single/job-level.svg" alt="jobBox"></div>
-                  <div class="sidebar-text-info ml-10"><span class="text-description joblevel-icon mb-10">Job Type</span><strong class="small-heading">{{$job->job_type}}</strong></div>
-                </div>
-              </div>
-              <div class="row mt-25">
-                <div class="col-md-6 d-flex mt-sm-15">
-                  <div class="sidebar-icon-item"><img src="{{asset('assets')}}/imgs/page/job-single/salary.svg" alt="jobBox"></div>
-                  @if($job->salary != null)
-                  <div class="sidebar-text-info ml-10"><span class="text-description salary-icon mb-10">Salary</span><strong class="small-heading">{{number_format($job->salary)}} Ks / Month</strong></div>
-                  @else
-                  <div class="sidebar-text-info ml-10"><span class="text-description salary-icon mb-10">Salary</span><strong class="small-heading">Negotiate</strong></div>
-                  @endif
-                </div>
-                <div class="col-md-6 d-flex mt-sm-15">
-                    <div class="sidebar-icon-item"><img src="{{asset('assets')}}/imgs/page/job-single/deadline.svg" alt="jobBox"></div>
-                    <div class="sidebar-text-info ml-10"><span class="text-description mb-10">Deadline</span><strong class="small-heading">{{$job->deadline}}</strong></div>
-                  </div>
-              </div>
-              <div class="row mt-25">
-                <div class="col-md-6 d-flex mt-sm-15">
-                    <div class="sidebar-icon-item"><img src="{{asset('assets')}}/imgs/page/job-single/location.svg" alt="jobBox"></div>
-                    <div class="sidebar-text-info ml-10"><span class="text-description mb-10">Location</span><strong class="small-heading">{{$job->location->name}}</strong></div>
-                </div>
-                <div class="col-md-6 d-flex mt-sm-15">
-                    <div class="sidebar-icon-item"><img src="{{asset('assets')}}/imgs/page/job-single/deadline.svg" alt="jobBox"></div>
-                    <div class="sidebar-text-info ml-10"><span class="text-description mb-10">Skills</span>
-                        <strong class="small-heading">
-                            <div class="sidebar-list-job" style="border: 0px; margin: 0px; padding: 0;">
-
-                                @foreach (explode(', ', $job->skills) as $key => $item)
-                                    <a class="btn btn-grey-small bg-14 mb-10 mr-5" href="#">{{$item}}</a>
-                                @endforeach
-                                
-                            </div>
-                        </strong>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="content-single">
-              {!! $job->description !!}
-            </div>
-            @if($job->is_anonymous == 0)
-            <div class="author-single"><span>{{$job->employer->company_name ?? ""}}</span></div>
-            @else
-            <div class="author-single"><span>Anynomous</span></div>
-            @endif
-            <div class="single-apply-jobs">
-              <div class="row align-items-center">
-                <div class="col-md-5">
-                  
-                  @auth
-                  @can('seeker')
-                      
-
-                      @if ($jobDeadline->isFuture() && !$hasApplied)
-                          <div class="btn btn-default mr-15 btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm" data-bs-jobName="{{ $job->title }}" data-bs-jobId="{{ $job->id }}">Apply now</div>
-                      @endif
-
-                      
-                  @endcan
-                @endauth
-                @guest 
-                <a href="/login" class="btn btn-apply-icon btn-apply btn-apply-big hover-up btn-apply-now" style="color:white !important;">Login First</a>
-                @endguest
-                </div>
-                <div class="col-md-7 text-lg-end social-share">
-                  <h6 class="color-text-paragraph-2 d-inline-block d-baseline mr-10">Share this</h6>
-                  <a class="mr-5 d-inline-block d-middle" href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->fullUrl()) }}" target="_blank">
-                    <img alt="jobBox" src="{{ asset('assets/imgs/template/icons/share-fb.svg') }}">
-                  </a>
-                  <a class="mr-5 d-inline-block d-middle" href="https://twitter.com/intent/tweet?url={{ urlencode(request()->fullUrl()) }}&text=Check%20this%20out!" target="_blank">
-                    <img alt="jobBox" src="{{ asset('assets/imgs/template/icons/share-tw.svg') }}">
-                  </a>
-                  <a class="d-inline-block d-middle" href="https://wa.me/?text={{ urlencode('Check this out: ' . request()->fullUrl()) }}" target="_blank">
-                    <img alt="jobBox" src="{{ asset('assets/imgs/template/icons/share-whatsapp.svg') }}">
-                  </a>
-                </div>
+              <div class="col-md-7 text-end">
+                <h6 class="d-inline-block me-2">Share this</h6>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->fullUrl()) }}" target="_blank" class="me-2">
+                  <img src="{{ asset('assets/imgs/template/icons/share-fb.svg') }}" alt="Facebook">
+                </a>
+                <a href="https://twitter.com/intent/tweet?url={{ urlencode(request()->fullUrl()) }}&text=Check%20this%20out!" target="_blank" class="me-2">
+                  <img src="{{ asset('assets/imgs/template/icons/share-tw.svg') }}" alt="Twitter">
+                </a>
+                <a href="https://wa.me/?text={{ urlencode('Check this out: ' . request()->fullUrl()) }}" target="_blank">
+                  <img src="{{ asset('assets/imgs/template/icons/share-whatsapp.svg') }}" alt="WhatsApp">
+                </a>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-12 col-sm-12 col-12 pl-40 pl-lg-15 mt-lg-30">
-          <div class="sidebar-border">
-            <div class="sidebar-heading">
-              <div class="avatar-sidebar">
-                @if($job->is_anonymous == 0)
-                <figure><img alt="jobBox" src="{{asset('profile/'.$job->employer->user->image)}}" width="100px"></figure>
-                <div class="sidebar-info"><span class="sidebar-company">{{$job->employer->company_name ?? ""}}</span><span class="card-location">{{$job->employer->location->name  ?? ""}}</span><a class="link-underline mt-15" href="#">{{$job->employer->jobs->count()}} Open Jobs</a></div>
-                @else
-                <h3>Anynomous Post</h3>
-                @endif
-              </div>
-            </div>
-            @if($job->is_anonymous == 0)
-            <div class="sidebar-list-job">
-              
-              <ul class="ul-disc">
-                <li>{{$job->employer->location->name  ?? ""}}</li>
-                <li>Phone: {{$job->employer->phone}}</li>
-                <li>Email: {{$job->employer->user->email}}</li>
-              </ul>
-            </div>
-            @endif
-          </div>
-          <div class="sidebar-border">
-            <h6 class="f-18">Similar jobs</h6>
-            <div class="sidebar-list-job">
-              <ul>
-                @foreach ($simplerJobs as $data)
-                <li>
-                    <div class="card-list-4 wow animate__animated animate__fadeIn hover-up">
-                     @if($job->is_anonymous == 0)
-                      <div class="image"><a href="{{route('frontend.jobs-detail', $data->id)}}"><img src="{{asset('profile/'.$data->employer->user->image)}}" alt="jobBox" style="width:45px"></a></div>
-                      @endif
-                      <div class="info-text">
-                        <h5 class="font-md font-bold color-brand-1"><a href="{{route('frontend.jobs-detail', $data->id)}}">{{$data->title}}</a></h5>
-                        <div class="mt-0"><span class="card-briefcase">{{$data->job_type}}</span><span class="card-time"><span>{{ $data->created_at->diffForHumans() }}</span></div>
-                        <div class="mt-5">
-                          <div class="row">
-                            <div class="col-6">
-                              @if($data->salary != null)
-                              <h6 class="card-price">{{number_format($data->salary)}}<span> Ks / Month</span></h6>
-                              @else
-                              <h6 class="card-price">Negotiate</h6>
-                              @endif
-                            </div>
-                            @if($job->is_anonymous == 0)
-                            <div class="col-6 text-end"><span class="card-briefcase">{{$data->location->name ?? ""}}</span></div>
-                            @else
-                            <div class="col-6 text-end"><span class="card-briefcase">Anynomous</span></div>
-                            @endif
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                @endforeach
+      </div>
+
+      <!-- Sidebar -->
+      <div class="col-lg-4 mt-lg-0 mt-4">
+      <div class="sidebar-border mb-4 p-3 bg-white shadow-sm rounded">
+    @if(!$job->is_anonymous)
+        <div class="d-flex align-items-center mb-3">
+            <img src="{{ asset('profile/' . $job->employer->user->image) }}" 
+                 class="me-3" 
+                 alt="Company Image" 
+                 style="max-width: 150px; max-height: 150px; object-fit: cover;">
+            <div>
+               
                 
-              </ul>
             </div>
-          </div>
-          
         </div>
-      </div>
-    </div>
-  </section>
-  <section class="section-box mt-50 mb-50">
-    <div class="container">
-      <div class="text-left">
-        <h2 class="section-title mb-10 wow animate__animated animate__fadeInUp">Featured Jobs</h2>
-        <p class="font-lg color-text-paragraph-2 wow animate__animated animate__fadeInUp">Get the latest news, updates and tips</p>
-      </div>
-      <div class="mt-50">
-        <div class="box-swiper style-nav-top">
-          <div class="swiper-container swiper-group-4 swiper">
-            <div class="swiper-wrapper pb-10 pt-5">
-                @foreach ($highlightJobs as $data)
-                    <div class="swiper-slide">
-                        @include('frontend.jobs.part.job-card', [
-                            'data' => $data,
-                            'jobLink' => route('frontend.jobs-detail', $data->id)
-                        ])
-                    </div>
-                @endforeach
-              
-              
-            </div>
-          </div>
-          <div class="swiper-button-next swiper-button-next-4"></div>
-          <div class="swiper-button-prev swiper-button-prev-4"></div>
-        </div>
+
+        <p class="mb-2"><i class="bi bi-briefcase-fill me-1 text-primary"></i> 
+            <a href="#" class="text-decoration-none">{{ $job->employer->jobs->count() }} Open Jobs</a>
+        </p>
+
+        <ul class="list-unstyled small">
+          <li> <h6 class="mb-0">{{ $job->employer->company_name }}</h6></li>
        
+            <li><i class="bi bi-geo-alt-fill me-1 text-secondary"></i> {{ $job->employer->location->name ?? '' }}</li>
+            <li><i class="bi bi-telephone-fill me-1 text-secondary"></i> Phone: {{ $job->employer->phone ?? 'N/A' }}</li>
+            <li><i class="bi bi-envelope-fill me-1 text-secondary"></i> Email: {{ $job->employer->user->email ?? 'N/A' }}</li>
+        </ul>
+    @else
+        <h5 class="text-muted text-center">Anonymous Post</h5>
+    @endif
+</div>
+
+
+        <!-- Similar Jobs -->
+        <div class="sidebar-border">
+          <h6 class="f-18">Similar Jobs</h6>
+          <ul class="list-unstyled">
+            @foreach ($simplerJobs as $data)
+              <li class="mb-3">
+                <div class="d-flex align-items-start">
+                  @if(!$job->is_anonymous)
+                    <img src="{{ asset('profile/' . $data->employer->user->image) }}" class="img-fluid rounded me-2" alt="Company" width="50">
+                  @endif
+                  <div>
+                    <a href="{{ route('frontend.jobs-detail', $data->id) }}" class="fw-bold d-block">{{ $data->title }}</a>
+                    <small>{{ $data->job_type }} • {{ $data->created_at->diffForHumans() }}</small><br>
+                    <small>{{ $data->salary ? number_format($data->salary) . ' Ks' : 'Negotiate' }}</small>
+                  </div>
+                </div>
+              </li>
+            @endforeach
+          </ul>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  @include('frontend.layouts.parts.ads', [
-      'ads' => $ads,
-      'location' => 'home page bottom'
-    ])
+<!-- Featured Jobs -->
+<section class="section-box mt-50 mb-50">
+  <div class="container">
+    <div class="text-left">
+      <h2 class="section-title mb-10">Featured Jobs</h2>
+      <p class="font-lg text-muted">Get the latest news, updates and tips</p>
+    </div>
+    <div class="mt-4">
+      <div class="swiper-container swiper-group-4 swiper">
+        <div class="swiper-wrapper">
+          @foreach ($highlightJobs as $data)
+            <div class="swiper-slide">
+              @include('frontend.jobs.part.job-card', [
+                  'data' => $data,
+                  'jobLink' => route('frontend.jobs-detail', $data->id)
+              ])
+            </div>
+          @endforeach
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
 
+@include('frontend.layouts.parts.ads', ['ads' => $ads, 'location' => 'home page bottom'])
 @include('frontend.jobs.part.apply-model')
-
 @endsection
 
 @section('script')
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    var applyButtons = document.querySelectorAll('.btn-apply-now');
-    var modal = document.getElementById('ModalApplyJobForm');
-    var jobTitleElement = modal.querySelector('#modalJobTitle');
-    var jobIdElement = modal.querySelector('#dataId');
+    const applyButtons = document.querySelectorAll('.btn-apply-now');
+    const modal = document.getElementById('ModalApplyJobForm');
+    const jobTitleElement = modal.querySelector('#modalJobTitle');
+    const jobIdElement = modal.querySelector('#dataId');
 
-    applyButtons.forEach(function (button) {
-      button.addEventListener('click', function () {
-        var jobTitle = button.getAttribute('data-bs-jobName');
-        var jobId = button.getAttribute('data-bs-jobId');
-
-        jobTitleElement.textContent = jobTitle;
-        jobIdElement.value = jobId;
+    applyButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        jobTitleElement.textContent = button.getAttribute('data-bs-jobName');
+        jobIdElement.value = button.getAttribute('data-bs-jobId');
       });
     });
   });

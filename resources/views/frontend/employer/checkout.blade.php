@@ -47,7 +47,7 @@
 
                 </div>
                 <div class="col-md-4">
-                    <div class="block-pricing">
+                    <!-- <div class="block-pricing">
                         <div class="row">
 
                             <div class="col-12 wow animate__animated animate__fadeInUp" data-wow-delay=".1s">
@@ -86,7 +86,7 @@
                             </div>
 
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="sidebar-border">
                         <h6 class="f-18">Payment</h6>

@@ -133,6 +133,16 @@
                 </a>
             </li>
 
+
+            <li class="nav-item dropdown {{ Route::is('admin.images.index') ? 'active' : '' }}">
+                <a href="{{route('admin.images.index')}}">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-solution"></i>
+                    </span>
+                    <span class="title">Images</span>
+                </a>
+            </li>
+
             <!-- <li class="nav-item dropdown {{ Route::is('admin.email-lists.index') ? 'active' : '' }}">
                 <a href="{{route('admin.email-lists.index')}}">
                     <span class="icon-holder">

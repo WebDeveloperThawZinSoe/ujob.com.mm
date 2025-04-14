@@ -84,13 +84,21 @@ class SaleController extends Controller
             
             $user = User::find($sale->user_id); // Assuming User model for seller
             $employer = Employer::find($user->employer->id);
+            // $employer->membership_name = $sale->membership->title;
+            // $employer->total_highlights  = $sale->membership->highlight_job;
+            // $employer->total_jobs = $sale->membership->total_job;
+            // $employer->is_feature = $sale->membership->is_feature_company;
+            // $employer->pre_question = $sale->membership->pre_question;
+            // $employer->auto_match = $sale->membership->bluk_cvs;
+            // $employer->bulk_cvs = $sale->membership->auto_match;
             $employer->membership_name = $sale->membership->title;
             $employer->total_highlights  = $sale->membership->highlight_job;
-            $employer->total_jobs = $sale->membership->total_job;
-            $employer->	is_feature = $sale->membership->is_feature_company;
+            $employer->total_jobs = $sale->jobs;
+            $employer->	is_feature = $sale->highlights;
             $employer->pre_question = $sale->membership->pre_question;
-            $employer->auto_match = $sale->membership->bluk_cvs;
-            $employer->bulk_cvs = $sale->membership->auto_match;
+            $employer->auto_match = $sale->bulk_cv;
+            $employer->bulk_cvs = $sale->auto_job_match;
+            $employer->is_feature = $sale->membership->is_feature_company;
             $employer->save();
             
 

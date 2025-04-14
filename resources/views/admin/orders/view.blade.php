@@ -243,7 +243,7 @@ h3 {
                         </select>
                     </div>
 
-                    <!-- <div class="mb-3">
+                    <div class="mb-3">
                         <label for="" class="form-label">Total Job Posts </label>
                         <input
                             type="number"
@@ -251,7 +251,7 @@ h3 {
                             name="jobs"
                             id=""
                             aria-describedby="helpId"
-                            placeholder=""
+                            value="{{ $sale->membership->total_job }}"
                         />
                         
                     </div>
@@ -264,12 +264,52 @@ h3 {
                             name="highlights"
                             id=""
                             aria-describedby="helpId"
-                            placeholder=""
+                           value="{{ $sale->membership->highlight_job }}"
                         />
                         
                     </div>
 
+
                     <div class="mb-3">
+                        <label for="" class="form-label">Bulk CV </label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            name="bulk_cv"
+                            id=""
+                            aria-describedby="helpId"
+                           value="{{ $sale->membership->bluk_cvs }}"
+                        />
+                        
+                    </div>
+                    <!-- <div class="mb-3">
+                        <label for="" class="form-label">Feature Job </label>
+                        <select
+                            class="form-control"
+                            name="feature_job"
+                            id=""
+                            aria-describedby="helpId"
+                        >
+                        <option @if($sale->membership->is_feature_company != 1) selected @endif value="0">No</option>
+                        <option @if($sale->membership->is_feature_company == 1) selected @endif value="1">Yes</option>
+                    </select> -->
+
+
+                    <div class="mb-3">
+                        <label for="" class="form-label">Auto Job Match </label>
+                        <select
+                            class="form-control"
+                            name="auto_job_match"
+                            id=""
+                            aria-describedby="helpId"
+                        >
+                        <option @if($sale->membership->auto_match != 1) selected @endif value="0">No</option>
+                        <option @if($sale->membership->auto_match == 1) selected @endif value="1">Yes</option>
+                    </select>
+                        
+                    </div>
+
+                    <!-- <div class="mb-3">
                         <label for="" class="form-label">End Date </label>
                         <input
                             type="date"

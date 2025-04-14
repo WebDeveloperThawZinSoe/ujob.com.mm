@@ -4,6 +4,7 @@ use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EmailListController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\Employer\JobController as EmployerJobController;
 use App\Http\Controllers\Employer\MembershipController as EmployerMembershipController;
 use App\Http\Controllers\Employer\ProfileController;
@@ -103,6 +104,12 @@ Route::group(['middleware' => ['can:admin','auth']], function () {
     Route::get("/admin/seeker/{id}",[SeekerController::class,"detail"])->name("admin.seeker.detail");
     Route::get("/admin/seekers/open-to-work",[SeekerController::class,"open_to_work"])->name("admin.seeker.open_to_work");
     Route::delete("/admin/seeker/{id}/delete",[SeekerController::class,"deleteSeeker"]);
+
+    //Image
+    Route::get("/admin/images",[ImageController::class,"index"])->name("admin.images.index");   
+    Route::post("/admin/images",[ImageController::class,"store"])->name("admin.images.store"); 
+    Route::delete("/admin/images/{id}",[ImageController::class,"destroy"])->name("admin.images.destroy"); 
+
 
     //Change Password 
     Route::get("/admin/change-password",[HomeController::class,"adminChangePassword"]);
